@@ -4,7 +4,7 @@ constructor(){
   this.y = 300
   this.r = 10;
   this.attraction_distance = 70;
-  this.circle_vis = true;
+  this.circle_vis = false;
   this.follow = false;
   this.create();
   this.stats();
