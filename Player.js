@@ -18,7 +18,7 @@ constructor(){
     this.state = 'move'
     this.hitin = false;
     this.currover = false;
-    this.hitbox_vis = true
+    this.hitbox_vis = false
 
 }
 //=============================================================================
