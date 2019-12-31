@@ -6,10 +6,11 @@ let xaxis,yaxis;
 let zoom = 3 //zoom kamery
 let debug = true, pause = false;
 let timer,b;
+//=============================================================================================
 function preload(){
   loadFiles(); //preload.js
 }
-
+//=============================================================================================
 function setup(){
 createCanvas(900,600);
 groups();                                   // grupy spritow   -      preload.js
@@ -26,7 +27,7 @@ test = createSprite(100,100,14,24);
 test.addAnimation('up', attack_up)
 p1.add(test);
 }
-
+//=============================================================================================
 function draw(){
  //console.log(wrog.circle.velocity.x, wrog.circle.velocity.y);
   camera.on();
@@ -37,29 +38,31 @@ function draw(){
 //   console.log('zycie wroga ',wrog.health)
 
 }
-
+//=============================================================================================
 //7 pix = 1 size
 function keyPressed(){
   imputs();
 }
+//=============================================================================================
 function mousePressed(){
 }
-
+//=============================================================================================
  function static(){
    background(0)
      lvl1.bg();
  }
+ //=============================================================================================
  function Update(){
    gracz.allFunctions();
    wrog.allFunctions();
    lvl1.telPoz();
    kam.follow();
  }
-
+//=============================================================================================
  function fixUpdate(){
 
  }
-
+//=============================================================================================
 function render(){
 
   drawSprites(tel);
@@ -82,8 +85,6 @@ function render(){
       scr_debug.help();
 
   }
-
-
-
+//=============================================================================================
 
 }

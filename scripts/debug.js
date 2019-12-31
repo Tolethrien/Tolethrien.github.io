@@ -8,6 +8,7 @@ this.b_tel = new Button();
 this.b_player = new Button();
 this.b_kam = new Button();
 }
+//========================================================================================
 deb(){
   if (debug == true){
     camera.off();
@@ -40,11 +41,12 @@ deb(){
   else {
  camera.zoom = zoom;}
 }
+//============================================================================================
 debug_OnOff(){
 if (debug == false){debug = true}
 else if (debug == true){debug = false}
 }
-
+//=============================================================================================
 playsciany(){
 for (let i = 0; i < sciany.length; i++){
   if (scr_debug.b_sciany.pressed == true){
@@ -52,7 +54,7 @@ for (let i = 0; i < sciany.length; i++){
  else { sciany[i].debug = false;}
   }
 }
-
+//=============================================================================================
 playtop(){
   for (let i = 0; i < par_top.length; i++){
     if (scr_debug.b_top.pressed == true){
@@ -60,6 +62,7 @@ playtop(){
    else {   par_top[i].debug = false;}
   }
 }
+//=============================================================================================
 playbottom(){
     for (let i = 0; i < par_bottom.length; i++){
         if (scr_debug.b_bottom.pressed == true){
@@ -67,7 +70,7 @@ playbottom(){
             else{ par_bottom[i].debug = false;}
           }
 }
-
+//=============================================================================================
 playtel(){
     for (let i = 0; i < tel.length; i++){
     if (scr_debug.b_tel.pressed == true){
@@ -78,18 +81,19 @@ playtel(){
         tel[i].debug = false;}
       }
 }
-
+//=============================================================================================
 playplayer(){
   if (scr_debug.b_player.pressed == true){
     gracz.player.debug = true;}
     else{gracz.player.debug = false;}
 }
+//=============================================================================================
 playkam(){
   if (scr_debug.b_kam.pressed == true){
     kam.kamera.visible = true;}
   else{kam.kamera.visible = false;}
 }
-
+//=============================================================================================
 help(){
   push();
     fill(255,100);
@@ -110,6 +114,7 @@ help(){
     // text('L - reset',700,640);
   pop();
 }
+//=============================================================================================
 }
 // do dodania na potem
 

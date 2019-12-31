@@ -26,7 +26,7 @@ attack_up = loadAnimation(attack_up_sheet);
 attack_down = loadAnimation(attack_down_sheet);
 attack_right = loadAnimation(attack_right_sheet);
 }
-
+//=============================================================================================
 function groups(){
   sciany = new Group();
   p1 = new Group();
@@ -38,7 +38,5 @@ function groups(){
   ramacam = new Group();
   enemy = new Group();
   atention = new Group();
-
-
-
 }
+//=============================================================================================

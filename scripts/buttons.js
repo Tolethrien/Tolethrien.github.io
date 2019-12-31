@@ -19,7 +19,7 @@ this.h;
 this.pressed = false;
 this.state;
 }
-
+//=================================================================================
 create(figura,xx,yy,ww,hh,txt){
 this.state = figura;
 let tekst = txt;
@@ -52,7 +52,7 @@ if (this.state == 'rect'){
     pop();
   }
 }
-
+//====================================================================================
 kolor(rr,gg,bb,aa){
   if (this.pressed == true){
     this.color = color(0,180,0);}
@@ -60,7 +60,7 @@ kolor(rr,gg,bb,aa){
 let r = rr, g = gg, b = bb, a = aa;
 return this.color = color(r,g,b,a);
 }}
-
+//====================================================================================
 Pressed(l,callback){
 if (mouseWentDown(l) && this.mouseOnButton()){
   if (this.pressed == false){
@@ -76,7 +76,7 @@ else {
         }
     }
 }
-
+//======================================================================================
 mouseOnButton(){
   if (this.state == 'rect'){
 if (mouseX > this.x && mouseX < this.x + this.w &&
@@ -87,5 +87,5 @@ let d = dist(mouseX,mouseY,this.x,this.y);
 if (d < this.w/2){return true}
     }
 }
-
+//======================================================================================
 }
