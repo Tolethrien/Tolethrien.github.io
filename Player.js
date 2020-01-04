@@ -10,6 +10,7 @@ constructor(){
     this.player.addAnimation('attack_right',attack_right);
     this.player.addAnimation('attack_down',attack_down);
     this.player.animation.frameDelay = 6;
+  //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
     p1.add(this.player);
     this.spd = 1;

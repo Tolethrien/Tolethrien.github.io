@@ -6,16 +6,19 @@ constructor(){
   this.attraction_distance = 70;
   this.circle_vis = false;
   this.follow = false;
+  this.state = 'guard'
   this.create();
   this.stats();
 }
 //==============================================================================
 allFunctions(){
-this.attraction()
+this.attraction();
 this.attraction_set();
+this.guard();
 this.walk();
 this.anim();
 this.kill();
+ //console.log(Math.sign(gracz.player.position.x - this.enemy.position.x));
 //this.back();
 }
 //==============================================================================
@@ -29,41 +32,55 @@ this.moveSpeed;
 }
 //==============================================================================
 create(){
-  this.circle = createSprite(this.x,this.y,this.r,this.r);
-  this.circle.setCollider("circle",0,0,this.attraction_distance);
-  this.circle.visible = false;
-  atention.add(this.circle);
-  this.circle.maxSpeed = 0.7;
-  if (this.circle_vis == true){
-    this.circle.visible = true;
-    this.circle.debug = true;}
-
-this.enemy = createSprite(this.circle.position.x,this.circle.position.y,30,30);
+this.enemy = createSprite(this.x,this.y,30,30);
 this.enemy.addAnimation('left',left_anim);
 this.enemy.addAnimation('right',right_anim);
 this.enemy.addAnimation('up',up_anim);
 this.enemy.addAnimation('down',down_anim);
+this.enemy.maxSpeed = 0.5
+this.enemy.debug = false;
+  //this.enemy.setCollider("rectangle",0,0,14,10);
   enemy.add(this.enemy);
+
+
+  this.circle = createSprite(this.enemy.position.x,this.enemy.position.y,this.r,this.r);
+  this.circle.setCollider("circle",0,0,this.attraction_distance);
+  this.circle.visible = false;
+  atention.add(this.circle);
+  if (this.circle_vis == true){
+    this.circle.visible = true;
+    this.circle.debug = true;}
+
+    this.circle2 = createSprite(this.enemy.position.x,this.enemy.position.y,15,30);
+    this.circle2.visible = false;
+    enemy.add(this.circle2);
+
 }
 //==============================================================================
 attraction(){
-  if (this.circle.overlap(p1)){
+  if (this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
     this.follow = true;
-    this.circle.velocity.x = floor((this.circle.position.x - gracz.player.position.x) * -0.05);
-    this.circle.velocity.y = floor((this.circle.position.y - gracz.player.position.y) * -0.05);
+    this.enemy.velocity.x = floor((this.enemy.position.x - gracz.player.position.x) * -0.05);
+    this.enemy.velocity.y = floor((this.enemy.position.y - gracz.player.position.y) * -0.05);
   } else {
-    this.circle.velocity.x = floor((this.circle.position.x - this.x) * -0.05);
-    this.circle.velocity.y = floor((this.circle.position.y - this.y) * -0.05);
-    if (this.circle.velocity.x == 0 && this.circle.velocity.y == 0){
-          this.follow = false;
-        }
-  }
+    this.enemy.velocity.x = 0
+    this.enemy.velocity.y = 0}
+
+}
+guard(){
+  if (!this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
+
+    this.enemy.velocity.x = floor((this.enemy.position.x - this.x) * -0.05);
+    this.enemy.velocity.y = floor((this.enemy.position.y - this.y) * -0.05);}
+
+
 }
 //==============================================================================
 kill(){
   if (this.health <= 0){
     this.enemy.remove();
     this.circle.remove();
+    this.circle2.remove();
   }
 }
 //==============================================================================
@@ -72,37 +89,39 @@ walk(){
 }
 //==============================================================================
 anim(){
-if (this.circle.velocity.x >  0.8 &&
-  (this.circle.velocity.y < 0.5 || this.circle.velocity.y < -0.5 )){
+if (this.enemy.velocity.x >  0.8 &&
+  (this.enemy.velocity.y < 0.5 || this.enemy.velocity.y < -0.5 )){
   this.enemy.changeAnimation('right');
   //  this.enemy.mirrorX(-1);
     this.enemy.animation.play();}
 
-if (this.circle.velocity.x <  -0.8 &&
-  (this.circle.velocity.y < 0.5 || this.circle.velocity.y < -0.5 )){
+if (this.enemy.velocity.x <  -0.8 &&
+  (this.enemy.velocity.y < 0.5 || this.enemy.velocity.y < -0.5 )){
       this.enemy.changeAnimation('left');
     //    this.enemy.mirrorX(1);
         this.enemy.animation.play();}
   //
-  if (this.circle.velocity.y <  -0.8 &&
-    (this.circle.velocity.x < 0.5 || this.circle.velocity.x < -0.5 )){
+  if (this.enemy.velocity.y <  -0.8 &&
+    (this.enemy.velocity.x < 0.5 || this.enemy.velocity.x < -0.5 )){
         this.enemy.changeAnimation('up');
           this.enemy.animation.play();}
   //
-  if (this.circle.velocity.y >  0.8 &&
-    (this.circle.velocity.x < 0.5 || this.circle.velocity.x < -0.5 )){
+  if (this.enemy.velocity.y >  0.8 &&
+    (this.enemy.velocity.x < 0.5 || this.enemy.velocity.x < -0.5 )){
         this.enemy.changeAnimation('down');
           this.enemy.animation.play();}
 
-    else if (this.circle.velocity.x == 0 && this.circle.velocity.y == 0 ||
-    this.circle.velocity.x == -0 && this.circle.velocity.y == -0){
+    else if (this.enemy.velocity.x == 0 && this.enemy.velocity.y == 0 ||
+    this.enemy.velocity.x == -0 && this.enemy.velocity.y == -0){
         this.enemy.animation.changeFrame(3);
         this.enemy.animation.stop();}
 }
 //==============================================================================
 attraction_set(){
-this.enemy.position.x = this.circle.position.x;
-this.enemy.position.y = this.circle.position.y;
+this.circle.position.x = this.enemy.position.x;
+this.circle.position.y = this.enemy.position.y;
+this.circle2.position.x = this.enemy.position.x;
+this.circle2.position.y = this.enemy.position.y;
 }
 //==============================================================================
 
