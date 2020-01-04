@@ -4,7 +4,7 @@ let player;
 let sciany,p1,tel, par_top, par_bottom, drzewa,enemy;
 let xaxis,yaxis;
 let zoom = 3 //zoom kamery
-let debug = true, pause = false;
+let debug = false, pause = false;
 let timer,b;
 //=============================================================================================
 function preload(){
