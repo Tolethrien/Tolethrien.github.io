@@ -16,6 +16,10 @@ drzewo_top = loadImage('sprites/world/tree_top.png')
 //trawa = loadImage('sprites/world/castle.png')
 trawa = loadImage('sprites/world/aa2.png')
 kamera = loadImage('sprites/world/camera.png')
+quest_1 = loadImage('sprites/world/questMark.png')
+quest_2 = loadImage('sprites/world/zapytanie.png')
+
+
 left_anim = loadAnimation(left_sheet);
 right_anim = loadAnimation(right_sheet);
 up_anim = loadAnimation(up_sheet);
@@ -38,5 +42,6 @@ function groups(){
   ramacam = new Group();
   enemy = new Group();
   atention = new Group();
+  npcs = new Group();
 }
 //=============================================================================================

@@ -1,10 +1,14 @@
 class Lvl1{
 constructor(){
+   this.wrog = new Enemy();
+   this.lol = new Enemy();
+   this.npc = new Npc();
     this.walls();
     this.obj();
      this.teleports();
      this.drzewa();
     this.kameraborder();
+    this.wrogowie();
 }
 //=============================================================================================
 bg(){
@@ -61,4 +65,16 @@ sprts.ramaKamery(
 300,613,600,200) // dol
 }
 //=============================================================================================
+wrogowie(){
+//  this.lol.create(300,300,10,10);
+  //this.wrog.create(400,400,10,10);
+  this.npc.create();
+
+}
+updatelvl(){
+//  this.wrog.allFunctions();
+//  this.lol.allFunctions();
+this.npc.allF();
+
+}
 }

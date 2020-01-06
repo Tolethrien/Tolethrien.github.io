@@ -5,6 +5,7 @@ attackKey = (key == ' ');
 //debugKey = (key == 'd');
 pauseKey = (key == 'p');
 inventoryKey = (key == 'i');
+actionKey = (key == 'e');
 
 
 

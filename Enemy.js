@@ -3,7 +3,6 @@ constructor(){
   this.attraction_distance = 70;
   this.circle_vis = false;
   this.follow = false;
-  this.state = 'guard'
     this.currover = false;
 // this.create();
   this.stats();

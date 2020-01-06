@@ -24,6 +24,7 @@ create(figura,xx,yy,ww,hh,txt){
 this.state = figura;
 let tekst = txt;
 this.x = xx, this.y = yy, this.w = ww, this.h = hh;
+  this.ts = this.w/7
 if (this.state == 'rect'){
     push();
     stroke(255);
@@ -33,7 +34,7 @@ if (this.state == 'rect'){
     pop();
     push();
     fill(255);
-    textSize(this.w/7)
+    textSize(this.ts)
     textAlign(CENTER);
     text(tekst,this.x + this.w/2,this.y+ this.h/2 +2);
     pop();
