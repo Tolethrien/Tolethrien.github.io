@@ -14,18 +14,21 @@ function preload(){
 function setup(){
 createCanvas(900,600);
 groups();                                   // grupy spritow   -      preload.js
-scr_debug = new Debug();
 gracz = new Plejer();                       // gracz           -       player.js
-sprts = new sprts();                        //obiekty mapy     -     opsticle.js
-lvl1 = new Lvl1();                          // poziom 1        -         lvl1.js                    //debug mode       -        debug.js
+sprts = new sprts();                        //obiekty mapy     -     opsticle.js                  //debug mode       -        debug.js
 kam = new Kam();                            //kamera           -       camera.js
 wrog = new Enemy();
+lol = new Enemy();
+lvl1 = new Lvl1();                          // poziom 1        -         lvl1.js
 scr_debug = new Debug();
   b = new Button();
+  lol.create(300,300,10,10)
+  wrog.create(400,400,10,10)
 //testowy sprite ataku - dodac do npc w przyszlosci
 test = createSprite(100,100,14,24);
 test.addAnimation('up', attack_up)
 p1.add(test);
+meter = new FPSMeter();
 }
 //=============================================================================================
 function draw(){
@@ -36,7 +39,7 @@ function draw(){
  fixUpdate();
  render();
 //   console.log('zycie wroga ',wrog.health)
-
+meter.tick();
 }
 //=============================================================================================
 //7 pix = 1 size
@@ -55,6 +58,7 @@ function mousePressed(){
  function Update(){
    gracz.allFunctions();
    wrog.allFunctions();
+   lol.allFunctions();
    lvl1.telPoz();
    kam.follow();
  }
@@ -75,6 +79,7 @@ function render(){
   drawSprites(ramacam);
   drawSprites(cam);
   camera.off();
+  text(frameRate,20,20,20,20);
   b.create('rect',80,580,60,20," Debug")
   b.kolor(255,100,100,100);
   b.Pressed(LEFT,scr_debug.debug_OnOff)

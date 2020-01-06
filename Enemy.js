@@ -1,14 +1,37 @@
 class Enemy {
 constructor(){
-  this.x = 200;
-  this.y = 300
-  this.r = 10;
   this.attraction_distance = 70;
   this.circle_vis = false;
   this.follow = false;
   this.state = 'guard'
-  this.create();
+    this.currover = false;
+// this.create();
   this.stats();
+}
+create(xx,yy,ww,hh){
+this.x = xx, this.y = yy, this.w = ww, this.h = hh;
+this.enemy = createSprite(this.x,this.y,this.w,this.h);
+this.enemy.addAnimation('left',left_anim);
+this.enemy.addAnimation('right',right_anim);
+this.enemy.addAnimation('up',up_anim);
+this.enemy.addAnimation('down',down_anim);
+this.enemy.maxSpeed = 0.5
+this.enemy.debug = false;
+  //this.enemy.setCollider("rectangle",0,0,14,10);
+  enemy.add(this.enemy);
+
+
+  this.circle = createSprite(this.enemy.position.x,this.enemy.position.y,this.w,this.w);
+  this.circle.setCollider("circle",0,0,this.attraction_distance);
+  this.circle.visible = false;
+  atention.add(this.circle);
+  if (this.circle_vis == true){
+    this.circle.visible = true;
+    this.circle.debug = true;}
+
+    this.circle2 = createSprite(this.enemy.position.x,this.enemy.position.y,15,30);
+    this.circle2.visible = false;
+    enemy.add(this.circle2);
 }
 //==============================================================================
 allFunctions(){
@@ -17,6 +40,7 @@ this.attraction_set();
 this.guard();
 this.walk();
 this.anim();
+this.dead();
 this.kill();
  //console.log(Math.sign(gracz.player.position.x - this.enemy.position.x));
 //this.back();
@@ -31,31 +55,7 @@ this.atcSpeed;
 this.moveSpeed;
 }
 //==============================================================================
-create(){
-this.enemy = createSprite(this.x,this.y,30,30);
-this.enemy.addAnimation('left',left_anim);
-this.enemy.addAnimation('right',right_anim);
-this.enemy.addAnimation('up',up_anim);
-this.enemy.addAnimation('down',down_anim);
-this.enemy.maxSpeed = 0.5
-this.enemy.debug = false;
-  //this.enemy.setCollider("rectangle",0,0,14,10);
-  enemy.add(this.enemy);
 
-
-  this.circle = createSprite(this.enemy.position.x,this.enemy.position.y,this.r,this.r);
-  this.circle.setCollider("circle",0,0,this.attraction_distance);
-  this.circle.visible = false;
-  atention.add(this.circle);
-  if (this.circle_vis == true){
-    this.circle.visible = true;
-    this.circle.debug = true;}
-
-    this.circle2 = createSprite(this.enemy.position.x,this.enemy.position.y,15,30);
-    this.circle2.visible = false;
-    enemy.add(this.circle2);
-
-}
 //==============================================================================
 attraction(){
   if (this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
@@ -74,6 +74,16 @@ guard(){
     this.enemy.velocity.y = floor((this.enemy.position.y - this.y) * -0.05);}
 
 
+}
+
+dead(){
+if (gracz.hitbox){
+if (!gracz.hitbox.overlap(this.enemy)){
+  this.currover = false;
+}
+if (gracz.hitbox.overlap(this.enemy) && this.currover == false ){
+this.health -= 1;
+this.currover = true;}}
 }
 //==============================================================================
 kill(){

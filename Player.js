@@ -18,7 +18,7 @@ constructor(){
     this.dash_cd = new Timer();
     this.state = 'move'
     this.hitin = false;
-    this.currover = false;
+  //  this.currover = false;
     this.hitbox_vis = false
 
 }
@@ -31,7 +31,7 @@ if (this.state == 'move'){
 
 if (this.state == 'attack'){
     this.attack_state();
-  this.hit();
+//  this.hit();
 }
   //this.back_state();
 }
@@ -91,14 +91,14 @@ if (this.player.animation.getFrame() <= 3 && this.hitin == false){
         this.state = 'move';}
 }
 //=============================================================================
-hit(){
-if (!this.hitbox.overlap(enemy)){
-  this.currover = false;
-}
-if (this.hitbox.overlap(enemy) && this.currover == false ){
-wrog.health -= 1;
-this.currover = true;}
-}
+// hit(){
+// if (!this.hitbox.overlap(enemy)){
+//   this.currover = false;
+// }
+// if (this.hitbox.overlap(enemy) && this.currover == false ){
+// return true;
+// this.currover = true;}
+// }
 //=============================================================================
 ruch_state(){
   ruch_imputs();
