@@ -10,6 +10,7 @@ attack_left_sheet = loadSpriteSheet('sprites/player/attack_left.png',35,20,7);
  attack_down_sheet = loadSpriteSheet('sprites/player/attack_down.png',28,40,7);
 
 dom = loadImage('sprites/world/house.png')
+domek = loadImage('sprites/world/house.png')
 dom_top = loadImage('sprites/world/house_top.png')
 drzewo = loadImage('sprites/world/tree.png')
 drzewo_top = loadImage('sprites/world/tree_top.png')

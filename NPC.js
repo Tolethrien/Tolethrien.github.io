@@ -1,14 +1,16 @@
 class Npc{
 
-constructor(){
-  this.x = 200,this.y = 300, this.w = 20, this.h = 20;
-  this.quest = 'quest_1';
+constructor(name){
+  this.name = name;
+  this.x = 200,this.y = 220, this.w = 20, this.h = 20;
   this.attraction_distance = 20
-  this.tak = new Button();
-  this.nie = new Button();
-  this.taken = false;
+  //to_take, taken, complited, done
+  this.quest_state = 'to_take'
+    if(this.quest_state != null || "done"){
+      this.have_quest = true}
+  this.pop_up = true;
 }
-
+//stworz NPC
 create(){
 this.npc = createSprite(this.x,this.y,this.w,this.h);
 this.npc.setDefaultCollider();
@@ -22,8 +24,35 @@ this.circle.debug = false
 atention.add(this.circle);
 }
 
-znak(){
-  if (this.quest == 'quest_1'){
+//funkcje updatu
+allF(){
+  if (this.have_quest == true){
+this.quests();}
+this.spotOn();
+this.talk();
+this.reset()
+}
+
+//dodaje oraz steruje questami NPC
+quests(){
+if (this.quest_state == 'to_take'){
+  this.znakWykrzyknik();
+}
+
+else if (this.quest_state == 'complited'){
+this.znak_Zapytania();
+}
+else if (this.quest_state == 'done'){
+null
+}
+
+}
+
+
+
+
+//znacznik nad glowa NPC
+znakWykrzyknik(){
     push();
     quest_1.resize(60,40);
     imageMode(CENTER);
@@ -31,26 +60,16 @@ znak(){
     pop();
 }
 
-
-
-
-
-  if (this.quest == 'quest_2'){
+//znacznik nad glowa NPC
+znak_Zapytania(){
 push();
 quest_2.resize(60,40);
 imageMode(CENTER);
 image(quest_2,this.x,this.y-20)
 pop();
 }
-}
 
-allF(){
-this.znak();
-this.spotOn();
-this.talk();
-this.reset();
-}
-
+//okresla czy gracz wszedl w pole interakcji oraz wyswietla guzik akcji. Zwraca true
 spotOn(){
 if (gracz.player.overlap(this.circle)){
   push();
@@ -69,39 +88,15 @@ if (this.spotOn() && actionKey){
 }
 }
 
-okno(){
-if (this.talk() && this.taken == false){
-  camera.off();
-  push();
-  //  rectMode(CENTER);
-   rect(200,50,400,300);
-text("dobry człowieku, czy chciałys ruchać psa jak sra kiedy ja będę to nagrywał?",250,100,350,200);
-pop();
-this.tak.create('rect',210,280,100,30,'TAK')
- this.nie.create('rect',210,310,100,30,'NIE')
- this.tak.kolor(0,255,0);
- this.nie.kolor(255,0,0);
- this.tak.Pressed(LEFT,this.jass);
-  this.nie.Pressed(LEFT,this.noo);
 
-camera.on();
+
+  reset(){
+  if (!gracz.player.overlap(this.circle)){
+    this.pop_up = true;
+  }
 }
 
-}
 
-jass(){
-lvl1.npc.taken = true;
-lvl1.npc.quest = 'quest_2';
-
-}
-noo(){
-lvl1.npc.taken = true;
-}
-reset(){
-if (!gracz.player.overlap(this.circle)){
-  lvl1.npc.taken = false;
-}
-}
 
 
 

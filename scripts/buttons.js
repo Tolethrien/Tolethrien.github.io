@@ -5,7 +5,7 @@
 //                         'circle' - tworzy owalny guzik
 //                         pozycjaX,pozycjaY,szerokosc,długość
 //                          string tekstu na guziku)
-// 3/ guzik.kolor(r,g,b,alfa) // bez podania guzik bedzie biały
+// 3/ guzik.kolor(r,g,b,alfa,zielone podswietlenie On/Off) // bez podania guzik bedzie biały
 // 4/ guzik.pressed(guzik myszy, funkcja do aktywowania
 //                                 (odwolanie do funkcji po nacisnieciu guzika)
 
@@ -17,6 +17,7 @@ this.y;
 this.w;
 this.h;
 this.pressed = false;
+this.lightOn = true;
 this.state;
 }
 //=================================================================================
@@ -54,8 +55,9 @@ if (this.state == 'rect'){
   }
 }
 //====================================================================================
-kolor(rr,gg,bb,aa){
-  if (this.pressed == true){
+kolor(rr,gg,bb,aa,light){
+  this.lightOn = light
+  if (this.pressed == true && this.lightOn == true){
     this.color = color(0,180,0);}
     else{
 let r = rr, g = gg, b = bb, a = aa;
@@ -76,6 +78,18 @@ else {
           }
         }
     }
+}
+
+Pressed_true(l){
+  if (mouseWentDown(l) && this.mouseOnButton()){
+    if (this.pressed == false){
+          this.pressed = true;
+          return true;}
+          else {
+            if (this.pressed == true){
+                this.pressed = false;
+                  return true;}}
+}
 }
 //======================================================================================
 mouseOnButton(){

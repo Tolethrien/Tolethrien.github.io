@@ -23,6 +23,7 @@ kam = new Kam();                            //kamera           -       camera.js
 lvl1 = new Lvl1();                          // poziom 1        -         lvl1.js
 scr_debug = new Debug();
   b = new Button();
+//  ui = new Ui();
 
 //testowy sprite ataku - dodac do npc w przyszlosci
 test = createSprite(100,100,14,24);
@@ -39,7 +40,7 @@ function draw(){
  Update();
  fixUpdate();
  render();
-//  console.log(mouseX,mouseY)
+  //console.log()
 if (fps){
   meter.show();
 meter.tick();}
@@ -55,12 +56,12 @@ function mousePressed(){
 //=============================================================================================
  function static(){
    background(0)
-     lvl1.bg();
+   lvl1.bg();
  }
  //=============================================================================================
  function Update(){
    gracz.allFunctions();
-   lvl1.updatelvl();
+  lvl1.updatelvl();
    lvl1.telPoz();
    kam.follow();
  }
@@ -81,11 +82,12 @@ function render(){
   drawSprites(par_top);
   drawSprites(ramacam);
   drawSprites(cam);
-lvl1.npc.okno();
+lvl1.q.rozmowa();
+//lvl1.npc.q2();
 
   camera.off();
   b.create('rect',80,580,60,20," Debug")
-  b.kolor(255,100,100,100);
+  b.kolor(255,100,100,100,true);
   b.Pressed(LEFT,scr_debug.debug_OnOff)
   camera.on();
     scr_debug.deb();

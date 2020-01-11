@@ -13,27 +13,27 @@ deb(){
   if (debug == true){
     camera.off();
       this.b_sciany.create('rect',0,5,60,20," Sciany")
-      this.b_sciany.kolor(255,100,100,100);
+      this.b_sciany.kolor(255,100,100,100,true);
       this.b_sciany.Pressed(LEFT,this.playsciany);
 
       this.b_top.create('rect',0,25,60,20,"par_top")
-      this.b_top.kolor(255,100,100,100);
+      this.b_top.kolor(255,100,100,100,true);
       this.b_top.Pressed(LEFT,this.playtop);
 
       this.b_bottom.create('rect',0,45,60,20," par_bottom")
-      this.b_bottom.kolor(255,100,100,100);
+      this.b_bottom.kolor(255,100,100,100,true);
       this.b_bottom.Pressed(LEFT,this.playbottom);
 
       this.b_tel.create('rect',0,65,60,20," teleporty")
-      this.b_tel.kolor(255,100,100,100);
+      this.b_tel.kolor(255,100,100,100,true);
       this.b_tel.Pressed(LEFT,this.playtel);
 
       this.b_player.create('rect',0,85,60,20,"gracz")
-      this.b_player.kolor(255,100,100,100);
+      this.b_player.kolor(255,100,100,100,true);
       this.b_player.Pressed(LEFT,this.playplayer);
 
       this.b_kam.create('rect',0,105,60,20,"kamera")
-      this.b_kam.kolor(255,100,100,100);
+      this.b_kam.kolor(255,100,100,100,true);
       this.b_kam.Pressed(LEFT,this.playkam);
     camera.on();
   camera.zoom = 1;

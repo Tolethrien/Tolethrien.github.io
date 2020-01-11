@@ -2,7 +2,8 @@ class Lvl1{
 constructor(){
    this.wrog = new Enemy();
    this.lol = new Enemy();
-   this.npc = new Npc();
+   this.pan_kwadrat = new Npc("Pan Kwadrat");
+  this.q = new Fedex_Quests(0,515,189,this.pan_kwadrat);
     this.walls();
     this.obj();
      this.teleports();
@@ -68,13 +69,15 @@ sprts.ramaKamery(
 wrogowie(){
 //  this.lol.create(300,300,10,10);
   //this.wrog.create(400,400,10,10);
-  this.npc.create();
+  this.pan_kwadrat.create();
+
 
 }
 updatelvl(){
 //  this.wrog.allFunctions();
 //  this.lol.allFunctions();
-this.npc.allF();
+this.pan_kwadrat.allF();
+this.q.allF();
 
 }
 }
