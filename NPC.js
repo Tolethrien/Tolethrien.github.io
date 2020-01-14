@@ -2,16 +2,16 @@ class Npc{
 
 constructor(name){
   this.name = name;
-  this.x = 200,this.y = 220, this.w = 20, this.h = 20;
   this.attraction_distance = 20
   //to_take, taken, complited, done
-  this.quest_state = 'to_take'
+  this.quest_state = null;
     if(this.quest_state != null || "done"){
       this.have_quest = true}
   this.pop_up = true;
 }
 //stworz NPC
-create(){
+create(xx,yy,ww,hh){
+  this.x = xx,this.y=yy,this.w=ww,this.h=hh;
 this.npc = createSprite(this.x,this.y,this.w,this.h);
 this.npc.setDefaultCollider();
 this.npc.debug = false;
@@ -23,7 +23,7 @@ this.circle.visible = true;
 this.circle.debug = false
 atention.add(this.circle);
 }
-
+  //stage quest [-1: nieaktywny, 0:aktywny, 1:zebrany, 2:wykonany]
 //funkcje updatu
 allF(){
   if (this.have_quest == true){
@@ -42,7 +42,7 @@ if (this.quest_state == 'to_take'){
 else if (this.quest_state == 'complited'){
 this.znak_Zapytania();
 }
-else if (this.quest_state == 'done'){
+else if (this._quest_state == 'done'){
 null
 }
 

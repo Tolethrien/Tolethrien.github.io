@@ -21,15 +21,17 @@ this.lightOn = true;
 this.state;
 }
 //=================================================================================
-create(figura,xx,yy,ww,hh,txt){
+create(figura,xx,yy,ww,hh,txt,ts){
 this.state = figura;
 let tekst = txt;
 this.x = xx, this.y = yy, this.w = ww, this.h = hh;
-  this.ts = this.w/7
+  this.ts = ts || this.w/7
 if (this.state == 'rect'){
     push();
     stroke(255);
-    strokeWeight(2)
+    strokeWeight(1);
+    stroke(0)
+    //noStroke();
       fill(this.color);
       rect(this.x,this.y,this.w,this.h);
     pop();
@@ -37,14 +39,14 @@ if (this.state == 'rect'){
     fill(255);
     textSize(this.ts)
     textAlign(CENTER);
-    text(tekst,this.x + this.w/2,this.y+ this.h/2 +2);
+    text(tekst,this.x + this.w/2,this.y+ this.h/2 +4);
     pop();
 }else if (this.state == 'circle'){
     push();
     stroke(255);
     strokeWeight(2);
       fill(this.color);
-      circle(this.x,this.y,this.w,this.h);
+      circle(this.x,this.y,this.w,this .h);
     pop();
     push();
     fill(255);

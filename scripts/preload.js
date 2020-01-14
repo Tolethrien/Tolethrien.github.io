@@ -15,7 +15,8 @@ dom_top = loadImage('sprites/world/house_top.png')
 drzewo = loadImage('sprites/world/tree.png')
 drzewo_top = loadImage('sprites/world/tree_top.png')
 //trawa = loadImage('sprites/world/castle.png')
-trawa = loadImage('sprites/world/aa2.png')
+poziom1 = loadImage('sprites/world/aa2.png')
+poziom2 = loadImage('sprites/world/12.png')
 kamera = loadImage('sprites/world/camera.png')
 quest_1 = loadImage('sprites/world/questMark.png')
 quest_2 = loadImage('sprites/world/zapytanie.png')
@@ -46,3 +47,28 @@ function groups(){
   npcs = new Group();
 }
 //=============================================================================================
+function groups_clear(){
+    sciany.clear();
+    par_top.clear();
+    par_bottom.clear();
+    bg.clear();
+    ramacam.clear();
+    enemy.clear();
+    atention.clear();
+    npcs.clear();
+}
+function change_lvl(){
+  if (current_lvl == "lvl1" && created == false){
+      lvl = new Lvl1();
+      created = true;}
+      if (current_lvl == "lvl2" && created == false){
+          lvl = new Lvl2();
+          created = true;}
+}
+
+function next_lvl(lewel){
+  groups_clear();
+  current_lvl = lewel
+created = false;
+
+}

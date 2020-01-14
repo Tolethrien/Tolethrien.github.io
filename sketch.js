@@ -6,6 +6,9 @@ let xaxis,yaxis;
 let zoom = 3 //zoom kamery
 let debug = true, pause = false, fps = true;
 let timer,b;
+let lvl;
+let current_lvl = "lvl1";
+let created = false;
 //=============================================================================================
 function preload(){
   loadFiles(); //preload.js
@@ -19,11 +22,12 @@ gracz = new Plejer();                       // gracz           -       player.js
 sprts = new sprts();                        //obiekty mapy     -     opsticle.js                  //debug mode       -        debug.js
 kam = new Kam();                            //kamera           -       camera.js
 // wrog = new Enemy();
-// lol = new Enemy();
-lvl1 = new Lvl1();                          // poziom 1        -         lvl1.js
+// lol = new Enemy();                    // poziom 1        -         lvl1.js
 scr_debug = new Debug();
   b = new Button();
+    qs = new Quest_store();
 //  ui = new Ui();
+
 
 //testowy sprite ataku - dodac do npc w przyszlosci
 test = createSprite(100,100,14,24);
@@ -34,6 +38,8 @@ meter.hide();
 }
 //=============================================================================================
 function draw(){
+change_lvl();
+qs.returns();
  //console.log(wrog.circle.velocity.x, wrog.circle.velocity.y);
   camera.on();
  static();
@@ -56,13 +62,14 @@ function mousePressed(){
 //=============================================================================================
  function static(){
    background(0)
-   lvl1.bg();
+   lvl.bg();
  }
  //=============================================================================================
  function Update(){
    gracz.allFunctions();
-  lvl1.updatelvl();
-   lvl1.telPoz();
+  lvl.updatelvl();
+   lvl.telPoz();
+
    kam.follow();
  }
 //=============================================================================================
@@ -71,7 +78,6 @@ function mousePressed(){
  }
 //=============================================================================================
 function render(){
-
   drawSprites(tel);
     drawSprites(sciany);
   drawSprites(par_bottom);
@@ -82,13 +88,18 @@ function render(){
   drawSprites(par_top);
   drawSprites(ramacam);
   drawSprites(cam);
-lvl1.q.rozmowa();
+  if (lvl.q2){
+lvl.q2.rozmowa();}
 //lvl1.npc.q2();
 
   camera.off();
   b.create('rect',80,580,60,20," Debug")
   b.kolor(255,100,100,100,true);
   b.Pressed(LEFT,scr_debug.debug_OnOff)
+  push();
+  fill(255);
+  text("pyrki: "+ gracz.money,200,580)
+  pop();
   camera.on();
     scr_debug.deb();
   if (debug == true){

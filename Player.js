@@ -20,6 +20,7 @@ constructor(){
     this.hitin = false;
   //  this.currover = false;
     this.hitbox_vis = false
+    this.money = 0;
 
 }
 //=============================================================================
