@@ -72,12 +72,7 @@ pop();
 //okresla czy gracz wszedl w pole interakcji oraz wyswietla guzik akcji. Zwraca true
 spotOn(){
 if (gracz.player.overlap(this.circle)){
-  push();
-  rectMode(CENTER);
-  rect(gracz.player.position.x,gracz.player.position.y-20,8,8);
-     textSize(5);
-     text("E",gracz.player.position.x+2,gracz.player.position.y-18,8,8);
-  pop();
+ui.akcja();
   return true;
 }
 }

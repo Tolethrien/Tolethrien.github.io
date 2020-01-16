@@ -1,3 +1,8 @@
+let side_anim,up_anim,down_anim;
+let side_sheet,up_sheet,down_sheet;
+
+
+
 function loadFiles(){
 left_sheet = loadSpriteSheet('sprites/player/left.png',14,24,6);
 right_sheet = loadSpriteSheet('sprites/player/right.png',14,24,6);
@@ -10,6 +15,7 @@ attack_left_sheet = loadSpriteSheet('sprites/player/attack_left.png',35,20,7);
  attack_down_sheet = loadSpriteSheet('sprites/player/attack_down.png',28,40,7);
 
 dom = loadImage('sprites/world/house.png')
+player_image = loadImage('sprites/player/player_image.png')
 domek = loadImage('sprites/world/house.png')
 dom_top = loadImage('sprites/world/house_top.png')
 drzewo = loadImage('sprites/world/tree.png')
@@ -17,6 +23,8 @@ drzewo_top = loadImage('sprites/world/tree_top.png')
 //trawa = loadImage('sprites/world/castle.png')
 poziom1 = loadImage('sprites/world/aa2.png')
 poziom2 = loadImage('sprites/world/12.png')
+poziom3 = loadImage('sprites/world/castle.png')
+poziom4 = loadImage('sprites/world/trawa.png')
 kamera = loadImage('sprites/world/camera.png')
 quest_1 = loadImage('sprites/world/questMark.png')
 quest_2 = loadImage('sprites/world/zapytanie.png')
@@ -33,6 +41,7 @@ attack_down = loadAnimation(attack_down_sheet);
 attack_right = loadAnimation(attack_right_sheet);
 }
 //=============================================================================================
+let sciany,p1,tel, par_top, par_bottom, drzewa,enemy,npcs,atention;
 function groups(){
   sciany = new Group();
   p1 = new Group();

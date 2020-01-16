@@ -143,13 +143,9 @@ odp4(){
 
 talk_stage1(){
   camera.off();
-  push();
-  //  rectMode(CENTER);
-   fill(60);
-   rect(this.gumpX,this.gumpY,this.gumpW,this.gumpH);
-   fill(255);
-  text(this.line[0][0],this.gumpX+20,this.gumpY+50,this.gumpW,this.gumpH);
-  pop();
+ui.dialog();
+fill(255)
+  text(this.line[0][0],this.gumpX+20,this.gumpY+50,this.gumpW-20,this.gumpH/2);
   this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[0],this.gumpW,20,this.line[0][1],15)
    this.odp_2.create('rect',this.gumpX,this.gumpY+this.gumpH-3*20+this.t[0],this.gumpW,20,this.line[0][2],15)
    if ( this.line[0][3] != null){
@@ -161,11 +157,9 @@ if (this.line[0][4] != null){
 talk_stage2(){
   camera.off();
   push();
-  //  rectMode(CENTER);
-   fill(60);
-     rect(this.gumpX,this.gumpY,this.gumpW,this.gumpH);
-   fill(255);
-  text(this.line[1][0],this.gumpX+20,this.gumpY+50,this.gumpW,this.gumpH);
+ui.dialog();
+fill(255);
+  text(this.line[1][0],this.gumpX+20,this.gumpY+50,this.gumpW-20,this.gumpH/2);
    text("+100 Pyrków",this.gumpX+250,this.gumpY + 240)
    pop();
    this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[1],this.gumpW,20,this.line[1][1],15)

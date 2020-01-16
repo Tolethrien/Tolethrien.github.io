@@ -1,6 +1,6 @@
 class Plejer{
 constructor(){
-    this.player = createSprite(300,300,14,24);
+    this.player = createSprite(21,397,14,24);
     this.player.addAnimation('left',left_anim);
     this.player.addAnimation('right',right_anim);
     this.player.addAnimation('up',up_anim);
@@ -21,6 +21,8 @@ constructor(){
   //  this.currover = false;
     this.hitbox_vis = false
     this.money = 0;
+    this.hp = 10;
+    this.menu = false;
 
 }
 //=============================================================================

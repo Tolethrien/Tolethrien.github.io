@@ -1,3 +1,4 @@
+let xaxis,yaxis
   //===========================KLAWISZE=====================================
 function imputs(){
 dashKey = keyWentDown('v');
@@ -34,8 +35,12 @@ if (pauseKey){
 //================================ATAK====================================
 if (attackKey){
   gracz.state = 'attack'}
+//=====================================================
+if (inventoryKey){
+  if(gracz.menu == false){gracz.menu = true}
+  else{gracz.menu = false}
 }
-
+}
 //==============================RUCH POSTACI==============================
 function ruch_imputs(){
 //ruch postaci
