@@ -1,7 +1,7 @@
-let xaxis,yaxis
+let xaxis,yaxis;
   //===========================KLAWISZE=====================================
 function imputs(){
-dashKey = keyWentDown('v');
+dashKey = "v" // nie dziala
 attackKey = (key == ' ');
 //debugKey = (key == 'd');
 pauseKey = (key == 'p');
@@ -18,10 +18,7 @@ actionKey = (key == 'e');
 
 //===============================DEBUG MODE=================================
 //debug
-//   if (debugKey){
-//   if(debug == true){debug = false}
-// else {debug = true}
-// }
+
 
 //================================PAUZA====================================
 if (pauseKey){

@@ -19,10 +19,11 @@ constructor(){
     this.state = 'move'
     this.hitin = false;
   //  this.currover = false;
-    this.hitbox_vis = false
+    this.hitbox_vis = true
     this.money = 0;
     this.hp = 10;
     this.menu = false;
+    this.currover = false
 
 }
 //=============================================================================
@@ -30,7 +31,8 @@ allFunctions(){
   this.colider();
 if (this.state == 'move'){
     this.ruch_state();
-    this.dash_state();}
+    this.dash_state();
+  this.hit();}
 
 if (this.state == 'attack'){
     this.attack_state();
@@ -69,7 +71,7 @@ if (this.player.animation.getFrame() <= 3 && this.hitin == false){
   p1.add(this.hitbox);}
 
   else if (this.player.getAnimationLabel() == 'attack_down'){
-  this.hitbox = createSprite(this.player.position.x,this.player.position.y+8,15,15)
+  this.hitbox = createSprite(this.player.position.x,this.player.position.y+10,15,15)
     this.hitbox.visible = this.hitbox_vis;
   this.hitin = true;
   p1.add(this.hitbox);}
@@ -94,14 +96,11 @@ if (this.player.animation.getFrame() <= 3 && this.hitin == false){
         this.state = 'move';}
 }
 //=============================================================================
-// hit(){
-// if (!this.hitbox.overlap(enemy)){
-//   this.currover = false;
-// }
-// if (this.hitbox.overlap(enemy) && this.currover == false ){
-// return true;
-// this.currover = true;}
-// }
+hit(){
+if (this.hp < 0){
+  this.player.remove();
+}
+}
 //=============================================================================
 ruch_state(){
   ruch_imputs();

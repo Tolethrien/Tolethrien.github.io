@@ -65,7 +65,7 @@ if (this.line[i][4] == undefined){this.t[i] += 20;}
 zadanie(){
   //    console.log(this.group_target.length)
   //dostań się do odpowiedniego NPC i zabij go
-  if (this.target != null && this.group_target == undefined){
+  if (this.target != null && this.group_target == undefined && this.stage == "zebrany"){
   if (this.target.alive == false){
     this.stage = "wykonany";
     this.quest_giver.quest_state = "complited";}

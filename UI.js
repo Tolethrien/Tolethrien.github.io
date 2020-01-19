@@ -4,7 +4,20 @@ this.x = 100,this.y = 100,this.w = 500,this.h = 400
 }
 ui(){
 this.stats();
+this.onScreen();
+}
 
+onScreen(){
+  camera.off();
+  push();
+  stroke(2)
+  noFill();
+  rect(width/2,580,70,10)
+  fill("red")
+  let m = map(gracz.hp,0,10,0,70)
+  rect(width/2,580,m,10)
+  pop();
+camera.on();
 }
 stats(){
    if (gracz.menu == true){
@@ -57,13 +70,14 @@ noStroke();
   noFill();
   rect(175,360,70,10)
   fill("red")
-  rect(175,360,60,10)
+  let m = map(gracz.hp,0,10,0,70)
+  rect(175,360,m,10)
 pop();
 
 push();
 fill(200);
 noStroke();
-  text("o2:         " + gracz.hp,110,375,80,20)
+  text("o2:         " + 10,110,375,80,20)
   stroke(2)
   noFill();
   rect(175,375,70,10)
@@ -74,7 +88,7 @@ pop();
 push();
 fill(200);
 noStroke();
-  text("Hunger: "     + gracz.hp,110,390,80,20)
+  text("Hunger: "     + 100,110,390,80,20)
   stroke(2)
   noFill();
   rect(175,390,70,10)
@@ -85,7 +99,7 @@ pop();
 push();
 fill(200);
 noStroke();
-  text("Thirst:    "  + gracz.hp,110,405,80,20)
+  text("Thirst:    "  + 100,110,405,80,20)
   stroke(2)
   noFill();
   rect(175,405,70,10)

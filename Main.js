@@ -85,8 +85,9 @@ function render(){
     drawSprites(par_top);
     drawSprites(ramacam);
     drawSprites(cam);
+  //  console.log(gracz.hp);
 
-    ui.stats();
+    ui.ui();
    lvl.qtest.rozmowa();
 
     camera.off();
