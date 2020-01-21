@@ -8,7 +8,6 @@ constructor(){
   this.hitbox_vis = true;
   this.attack_deley = new Timer();
     this.attack_time = 2;
-
   this.stats();
 }
 //================================================================================================
@@ -248,10 +247,17 @@ this.currover = true;}}
 //==============================================================================
 kill(){
   if (this.health <= 0){
+    this.dead.x = this.enemy.position.x;
+        this.dead.y = this.enemy.position.y;
+    this.drop();
     this.alive = false;
     this.enemy.remove();
     this.circle.remove();
     this.circle2.remove();
+    if (this.hitbox){
+      this.hitbox.remove();
+    }
+
   }
 }
 //==============================================================================
@@ -312,6 +318,19 @@ this.circle2.position.x = this.enemy.position.x;
 this.circle2.position.y = this.enemy.position.y;
 }
 //==============================================================================
+
+drop(){
+ //if (random(1) < 0.99){
+   this.item2 = new Items("gold",100,this.dead.x,this.dead.y,5,5);
+ lvl.items_array.push(this.item2)
+//}
+  // if (random(1) < 0.8){
+     this.item = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
+   lvl.items_array.push(this.item)
+//}
+this.item3 = new Items("gold",1,this.dead.x,this.dead.y,5,5);
+ lvl.items_array.push(this.item3)
+}
 
 }
 // - przeciwnik musi miec okręg zainteresowania

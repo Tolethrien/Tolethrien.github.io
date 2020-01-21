@@ -54,6 +54,7 @@ function groups(){
   enemy = new Group();
   atention = new Group();
   npcs = new Group();
+  items = new Group();
 }
 //=============================================================================================
 function groups_clear(){

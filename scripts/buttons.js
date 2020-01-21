@@ -37,9 +37,10 @@ if (this.state == 'rect'){
     pop();
     push();
     fill(255);
+    if (tekst != undefined){
     textSize(this.ts)
     textAlign(CENTER);
-    text(tekst,this.x + this.w/2,this.y+ this.h/2 +4);
+    text(tekst,this.x + this.w/2,this.y+ this.h/2 +4);}
     pop();
 }else if (this.state == 'circle'){
     push();
@@ -50,9 +51,10 @@ if (this.state == 'rect'){
     pop();
     push();
     fill(255);
+        if (tekst != undefined){
     textSize(this.w/7)
       textAlign(CENTER);
-    text(tekst,this.x,this.y);
+    text(tekst,this.x,this.y);}
     pop();
   }
 }

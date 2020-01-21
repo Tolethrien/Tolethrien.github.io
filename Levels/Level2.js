@@ -1,6 +1,8 @@
 class Lvl2{
 constructor(){
+  this.items_array = [];
  this.wrog2 = new Enemy();
+  this.wrog3 = new Enemy();
    this.pan_k = new Npc("Pan K");
      this.qtest = new Kill_Quests(qs.qtest,"aktywny",this.pan_k,this.wrog2);
     this.walls();
@@ -50,6 +52,7 @@ kamera_borders(){
 //=============================================================================================
 enemies(){
 this.wrog2.create(200,267,14,10);
+this.wrog3.create(250,267,14,10);
 
 
 }
@@ -75,8 +78,14 @@ quests(){
 //===============================================================================================
 update_lvl(){
 this.wrog2.allFunctions();
+this.wrog3.allFunctions();
 this.pan_k.allF();
 this.qtest.start();
+for (let i = 0; i < this.items_array.length; i++){
+  this.items_array[i].allF();
+  if (this.items_array[i].picked == true){
+  this.items_array.splice(i,1);}
+}
 }
 //================================================================================================
 }

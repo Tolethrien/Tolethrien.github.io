@@ -7,6 +7,29 @@ this.stats();
 this.onScreen();
 }
 
+
+inventory_menu(){
+rect(150,150,300,300)
+
+
+
+
+}
+
+
+
+
+
+pauza(){
+  push();
+  fill(255);
+  textSize(50)
+  text("Pauza",width/2,height/2,150,60)
+pop();
+return true
+}
+
+
 onScreen(){
   camera.off();
   push();

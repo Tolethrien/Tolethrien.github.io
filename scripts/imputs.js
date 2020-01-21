@@ -5,9 +5,9 @@ dashKey = "v" // nie dziala
 attackKey = (key == ' ');
 //debugKey = (key == 'd');
 pauseKey = (key == 'p');
-inventoryKey = (key == 'i');
+statsKey = (key == 'l');
 actionKey = (key == 'e');
-
+inventoryKey = (key == "i")
 
 
 
@@ -26,19 +26,25 @@ if (pauseKey){
   else{pause = false}
   }
   if (pause == true){
-    noLoop();}
+        noLoop();
+        ui.pauza();}
     if (pause == false) {loop();}
 
 //================================ATAK====================================
 if (attackKey){
   gracz.state = 'attack'}
 //=====================================================
-if (inventoryKey){
+if (statsKey){
   if(gracz.menu == false){gracz.menu = true}
   else{gracz.menu = false}
 }
+//=========================================================================
+if (inventoryKey){
+  if(inventory.menu == false){inventory.menu = true}
+  else{inventory.menu = false}
 }
 //==============================RUCH POSTACI==============================
+}
 function ruch_imputs(){
 //ruch postaci
 if (keyIsDown(LEFT_ARROW)){

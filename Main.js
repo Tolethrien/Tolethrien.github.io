@@ -20,6 +20,7 @@ scr_debug    =  new Debug();                     //skrypt Debugu    -      debug
 debug_button =  new Button();                    //costomowe guziki -      button.js
 qs           =  new Quest_store();               // store quests    -     global_store.js
 ui           =  new Ui();
+inventory = new Inventory();
 
 
 meter = new FPSMeter();
@@ -74,11 +75,11 @@ function mousePressed(){
  }
 //=============================================================================================
 function render(){
-
     drawSprites(tel);
     drawSprites(sciany);
     drawSprites(par_bottom);
     drawSprites(atention);
+    drawSprites(items);
     drawSprites(enemy)
     drawSprites(p1);
     drawSprites(npcs);
@@ -86,6 +87,8 @@ function render(){
     drawSprites(ramacam);
     drawSprites(cam);
   //  console.log(gracz.hp);
+
+inventory.show();
 
     ui.ui();
    lvl.qtest.rozmowa();

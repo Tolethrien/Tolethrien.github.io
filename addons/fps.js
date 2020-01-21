@@ -680,9 +680,9 @@
 
 		// Meter position
 		position: 'absolute', // Meter position.
-		zIndex:   10,         // Meter Z index.
-		left:     '800px',      // Meter left offset.
-		top:      '5px',      // Meter top offset.
+		zIndex:   5,         // Meter Z index.
+		left:     '837px',      // Meter left offset.
+		top:      '-17px',      // Meter top offset.
 		right:    'auto',     // Meter right offset.
 		bottom:   'auto',     // Meter bottom offset.
 		margin:   '0 0 0 0',  // Meter margin. Helps with centering the counter when left: 50%;
@@ -692,8 +692,8 @@
 		heat:  1,      // Allow themes to use coloring by FPS heat. 0 FPS = red, maxFps = green.
 
 		// Graph
-		graph:   0, // Whether to show history graph.
-		history: 20 // How many history states to show in a graph.
+		graph:   1, // Whether to show history graph.
+		history: 12 // How many history states to show in a graph.
 	};
 
 	// Option names that trigger FPSMeter rebuild or reposition when modified
@@ -733,7 +733,7 @@
 			minWidth: '95px',
 			height: '30px',
 			lineHeight: '30px',
-			textAlign: 'right',
+			textAlign: 'center',
 			textShadow: 'none'
 		},
 		count: {
@@ -747,7 +747,7 @@
 			right: 0,
 			padding: '5px 10px',
 			height: '30px',
-			fontSize: '24px',
+			fontSize: '15px',
 			fontFamily: 'Consolas, Andale Mono, monospace',
 			zIndex: 2
 		},
@@ -857,23 +857,23 @@
 		container: {
 			padding: 0,
 			color: '#fff',
-			textShadow: '1px 1px 0 rgba(0,0,0,.5)'
+			textShadow: '1px 1px 0 rgba(0,0,0,100.5)'
 		},
 		count: {
-			padding: '0 5px',
+			padding: '0 35px',
 			height: '40px',
-			lineHeight: '40px'
+			lineHeight: '60px'
 		},
 		legend: {
-			padding: '0 5px',
-			height: '40px',
-			lineHeight: '42px'
+			padding: '0 -65px',
+			height: '20px',
+			lineHeight: '60px'
 		},
 		graph: {
 			height: '40px'
 		},
 		column: {
-			width: 5,
+			width: 4,
 			background: '#999',
 			heatOn: 'backgroundColor',
 			opacity: 0.5
