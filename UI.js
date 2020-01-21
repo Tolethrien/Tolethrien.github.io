@@ -137,6 +137,7 @@ fill(255,150);
 text("Date: 02/07/3024",270,103,120,20)
 text("Time: 20:24",535,103,80,20)
 pop();
+inventory.show()
 camera.on();
  }
 }

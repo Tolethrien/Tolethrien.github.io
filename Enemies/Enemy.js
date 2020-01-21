@@ -327,6 +327,12 @@ drop(){
   // if (random(1) < 0.8){
      this.item = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
    lvl.items_array.push(this.item)
+
+   this.item4 = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
+ lvl.items_array.push(this.item4)
+
+ this.item5 = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
+lvl.items_array.push(this.item5)
 //}
 this.item3 = new Items("gold",1,this.dead.x,this.dead.y,5,5);
  lvl.items_array.push(this.item3)

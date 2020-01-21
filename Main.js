@@ -89,6 +89,7 @@ function render(){
   //  console.log(gracz.hp);
 
 inventory.show();
+inventory.cut();
 
     ui.ui();
    lvl.qtest.rozmowa();
