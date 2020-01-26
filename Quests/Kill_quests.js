@@ -147,7 +147,8 @@ ui.dialog();
 fill(255)
   text(this.line[0][0],this.gumpX+20,this.gumpY+50,this.gumpW-20,this.gumpH/2);
   this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[0],this.gumpW,20,this.line[0][1],15)
-   this.odp_2.create('rect',this.gumpX,this.gumpY+this.gumpH-3*20+this.t[0],this.gumpW,20,this.line[0][2],15)
+ if ( this.line[0][2] != null){
+   this.odp_2.create('rect',this.gumpX,this.gumpY+this.gumpH-3*20+this.t[0],this.gumpW,20,this.line[0][2],15);}
    if ( this.line[0][3] != null){
    this.odp_3.create('rect',this.gumpX,this.gumpY+this.gumpH-2*20+this.t[0],this.gumpW,20,this.line[0][3],15);}
 if (this.line[0][4] != null){

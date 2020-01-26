@@ -1,10 +1,10 @@
 class Plejer{
 constructor(){
-    this.player = createSprite(21,397,14,24);
+    this.player = createSprite(2088,1614,14,24);
     this.player.addAnimation('left',left_anim);
+      this.player.addAnimation('down',down_anim);
     this.player.addAnimation('right',right_anim);
     this.player.addAnimation('up',up_anim);
-    this.player.addAnimation('down',down_anim);
     this.player.addAnimation('attack_up',attack_up);
     this.player.addAnimation('attack_left',attack_left);
     this.player.addAnimation('attack_right',attack_right);
@@ -13,7 +13,8 @@ constructor(){
   //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
     p1.add(this.player);
-    this.spd = 1;
+    this.base_spd = 3;
+    this.spd = this.base_spd;
     this.dash = new Timer();
     this.dash_cd = new Timer();
     this.state = 'move'
@@ -156,7 +157,7 @@ dash_state(){
      this.spd = 4;
  }
  if (this.dash.time_out()){
-   this.spd = 1;
+   this.spd = this.base_spd;
  this.dash_cd.set_time(true,3);}
 
  if (this.dash_cd.timer == true){

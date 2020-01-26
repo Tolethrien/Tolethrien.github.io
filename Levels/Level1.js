@@ -9,6 +9,7 @@ constructor(){
   this.q2 = new Kill_Quests(qs.q2,"aktywny",this.pan_k,null,this.q2_mobs,2);
   //  this.walls();
     this.objects();
+    this.walls();
      this.teleports();
     this.trees();
     this.kamera_borders();
@@ -27,10 +28,11 @@ background(){
 //=============================================================================================
 walls(){
 //sciany
-// sprts.koniec_mapy(10,300,20,600,0);
+//sprts.koniec_mapy(10,300,20,600,0);
 // sprts.koniec_mapy(590,300,20,600,0);
 // sprts.koniec_mapy(300,10,600,20,0);
 // sprts.koniec_mapy(300,590,600,20,0);
+//sprts.koniec_mapy(20,0,20,300,155);
 }
 //=============================================================================================
 objects(){

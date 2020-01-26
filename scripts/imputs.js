@@ -39,10 +39,10 @@ if (statsKey){
   else{gracz.menu = false}
 }
 //=========================================================================
-if (inventoryKey){
-  if(inventory.menu == false){inventory.menu = true}
-  else{inventory.menu = false}
-}
+// if (inventoryKey){
+//   if(inventory.menu == false){inventory.menu = true}
+//   else{inventory.menu = false}
+// }
 //==============================RUCH POSTACI==============================
 }
 function ruch_imputs(){

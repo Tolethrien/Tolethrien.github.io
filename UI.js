@@ -4,7 +4,7 @@ this.x = 100,this.y = 100,this.w = 500,this.h = 400
 }
 ui(){
 this.stats();
-this.onScreen();
+this.hud();
 }
 
 
@@ -16,10 +16,6 @@ rect(150,150,300,300)
 
 }
 
-
-
-
-
 pauza(){
   push();
   fill(255);
@@ -29,8 +25,7 @@ pop();
 return true
 }
 
-
-onScreen(){
+hud(){
   camera.off();
   push();
   stroke(2)
@@ -42,6 +37,7 @@ onScreen(){
   pop();
 camera.on();
 }
+
 stats(){
    if (gracz.menu == true){
   //   fill(100,100);

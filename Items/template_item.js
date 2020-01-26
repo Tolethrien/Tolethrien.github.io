@@ -1,4 +1,4 @@
-class Items{
+class Item{
 constructor(gold,value,xx,yy,ww,hh){
   this.type = gold;
   this.value = value;
@@ -18,20 +18,30 @@ pickup(){
 
     if (inventory.inv.length <= inventory.slots){
 
-if (this.type == "gold"){
-  inventory.inv[0].push(this);
-        this.item.remove();
-      this.picked = true;}
 
-
-      if (this.type == "health_potion"){
-        inventory.inv[1].push(this);
+ for (let i = 0; i < inventory.inv.length; i++){
+if(inventory.inv[i].length == 0){
+  for (let j = 0; j < inventory.inv.length; j++){
+           if (inventory.inv[j].length != 0){
+             if (inventory.inv[j][0].type == this.type){
+               inventory.inv[j].push(this);
               this.item.remove();
-            this.picked = true;}
-
-
-
-
+              this.picked = true;
+              break;}
+            break;}
+          }
+    inventory.inv[i].push(this);
+    this.item.remove();
+    this.picked = true;
+           break;}
+    else if (inventory.inv[i].length != 0){
+       if (inventory.inv[i][0].type == this.type){
+         inventory.inv[i].push(this);
+        this.item.remove();
+        this.picked = true;
+        break;}
+       }
+    }
 
 
 }
@@ -39,7 +49,7 @@ if (this.type == "gold"){
 }
 
 use(){
-  if (this.type == "gold"){
+  if (this.type == "sakiewka"){
       console.log("+ " + this.value + " money")
     gracz.money += this.value;}
 

@@ -9,14 +9,15 @@
 class Fedex_Quests{
 
 //stage początkowy, cel dostarczenia(npc,coordy), npc dajacy quest
-constructor(stage_,x_,y_,npctarget,npc){
+constructor(store,stage_,x_,y_,npctarget,npc){
   this.odp_1 = new Button();   this.odp_1.kolor(51, 0, 26,50);
   this.odp_2 = new Button();   this.odp_2.kolor(51, 0, 26,50);
   this.odp_3 = new Button();   this.odp_3.kolor(51, 0, 26,50);
   this.odp_4 = new Button();   this.odp_4.kolor(51, 0, 26,50);
   this.x = x_,this.y = y_;
   //stage quest [-1: nieaktywny, 0:aktywny, 1:zebrany, 2:wykonany]
-  this.stage = stage_;
+    if (store != "done"){
+  this.stage = stage_;}
   this.target_pos = createVector(this.x,this.y);
     this.npc_target = npctarget;
   this.quest_giver = npc; //nazwa NPC
@@ -64,7 +65,7 @@ if (this.line[i][4] == undefined){this.t[i] += 20;}
 zadanie(){
   //dostan sie do koordynatów
   if (this.x != 0 && this.y != 0){
-    if (gracz.player.position.x > this.target_pos.x && gracz.player.position.y < this.target_pos.y){
+    if (gracz.player.position.x > this.target_pos.x && gracz.player.position.y > this.target_pos.y){
       this.stage = "wykonany";
       this.quest_giver.quest_state = "complited";}
   }
@@ -136,13 +137,13 @@ talk_stage1(){
   camera.off();
   push();
   //  rectMode(CENTER);
-   fill(60);
-   rect(this.gumpX,this.gumpY,this.gumpW,this.gumpH);
+ui.dialog();
    fill(255);
-  text(this.line[0][0],this.gumpX+20,this.gumpY+50,this.gumpW,this.gumpH);
+  text(this.line[0][0],this.gumpX+10,this.gumpY+50,this.gumpW-10,this.gumpH);
   pop();
-  this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[0],this.gumpW,20,this.line[0][1],15)
-   this.odp_2.create('rect',this.gumpX,this.gumpY+this.gumpH-3*20+this.t[0],this.gumpW,20,this.line[0][2],15)
+   this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[0],this.gumpW,20,this.line[0][1],15)
+ if ( this.line[0][2] != null){
+   this.odp_2.create('rect',this.gumpX,this.gumpY+this.gumpH-3*20+this.t[0],this.gumpW,20,this.line[0][2],15);}
    if ( this.line[0][3] != null){
    this.odp_3.create('rect',this.gumpX,this.gumpY+this.gumpH-2*20+this.t[0],this.gumpW,20,this.line[0][3],15);}
 if (this.line[0][4] != null){
@@ -153,10 +154,9 @@ talk_stage2(){
   camera.off();
   push();
   //  rectMode(CENTER);
-   fill(60);
-     rect(this.gumpX,this.gumpY,this.gumpW,this.gumpH);
+ui.dialog();
    fill(255);
-  text(this.line[1][0],this.gumpX+20,this.gumpY+50,this.gumpW,this.gumpH);
+  text(this.line[1][0],this.gumpX+10,this.gumpY+50,this.gumpW-10,this.gumpH);
    text("+100 Pyrków",this.gumpX+250,this.gumpY + 240)
    pop();
    this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[1],this.gumpW,20,this.line[1][1],15)

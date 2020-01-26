@@ -10,28 +10,28 @@ this.slot_use = [] // sprawdza ktory slot byl klikniety oraz używa tego slotu
 this.slots = 16
 this.text = [];
 this.text2 = [];
+//this.inv[0].push(this.item = new Item("health_potion",1,0,0,5,5))
 for (let i = 0; i < this.slots; i++){
   this.slot[i] = new Button();}
-    this.suma = 0;
 
 
 }
 
 show(){
-  if (this.menu == true){
-  this.x = 150, this.y = 150, this.w = 100
+  if (gracz.menu == true){
+  this.x = 320, this.y = 190, this.w = 70
   camera.off();
     push();
 //  ui.inventory_menu();
   textAlign(CENTER);
   fill(0);
-  textSize(16)
-
-let c = 0, v = 0;
+  textSize(16 - (100 - this.w)/10 -4)
+//100 - this.w
+let c = 0 - (100 - this.w), v = 0 - (100 - this.w);
 
 for (let i = 0; i < this.slot.length; i++){
   this.slot[i].create('rect',this.x+c,this.y+v,this.w,this.w);
-  this.slot[i].kolor(150,220,70,100);
+  this.slot[i].kolor(204, 230, 255,20);
 
 if (this.text[i] != undefined){
     text(this.text[i],this.x+c+2,this.y+v+this.w/2-25,this.w,this.w);
@@ -48,9 +48,9 @@ if (this.inv[i] != undefined){
 }
 
 if (i == 3 || i == 7 || i == 11){
-  v += 100;
+  v += 100- (100 - this.w);
   c = -100;}
-  c += 100;
+  c += 100 - (100 - this.w);
 }
 
 pop();
@@ -69,6 +69,11 @@ cut(){
         this.text[i] = undefined;
         this.text2[i] = undefined;}}
     else{null}}
+}
+set_slots(){
+  if (inventory.inv.length < inventory.slots){
+    inventory.inv.push([])
+  }
 }
 
 }

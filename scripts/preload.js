@@ -22,7 +22,7 @@ drzewo = loadImage('sprites/world/tree.png')
 drzewo_top = loadImage('sprites/world/tree_top.png')
 //trawa = loadImage('sprites/world/castle.png')
 poziom1 = loadImage('sprites/world/aa2.png')
-poziom2 = loadImage('sprites/world/12.png')
+poziom2 = loadImage('sprites/world/13.jpg')
 poziom3 = loadImage('sprites/world/castle.png')
 poziom4 = loadImage('sprites/world/trawa.png')
 kamera = loadImage('sprites/world/camera.png')
@@ -39,6 +39,8 @@ attack_left = loadAnimation(attack_left_sheet);
 attack_up = loadAnimation(attack_up_sheet);
 attack_down = loadAnimation(attack_down_sheet);
 attack_right = loadAnimation(attack_right_sheet);
+
+json_walls = loadJSON("walls.json");
 }
 //=============================================================================================
 let sciany,p1,tel, par_top, par_bottom, drzewa,enemy,npcs,atention;

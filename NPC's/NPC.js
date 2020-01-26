@@ -14,12 +14,13 @@ create(xx,yy,ww,hh){
   this.x = xx,this.y=yy,this.w=ww,this.h=hh;
 this.npc = createSprite(this.x,this.y,this.w,this.h);
 this.npc.setDefaultCollider();
+this.npc.visible = true;
 this.npc.debug = false;
 npcs.add(this.npc);
 
 this.circle = createSprite(this.npc.position.x,this.npc.position.y,this.w,this.w);
 this.circle.setCollider("circle",0,0,this.attraction_distance);
-this.circle.visible = true;
+this.circle.visible = false;
 this.circle.debug = false
 atention.add(this.circle);
 }

@@ -105,7 +105,7 @@ guard(){
 }
 //===============================================================================
 targeting(){
-if (this.state == "follow"){
+ if (this.state == "follow"){
   if( gracz.player.position.x < this.circle.position.x){
   this.left = floor(this.circle.position.x - gracz.player.position.x);}
   else{this.left = 0;}
@@ -158,6 +158,7 @@ if (this.state == "idle"){
   if(this.bottom > this.left && this.bottom >  this.right){
           //console.log("bottom");
           this.target = "bottom"}
+
 }
 
 //==================================================================================================
@@ -320,22 +321,8 @@ this.circle2.position.y = this.enemy.position.y;
 //==============================================================================
 
 drop(){
- //if (random(1) < 0.99){
-   this.item2 = new Items("gold",100,this.dead.x,this.dead.y,5,5);
- lvl.items_array.push(this.item2)
-//}
-  // if (random(1) < 0.8){
-     this.item = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
-   lvl.items_array.push(this.item)
+  loot.lvl_1(this.dead);
 
-   this.item4 = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
- lvl.items_array.push(this.item4)
-
- this.item5 = new Items("health_potion",1,this.dead.x,this.dead.y,5,5);
-lvl.items_array.push(this.item5)
-//}
-this.item3 = new Items("gold",1,this.dead.x,this.dead.y,5,5);
- lvl.items_array.push(this.item3)
 }
 
 }

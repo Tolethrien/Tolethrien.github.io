@@ -21,6 +21,7 @@ debug_button =  new Button();                    //costomowe guziki -      butto
 qs           =  new Quest_store();               // store quests    -     global_store.js
 ui           =  new Ui();
 inventory = new Inventory();
+loot = new Loot_lvl();
 
 
 meter = new FPSMeter();
@@ -66,6 +67,7 @@ function mousePressed(){
    lvl.update_lvl();
    lvl.tel_Position();
    kam.follow();
+   inventory.set_slots();
    scr_debug.deb();
  }
 
@@ -88,11 +90,12 @@ function render(){
     drawSprites(cam);
   //  console.log(gracz.hp);
 
-inventory.show();
-inventory.cut();
 
     ui.ui();
-   lvl.qtest.rozmowa();
+    inventory.show();
+    inventory.cut();
+   lvl.start_quest.rozmowa();
+    lvl.vah.rozmowa();
 
     camera.off();
     debug_button.create('rect',80,580,60,20," Debug")
@@ -102,6 +105,7 @@ inventory.cut();
     camera.on();
 
   if (debug == true){
+    //  console.log(localStorage)
       camera.off();
       scr_debug.help();
   }
