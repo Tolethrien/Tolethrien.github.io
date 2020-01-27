@@ -13,7 +13,7 @@ constructor(){
   //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
     p1.add(this.player);
-    this.base_spd = 3;
+    this.base_spd = 1;
     this.spd = this.base_spd;
     this.dash = new Timer();
     this.dash_cd = new Timer();
