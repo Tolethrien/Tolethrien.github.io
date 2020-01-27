@@ -30,6 +30,7 @@ constructor(store,stage_,x_,y_,npctarget,npc,npc2){
 this.blok = false;
 //dwuwymiarowa lista z tekstem
 this.line = [];
+this.prize =  floor(random(50,300));
 
 }
 start(){
@@ -113,7 +114,7 @@ odp1(){
             this.quest_taker.quest_state =  null;
             this.stage = "zakonczone"
                 this.quest_giver.have_quest = false;
-                gracz.money += 100;
+                gracz.money += this.prize
               this.quest_taker.pop_up = false;}}
 
 }
@@ -128,7 +129,7 @@ odp2(){
             this.quest_giver.quest_state = 'done';
             this.quest_giver.have_quest = false;
                   this.stage = "zakonczone"
-              gracz.money += 100;
+              gracz.money += this.prize;
             this.quest_taker.pop_up = false;}}
 }
 odp3(){
@@ -163,7 +164,7 @@ talk_stage2(){
 ui.dialog();
    fill(255);
   text(this.line[1][0],this.gumpX+10,this.gumpY+50,this.gumpW-10,this.gumpH);
-   text("+100 Pyrków",this.gumpX+250,this.gumpY + 240)
+   text("+ " + this.prize + " Pyrków",this.gumpX+250,this.gumpY + 240)
    pop();
    this.odp_1.create('rect',this.gumpX,this.gumpY+this.gumpH-4*20+this.t[1],this.gumpW,20,this.line[1][1],15)
   if ( this.line[1][2] != undefined){

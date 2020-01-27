@@ -2,6 +2,7 @@ class Seller extends Npc{
 
 constructor(){
 super();
+this.attraction_distance = 20
 //constractor
 this.buy_items = [
                   [],
@@ -35,7 +36,7 @@ allF(){
   }
 }
 okno(){
-  if (gracz.player.overlap(this.npc) && actionKey){
+  if (this.talk()){
   camera.off();
   ui.dialog();
   line(ui.gumpX+ui.gumpW/2,ui.gumpY,ui.gumpX+ui.gumpW/2,ui.gumpY+ui.gumpH)

@@ -24,12 +24,6 @@ constructor(){
     this.npcs();
     this.quests();
 
- for (let i = 0; i < json_walls.walls.length; i++){
- this.wall = createSprite(900 + json_walls.walls[i][0],900 + json_walls.walls[i][1],json_walls.walls[i][2],json_walls.walls[i][3])
-this.wall.visible = json_walls.walls[i][4]
-//this.wall.visible = true
- sciany.add(this.wall)
-  }
 
 }
 //=============================================================================================
@@ -40,10 +34,14 @@ this.image = image(poziom2,900,900);
 }
 //=============================================================================================
 walls(){
+  for (let i = 0; i < json_walls.walls.length; i++){
+  this.wall = createSprite(900 + json_walls.walls[i][0],900 + json_walls.walls[i][1],json_walls.walls[i][2],json_walls.walls[i][3])
+ this.wall.visible = json_walls.walls[i][4]
+ //this.wall.visible = true
+  sciany.add(this.wall)
+   }
 //sciany
-// sprts.koniec_mapy(980,980,20,100,0);
-// sprts.koniec_mapy(1025,930,100,20,0);
-// sprts.koniec_mapy(1070,980,20,100,0);
+
 
 }
 //=============================================================================================
@@ -77,16 +75,16 @@ kamera_borders(){
 }
 //=============================================================================================
 enemies(){
-this.vahel.create(200,1500,10,14)
-this.beny.create(200,1600,10,14)
+this.vahel.create(1495,1777,10,14)
+this.beny.create(1320,1760,10,14)
 }
 //==============================================================================================
 npcs(){
 this.valdemar.create(1475,1035,15,15);
 this.burmistrz.create(1320,1124,15,15);
 this.valdemar.npc.visible = false;
-this.tomil.create(1140,1510,15,15);
-this.test.create(1958,1614,15,15);
+this.tomil.create(1417,1294,15,15);
+this.test.create(1228,1420,15,15);
 }
 //==============================================================================================
 quests(){
@@ -102,7 +100,7 @@ quests(){
 //---------------------------------------
 this.vah.story(
   [
-  ["Dwa twoje klony zalęgły się niedaleko miasteczka i boimy sie ze moga nas zaatakowac, zajmiesz się nimi? są na wschód od nas",
+  ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
                 'Rozprawię się z nimi',
                   "nie teraz, muszę uzupelnic zapasy"],
   ['Dziękuję, mam nadzieje ze nie przyjdzie ich więcej!',
