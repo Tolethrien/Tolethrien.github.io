@@ -1,6 +1,6 @@
 class Plejer{
 constructor(){
-    this.player = createSprite(2088,1614,14,24);
+    this.player = createSprite(1526,980,14,24);
     this.player.addAnimation('left',left_anim);
       this.player.addAnimation('down',down_anim);
     this.player.addAnimation('right',right_anim);
@@ -180,6 +180,7 @@ colider(){
       this.player.collide(par_bottom);
         this.player.overlap(tel);
         this.player.collide(enemy);
+          this.player.collide(npcs);
         if (this.hitbox){
         this.hitbox.overlap(enemy);}
 }

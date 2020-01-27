@@ -5,7 +5,8 @@ constructor(){
   this.wall = []
         this.test = new Seller("test");
     this.valdemar = new Npc("Valdemar");
-     this.start_quest = new Fedex_Quests(qs.start_quest,"aktywny",0,0,this.test,this.valdemar,this.test);
+        this.burmistrz = new Npc("Burmistrz");
+     this.start_quest = new Fedex_Quests(qs.start_quest,"aktywny",0,0,this.burmistrz,this.valdemar,this.burmistrz);
 
     this.tomil = new Npc("Tomil");
     this.vah_mobs = [];
@@ -26,6 +27,7 @@ constructor(){
  for (let i = 0; i < json_walls.walls.length; i++){
  this.wall = createSprite(900 + json_walls.walls[i][0],900 + json_walls.walls[i][1],json_walls.walls[i][2],json_walls.walls[i][3])
 this.wall.visible = json_walls.walls[i][4]
+//this.wall.visible = true
  sciany.add(this.wall)
   }
 
@@ -77,11 +79,11 @@ kamera_borders(){
 enemies(){
 this.vahel.create(200,1500,10,14)
 this.beny.create(200,1600,10,14)
-
 }
 //==============================================================================================
 npcs(){
-this.valdemar.create(2038,1618,15,15);
+this.valdemar.create(1475,1035,15,15);
+this.burmistrz.create(1320,1124,15,15);
 this.valdemar.npc.visible = false;
 this.tomil.create(1140,1510,15,15);
 this.test.create(1958,1614,15,15);
@@ -92,8 +94,8 @@ quests(){
     [
     ["Dzielni śmiałkowie gotowi pomóc temu miastu poszukiwani! Więcej informacji u Burmistrza!",
                   '*Przeczytane*',],
-    ['hah, pomyslales ze moze bedzie sie dalo oddac tego questa? prawdziwy z ciebie gracz! Tu masz kilka pyrków',
-                  "Dzięki"], // [1]
+    ['Oh, Witaj! Ty od ogłoszenia? Wspaniale! Popytaj ludzi w miasteczku, na pewno znajdą ci jakieś zadanie',
+                  "Tak zrobię"], // [1]
                   [null],
                   [null]
               ])
@@ -113,6 +115,7 @@ this.vah_mobs.push(this.vahel,this.beny);
 //===============================================================================================
 update_lvl(){
 this.valdemar.allF();
+this.burmistrz.allF();
 this.test.allF();
 this.tomil.allF();
 this.vahel.allFunctions();

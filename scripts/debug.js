@@ -50,8 +50,11 @@ else if (debug == true){debug = false}
 playsciany(){
 for (let i = 0; i < sciany.length; i++){
   if (scr_debug.b_sciany.pressed == true){
+    sciany[i].visible = true;
         sciany[i].debug = true;}
- else { sciany[i].debug = false;}
+ else {
+     sciany[i].visible = false;
+   sciany[i].debug = false;}
   }
 }
 //=============================================================================================
