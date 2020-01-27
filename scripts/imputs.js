@@ -1,14 +1,18 @@
 let xaxis,yaxis;
+let leftKey = 0, rightKey = 0, upKey = 0, downKey = 0, dashKey = 0;
   //===========================KLAWISZE=====================================
 function imputs(){
-dashKey = "v" // nie dziala
+dashKey = 86 // nie dziala
 attackKey = (key == ' ');
 //debugKey = (key == 'd');
 pauseKey = (key == 'p');
 statsKey = (key == 'l');
 actionKey = (key == 'e');
 inventoryKey = (key == "i")
-
+leftKey = 65
+rightKey = 68
+upKey = 87
+downKey = 83
 
 
 
@@ -26,8 +30,8 @@ if (pauseKey){
   else{pause = false}
   }
   if (pause == true){
-        noLoop();
-        ui.pauza();}
+    ui.pauza();
+        noLoop();}
     if (pause == false) {loop();}
 
 //================================ATAK====================================
@@ -47,16 +51,16 @@ if (statsKey){
 }
 function ruch_imputs(){
 //ruch postaci
-if (keyIsDown(LEFT_ARROW)){
+if (keyIsDown(leftKey)){
 left = 1
 }else {left = 0;}
-if (keyIsDown(RIGHT_ARROW)){
+if (keyIsDown(rightKey)){
 right = 1
 }else {right = 0;}
-if (keyIsDown(UP_ARROW)){
+if (keyIsDown(upKey)){
 up = 1;
 }else {up = 0;}
-if (keyIsDown(DOWN_ARROW)){
+if (keyIsDown(downKey)){
 down = 1
 }else {down = 0;}
 xaxis = (right - left);

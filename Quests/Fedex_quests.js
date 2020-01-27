@@ -9,7 +9,7 @@
 class Fedex_Quests{
 
 //stage początkowy, cel dostarczenia(npc,coordy), npc dajacy quest
-constructor(store,stage_,x_,y_,npctarget,npc){
+constructor(store,stage_,x_,y_,npctarget,npc,npc2){
   this.odp_1 = new Button();   this.odp_1.kolor(51, 0, 26,50);
   this.odp_2 = new Button();   this.odp_2.kolor(51, 0, 26,50);
   this.odp_3 = new Button();   this.odp_3.kolor(51, 0, 26,50);
@@ -21,12 +21,13 @@ constructor(store,stage_,x_,y_,npctarget,npc){
   this.target_pos = createVector(this.x,this.y);
     this.npc_target = npctarget;
   this.quest_giver = npc; //nazwa NPC
+  this.quest_taker = npc2
   if (this.stage == 'aktywny'){
     this.quest_giver.quest_state = 'to_take'
   this.quest_giver.have_quest = true;}
   //coordy i wielkosc gumpa rozmowy
   this.gumpX = 250,this.gumpY = 150, this.gumpW = 400, this.gumpH = 300;
-
+this.blok = false;
 //dwuwymiarowa lista z tekstem
 this.line = [];
 
@@ -44,6 +45,9 @@ start(){
 rozmowa(){
 // console.log(this.target_pos)
 if (this.quest_giver.talk() == true){
+  this.okno_rozmowy();
+}
+if (this.quest_taker.talk() == true){
   this.okno_rozmowy();
 }
 
@@ -67,13 +71,14 @@ zadanie(){
   if (this.x != 0 && this.y != 0){
     if (gracz.player.position.x > this.target_pos.x && gracz.player.position.y > this.target_pos.y){
       this.stage = "wykonany";
-      this.quest_giver.quest_state = "complited";}
+      this.quest_taker.quest_state = "complited";}
   }
   //dostań się do odpowiedniego NPC
-if (this.npc_target != undefined){
-  if (gracz.player.overlap(this.npc_target.circle)){
+if (this.npc_target != undefined && this.stage == "zebrany"){
+  if (gracz.player.overlap(this.npc_target.circle) && this.blok == false){
+    this.blok = true;
     this.stage = "wykonany";
-    this.quest_giver.quest_state = "complited";}
+    this.quest_taker.quest_state = "complited";}
 
 }
 
@@ -89,10 +94,10 @@ if (this.line == undefined){
 else if (this.stage == "aktywny"){
 this.talk_stage1();
 }
-
-else if (this.stage == 'wykonany'){
-this.talk_stage2();
-}
+else if (this.quest_taker.pop_up == true){
+  if (this.stage == 'wykonany'){
+      this.talk_stage2();
+}}
 }
 }
 odp1(){
@@ -105,10 +110,11 @@ odp1(){
   if (this.stage == 'wykonany'){
       if(this.odp_1.Pressed_true()){
             this.quest_giver.quest_state = 'done';
+            this.quest_taker.quest_state =  null;
             this.stage = "zakonczone"
                 this.quest_giver.have_quest = false;
                 gracz.money += 100;
-              this.quest_giver.pop_up = false;}}
+              this.quest_taker.pop_up = false;}}
 
 }
 odp2(){
@@ -123,7 +129,7 @@ odp2(){
             this.quest_giver.have_quest = false;
                   this.stage = "zakonczone"
               gracz.money += 100;
-            this.quest_giver.pop_up = false;}}
+            this.quest_taker.pop_up = false;}}
 }
 odp3(){
 

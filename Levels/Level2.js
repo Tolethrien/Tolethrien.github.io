@@ -3,8 +3,9 @@ class Lvl2{
 constructor(){
   this.items_array = [];
   this.wall = []
+        this.test = new Seller("test");
     this.valdemar = new Npc("Valdemar");
-     this.start_quest = new Fedex_Quests(qs.start_quest,"aktywny",0,0,null,this.valdemar);
+     this.start_quest = new Fedex_Quests(qs.start_quest,"aktywny",0,0,this.test,this.valdemar,this.test);
 
     this.tomil = new Npc("Tomil");
     this.vah_mobs = [];
@@ -13,7 +14,6 @@ constructor(){
               this.beny = new Enemy();
 
 
-      this.test = new Seller("test");
     this.walls();
     this.objects();
     this.teleports();
@@ -84,7 +84,7 @@ npcs(){
 this.valdemar.create(2038,1618,15,15);
 this.valdemar.npc.visible = false;
 this.tomil.create(1140,1510,15,15);
-this.test.create(1988,1614,15,15);
+this.test.create(1958,1614,15,15);
 }
 //==============================================================================================
 quests(){

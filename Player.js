@@ -9,11 +9,10 @@ constructor(){
     this.player.addAnimation('attack_left',attack_left);
     this.player.addAnimation('attack_right',attack_right);
     this.player.addAnimation('attack_down',attack_down);
-    this.player.animation.frameDelay = 6;
   //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
     p1.add(this.player);
-    this.base_spd = 3;
+    this.base_spd = 1;
     this.spd = this.base_spd;
     this.dash = new Timer();
     this.dash_cd = new Timer();
@@ -152,7 +151,7 @@ if (w){
 }
 //=============================================================================
 dash_state(){
- if (keyWentDown('v') && this.dash_cd.timer == false){
+ if (keyWentDown(dashKey) && this.dash_cd.timer == false){
     this.dash.set_time(true,0.10)
      this.spd = 4;
  }

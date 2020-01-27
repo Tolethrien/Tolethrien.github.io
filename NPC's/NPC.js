@@ -8,6 +8,10 @@ constructor(name){
     if(this.quest_state != null || "done"){
       this.have_quest = true}
   this.pop_up = true;
+    this.znakY;
+    this.licznik = 0;
+    this.velocity = 0;
+    this.gravity = 0.02
 }
 //stworz NPC
 create(xx,yy,ww,hh){
@@ -23,11 +27,14 @@ this.circle.setCollider("circle",0,0,this.attraction_distance);
 this.circle.visible = false;
 this.circle.debug = false
 atention.add(this.circle);
+this.znakY = this.y - 20;
+      this.ziemia = this.y - 20;
 }
   //stage quest [-1: nieaktywny, 0:aktywny, 1:zebrany, 2:wykonany]
 //funkcje updatu
 allF(){
   if (this.have_quest == true){
+this.anim_signs();
 this.quests();}
 this.spotOn();
 this.talk();
@@ -51,13 +58,12 @@ null
 
 
 
-
 //znacznik nad glowa NPC
 znakWykrzyknik(){
     push();
     quest_1.resize(60,40);
     imageMode(CENTER);
-    image(quest_1,this.x,this.y-20)
+    image(quest_1,this.x,this.znakY)
     pop();
 }
 
@@ -66,7 +72,7 @@ znak_Zapytania(){
 push();
 quest_2.resize(60,40);
 imageMode(CENTER);
-image(quest_2,this.x,this.y-20)
+image(quest_2,this.x,this.znakY)
 pop();
 }
 
@@ -93,7 +99,20 @@ if (this.spotOn() && actionKey){
 }
 
 
+anim_signs(){
+  this.licznik ++
+  this.velocity += this.gravity
+if (this.licznik > 200){
+   this.velocity -= 0.5
+   this.licznik = 0;
+}
+this.znakY += this.velocity
+  if ( this.znakY > this.ziemia){
+this.velocity = 0
+this.znakY = this.y - 20;
+}
 
+}
 
 
 
