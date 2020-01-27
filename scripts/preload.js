@@ -23,8 +23,8 @@ drzewo_top = loadImage('sprites/world/tree_top.png')
 //trawa = loadImage('sprites/world/castle.png')
 poziom1 = loadImage('sprites/world/aa2.png')
 poziom2 = loadImage('sprites/world/13.jpg')
-poziom3 = loadImage('sprites/world/castle.png')
-poziom4 = loadImage('sprites/world/trawa.png')
+//poziom3 = loadImage('sprites/world/castle.png')
+//poziom4 = loadImage('sprites/world/trawa.png')
 kamera = loadImage('sprites/world/camera.png')
 quest_1 = loadImage('sprites/world/questMark.png')
 quest_2 = loadImage('sprites/world/zapytanie.png')
@@ -43,7 +43,7 @@ attack_right = loadAnimation(attack_right_sheet);
 json_walls = loadJSON("walls.json");
 }
 //=============================================================================================
-let sciany,p1,tel, par_top, par_bottom, drzewa,enemy,npcs,atention;
+let sciany,p1,tel, par_top, par_bottom, drzewa,enemy,npcs,atention,npcss,items,spawners;
 function groups(){
   sciany = new Group();
   p1 = new Group();
@@ -55,8 +55,9 @@ function groups(){
   ramacam = new Group();
   enemy = new Group();
   atention = new Group();
-  npcs = new Group();
+  npcss = new Group();
   items = new Group();
+  spawners = new Group();
 }
 //=============================================================================================
 function groups_clear(){

@@ -180,7 +180,7 @@ colider(){
       this.player.collide(par_bottom);
         this.player.overlap(tel);
         this.player.collide(enemy);
-          this.player.collide(npcs);
+          this.player.collide(npcss);
         if (this.hitbox){
         this.hitbox.overlap(enemy);}
 }

@@ -22,7 +22,7 @@ qs           =  new Quest_store();               // store quests    -     global
 ui           =  new Ui();
 inventory = new Inventory();
 loot = new Loot_lvl();
-
+  poziom2.resize(1200,1000)
 
 meter = new FPSMeter();
 meter.hide();
@@ -57,7 +57,7 @@ function mousePressed(){
 
 //=============================================================================================
  function static(){
-   background(0)
+   background("green")
    lvl.background();
  }
 
@@ -68,7 +68,6 @@ function mousePressed(){
    lvl.tel_Position();
    kam.follow();
    inventory.set_slots();
-   scr_debug.deb();
  }
 
 //=============================================================================================
@@ -88,6 +87,7 @@ function render(){
     drawSprites(par_top);
     drawSprites(ramacam);
     drawSprites(cam);
+    drawSprites(spawners);
   //  console.log(gracz.hp);
 
 
@@ -103,11 +103,12 @@ function render(){
     debug_button.Pressed(LEFT,scr_debug.debug_OnOff)
 
     camera.on();
-
+   scr_debug.deb();
   if (debug == true){
     //  console.log(localStorage)
       camera.off();
       scr_debug.help();
+      camera.on();
   }
 //=============================================================================================
 

@@ -13,9 +13,9 @@ constructor(){
        this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
                this.vahel = new Enemy();
               this.beny = new Enemy();
+this.spawner = new Spawner(Enemy,2);
 
-
-    this.walls();
+   this.walls();
     this.objects();
     this.teleports();
     this.trees();
@@ -28,7 +28,6 @@ constructor(){
 }
 //=============================================================================================
 background(){
-  poziom2.resize(1200,1000)
 this.image = image(poziom2,900,900);
 //background("green")
 }
@@ -77,6 +76,7 @@ kamera_borders(){
 enemies(){
 this.vahel.create(1495,1777,10,14)
 this.beny.create(1320,1760,10,14)
+this.spawner.create(1050,1320,20,40)
 }
 //==============================================================================================
 npcs(){
@@ -120,6 +120,7 @@ this.vahel.allFunctions();
 this.beny.allFunctions();
 this.start_quest.start();
 this.vah.start();
+this.spawner.allF();
 //this.qtest.start();
 for (let i = 0; i < this.items_array.length; i++){
   this.items_array[i].allF();

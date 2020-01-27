@@ -20,7 +20,7 @@ this.npc = createSprite(this.x,this.y,this.w,this.h);
 this.npc.setDefaultCollider();
 this.npc.visible = true;
 this.npc.debug = false;
-npcs.add(this.npc);
+npcss.add(this.npc);
 
 this.circle = createSprite(this.npc.position.x,this.npc.position.y,this.w,this.w);
 this.circle.setCollider("circle",0,0,this.attraction_distance);
