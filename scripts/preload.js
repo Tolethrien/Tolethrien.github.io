@@ -83,5 +83,11 @@ function next_lvl(lewel){
   groups_clear();
   current_lvl = lewel
 created = false;
+}
+function resize_images(){
+    poziom2.resize(1200,1000)
+    quest_1.resize(60,40);
+    quest_2.resize(60,40);
+      kamera.resize(50,50);
 
 }

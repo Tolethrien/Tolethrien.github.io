@@ -4,7 +4,6 @@ constructor(){
   this.y = gracz.player.position.y;
   this.kamera = createSprite(this.x,this.y,10,10);
     this.kamera.setCollider('rectangle',0,0,20,20);
-    kamera.resize(50,50);
     this.kamera.addImage(kamera)
 this.kamera.visible = false;
 this.kamera.debug = false;

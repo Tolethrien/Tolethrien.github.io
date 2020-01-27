@@ -61,7 +61,6 @@ null
 //znacznik nad glowa NPC
 znakWykrzyknik(){
     push();
-    quest_1.resize(60,40);
     imageMode(CENTER);
     image(quest_1,this.x,this.znakY)
     pop();
@@ -70,7 +69,6 @@ znakWykrzyknik(){
 //znacznik nad glowa NPC
 znak_Zapytania(){
 push();
-quest_2.resize(60,40);
 imageMode(CENTER);
 image(quest_2,this.x,this.znakY)
 pop();

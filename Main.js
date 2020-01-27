@@ -22,8 +22,7 @@ qs           =  new Quest_store();               // store quests    -     global
 ui           =  new Ui();
 inventory = new Inventory();
 loot = new Loot_lvl();
-  poziom2.resize(1200,1000)
-
+resize_images();
 meter = new FPSMeter();
 meter.hide();
 }
