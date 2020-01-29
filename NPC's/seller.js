@@ -120,8 +120,9 @@ sell_to_store(){
             console.log("pyk")
             inventory.inv[h].splice(-1,1);
             if (inventory.inv[h].length == 0){
-             inventory.inv.splice(-1,1);
-          inventory.text.splice(-1,1)
+             inventory.inv.splice(h,1);
+          inventory.text.splice(-1,1);
+          break;
          }
 }
 }
