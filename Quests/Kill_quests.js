@@ -34,7 +34,6 @@ this.prize = floor(random(100,400));
 }
 start(){
   if (this.stage != -1){
-  this.rozmowa();
    this.zadanie();
    this.odp1();
    this.odp2();
@@ -89,6 +88,7 @@ if (this.group_current == this.group_amount){
 
 
 okno_rozmowy(){
+    if (this.stage != -1){
   if (this.quest_giver.pop_up == true){
 if (this.line == undefined){
   console.log("dodaj quest.story(story) w formie array")
@@ -101,7 +101,7 @@ this.talk_stage1();
 else if (this.stage == 'wykonany'){
 this.talk_stage2();
 }
-}
+}}
 }
 odp1(){
   //okno rozmowy 1 - zakceptowano

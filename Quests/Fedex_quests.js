@@ -35,7 +35,6 @@ this.prize =  floor(random(50,300));
 }
 start(){
   if (this.stage != -1){
-  this.rozmowa();
    this.zadanie();
    this.odp1();
    this.odp2();
@@ -44,6 +43,7 @@ start(){
 
 }
 rozmowa(){
+    if (this.stage != -1){
 // console.log(this.target_pos)
 if (this.quest_giver.talk() == true){
   this.okno_rozmowy();
@@ -51,7 +51,7 @@ if (this.quest_giver.talk() == true){
 if (this.quest_taker.talk() == true){
   this.okno_rozmowy();
 }
-
+}
 }
 
 story(lines){
