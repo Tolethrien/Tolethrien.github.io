@@ -7,11 +7,10 @@ this.b_bottom = new Button();
 this.b_tel = new Button();
 this.b_player = new Button();
 this.b_kam = new Button();
+this.debug_button =  new Button();
 }
 //========================================================================================
 deb(){
-  if (debug == true){
-    camera.off();
       this.b_sciany.create('rect',0,5,60,20," Sciany")
       this.b_sciany.kolor(255,100,100,100,true);
       this.b_sciany.Pressed(LEFT,this.playsciany);
@@ -35,21 +34,18 @@ deb(){
       this.b_kam.create('rect',0,105,60,20,"kamera")
       this.b_kam.kolor(255,100,100,100,true);
       this.b_kam.Pressed(LEFT,this.playkam);
-    camera.on();
   camera.zoom = 1;
-  }
-  else {
- camera.zoom = zoom;}
 }
 //============================================================================================
 debug_OnOff(){
-if (debug == false){debug = true}
-else if (debug == true){debug = false}
+if (debugMode == false){debugMode = true}
+else if (debugMode == true){debugMode = false
+                            camera.zoom = zoom;}
 }
 //=============================================================================================
 playsciany(){
 for (let i = 0; i < sciany.length; i++){
-  if (scr_debug.b_sciany.pressed == true){
+  if (debug.b_sciany.pressed == true){
     sciany[i].visible = true;
         sciany[i].debug = true;}
  else {
@@ -60,7 +56,7 @@ for (let i = 0; i < sciany.length; i++){
 //=============================================================================================
 playtop(){
   for (let i = 0; i < par_top.length; i++){
-    if (scr_debug.b_top.pressed == true){
+    if (debug.b_top.pressed == true){
           par_top[i].debug = true;}
    else {   par_top[i].debug = false;}
   }
@@ -68,7 +64,7 @@ playtop(){
 //=============================================================================================
 playbottom(){
     for (let i = 0; i < par_bottom.length; i++){
-        if (scr_debug.b_bottom.pressed == true){
+        if (debug.b_bottom.pressed == true){
             par_bottom[i].debug = true;}
             else{ par_bottom[i].debug = false;}
           }
@@ -76,7 +72,7 @@ playbottom(){
 //=============================================================================================
 playtel(){
     for (let i = 0; i < tel.length; i++){
-    if (scr_debug.b_tel.pressed == true){
+    if (debug.b_tel.pressed == true){
       tel[i].visible = true;
       tel[i].debug = true;}
       else{
@@ -86,13 +82,13 @@ playtel(){
 }
 //=============================================================================================
 playplayer(){
-  if (scr_debug.b_player.pressed == true){
+  if (debug.b_player.pressed == true){
     gracz.player.debug = true;}
     else{gracz.player.debug = false;}
 }
 //=============================================================================================
 playkam(){
-  if (scr_debug.b_kam.pressed == true){
+  if (debug.b_kam.pressed == true){
     kam.kamera.visible = true;}
   else{kam.kamera.visible = false;}
 }
@@ -118,6 +114,16 @@ help(){
   pop();
 }
 //=============================================================================================
+debug_butt(){
+  camera.off();
+  this.debug_button.create('rect',80,580,60,20," Debug")
+  this.debug_button.kolor(255,100,100,100,true);
+  this.debug_button.Pressed(LEFT,debug.debug_OnOff)
+
+  camera.on();
+
+}
+
 }
 // do dodania na potem
 

@@ -3,7 +3,7 @@ class Inventory{
   constructor(){
 this.menu = false;
 this.inv = [
-  [],[],[],[],[],[],
+  []
             ]; // storuje itemki
 this.slot = [] // numer slota na ktorym jest item
 this.slot_use = [] // sprawdza ktory slot byl klikniety oraz używa tego slotu
@@ -13,7 +13,6 @@ this.text2 = [];
 //this.inv[0].push(this.item = new Item("health_potion",1,0,0,5,5))
 for (let i = 0; i < this.slots; i++){
   this.slot[i] = new Button();}
-
 
 }
 
@@ -71,8 +70,8 @@ cut(){
     else{null}}
 }
 set_slots(){
-  if (inventory.inv.length < inventory.slots){
-    inventory.inv.push([])
+  if (this.inv.length < this.slots){
+    this.inv.push([])
   }
 }
 

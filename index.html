@@ -7,47 +7,56 @@
     <style> body {padding: 0; margin: 0;} </style>
 
 <!-- addons -->
-    <script src="/addons/p5.js"></script>
-    <script src="/addons/p5.dom.js"></script>
-    <script src="/addons/p5.sound.js"></script>
-    <script src="/addons/p5.play.js"></script>
-    <script src="/addons/fps.js"></script>
+    <script src="/addons-libraries/p5.js"></script>
+    <script src="/addons-libraries/p5.dom.js"></script>
+    <script src="/addons-libraries/p5.sound.js"></script>
+    <script src="/addons-libraries/p5.play.js"></script>
+    <script src="/addons-libraries/fps.js"></script>
 
-<!-- scripts -->
-      <script src="/scripts/preload.js"></script>
-      <script src="/scripts/debug.js"></script>
-      <script src="/scripts/timer.js"></script>
-      <script src="/scripts/buttons.js"></script>
-      <script src="/scripts/imputs.js"></script>
-      <script src="/scripts/pos_to_player.js"></script>
+<!-- Enemies -->
+    <script src="/Enemies/Enemy.js"></script>
+    <script src="/Enemies/spawner.js"></script>
 
 <!-- Items -->
-     <script src="/Items/template_item.js"></script>
+    <script src="/Items/template_item.js"></script>
     <script src="/Items/loot_lvl.js"></script>
 
-
-<!-- Npc -->
-    <script src="/NPC's/NPC.js"></script>
-        <script src="/NPC's/seller.js"></script>
 <!-- Levels -->
     <script src="/Levels/Level1.js"></script>
     <script src="/Levels/Level2.js"></script>
+    <script src="/Levels/obstacle.js"></script>
+
+<!-- Load -->
+    <script src="/Load/preload.js"></script>
+    <script src="/Load/groups.js"></script>
+    <script src="/Load/lvl_change.js"></script>
+    <script src="/Load/resize.js"></script>
+
+<!-- Npc -->
+    <script src="/NPC's/NPC.js"></script>
+    <script src="/NPC's/seller.js"></script>
+
+<!-- Player -->
+    <script src="/Player/Player.js"></script>
+    <script src="/Player/inventory.js"></script>
 
 <!-- Quests -->
     <script src="/Quests/global_store.js"></script>
     <script src="/Quests/Fedex_quests.js"></script>
     <script src="/Quests/Kill_quests.js"></script>
 
-<!-- Enemies -->
-      <script src="/Enemies/Enemy.js"></script>
-        <script src="/Enemies/spawner.js"></script>
+<!-- scripts -->
+      <script src="/scripts/debug.js"></script>
+      <script src="/scripts/timer.js"></script>
+      <script src="/scripts/buttons.js"></script>
+
+<!-- UI -->
+     <script src="/UI/UI.js"></script>
+
 
 <!-- main files -->
-      <script src="Player.js"></script>
-      <script src="opsticle.js"></script>
+      <script src="imputs.js"></script>
       <script src="camera.js"></script>
-      <script src="UI.js"></script>
-      <script src="Inventory.js"></script>
     <script src="Main.js"></script>
   </head>
   <body>

@@ -26,7 +26,6 @@ for (let i = 0; i < 5; i++){
 
 allF(){
   super.allF();
-  this.okno();
   this.buy_sell_switch();
   switch(this.side){
     case "buy":   this.add_to_inv();

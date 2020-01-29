@@ -129,4 +129,9 @@ for (let i = 0; i < this.items_array.length; i++){
 }
 }
 //================================================================================================
+leyer_3(){
+  this.start_quest.rozmowa();
+   this.vah.rozmowa();
+   this.test.okno();
+}
 }
