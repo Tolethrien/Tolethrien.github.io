@@ -14,6 +14,7 @@ rightKey = 68
 upKey = 87
 downKey = 83
 startKey = (key == "x");
+questKey = (key == "j");
 
 
 
@@ -42,6 +43,11 @@ if (attackKey){
 if (statsKey){
   if(gracz.menu == false){gracz.menu = true}
   else{gracz.menu = false}
+}
+
+if (questKey){
+  if(quest_log.menu == false){quest_log.menu = true}
+  else{quest_log.menu = false}
 }
 //=========================================================================
 // if (inventoryKey){

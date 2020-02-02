@@ -1,6 +1,6 @@
 
 let player, lvl
-let zoom = 3 //zoom kamery
+let zoom = 4 //zoom kamery
 let debugMode = false, pause = false, fps = true;
 let current_lvl = "lvl2";
 let created = false;
@@ -11,17 +11,21 @@ function preload(){
 }
 //=============================================================================================
 function setup(){
-createCanvas(900,600);                           //Tworzy Okno
+  createCanvas(windowWidth-5,windowHeight-5);
+//createCanvas(950,632);                           //Tworzy Okno
 //frameRate(60);                                 // FPS LOCK
 groups();                                        // grupy spritow   -      preload.js
 gracz        =  new Plejer();                    // gracz           -       player.js
-sprts        =  new Sprts();                     //obiekty mapy     -     opsticle.js                  //debug mode       -        debug.js
+sprts        =  new Sprts();                     //obiekty mapy     -     opsticle.js
 kam          =  new Kam();                       //kamera           -       camera.js
 debug        =  new Debug();                     //skrypt Debugu    -      debug.js
-qs           =  new Quest_store();               // store quests    -     global_store.js
 ui           =  new Ui();
 inventory = new Inventory();
 loot = new Loot_lvl();
+lvl = new Lvl2();
+quest_log = new Quest_log();
+quests = new Quests();
+quests.questy();
 resize_images();
 meter = new FPSMeter();
 meter.hide();
@@ -34,8 +38,7 @@ if (game_stage == "menu"){
   background(0);
 }
 if (game_stage == "game"){
-change_lvl();     // funkcja płynnej zmiany poziomów
-qs.returns();     // funkcja sczytywania i zapisywania statusu questów
+//change_lvl();     // funkcja płynnej zmiany poziomów
 
 
 camera.on();    // Kamera On - start gry
@@ -70,6 +73,8 @@ function mousePressed(){
    gracz.allFunctions();
 
    lvl.update_lvl();
+
+quests.quests_start();
 
    kam.follow();
 
@@ -106,9 +111,9 @@ function leyer_2(){
   drawSprites(par_bottom);
   drawSprites(atention);
   drawSprites(items);
-  drawSprites(enemy)
+  drawSprites(enemy);
+    drawSprites(npcs);
   drawSprites(p1);
-  drawSprites(npcs);
   drawSprites(par_top);
   drawSprites(ramacam);
   drawSprites(cam);
@@ -120,7 +125,9 @@ function leyer_3(){
   ui.ui();
   inventory.show();
   lvl.leyer_3();
+  quests.leyer_3();
 debug.debug_butt();
 
+quest_log.allF();
 
 }

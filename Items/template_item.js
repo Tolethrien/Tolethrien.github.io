@@ -1,7 +1,19 @@
 class Item{
-constructor(gold,value,xx,yy,ww,hh){
+constructor(gold,amount,xx,yy,ww,hh){
   this.type = gold;
-  this.value = value;
+  this.amount = amount;
+  if ( this.type == "health_potion"){
+  this.value_buy = 100;
+  this.value_sell = 200;
+}
+if ( this.type == "sakiewka"){
+this.value_buy = 25;
+this.value_sell = 50;
+}
+if ( this.type == "blah"){
+this.value_buy = 50;
+this.value_sell = 75;
+}
   this.x = xx + random(-10,10), this.y = yy + random(-10,10), this.w = ww, this.h = hh
 this.picked = false;
     this.item = createSprite(this.x,this.y,this.w,this.h);
@@ -50,12 +62,13 @@ if(inventory.inv[i].length == 0){
 
 use(){
   if (this.type == "sakiewka"){
-      console.log("+ " + this.value + " money")
-    gracz.money += this.value;}
+      console.log("+ " + this.amount + " money")
+    gracz.money += this.amount;}
 
 if (this.type == "health_potion"){
-    console.log("+ " + this.value + " HP")
-  gracz.hp += this.value;}
+    if (gracz.hp < gracz.maxHP){
+        console.log("+ " + this.amount + " HP")
+  gracz.hp += this.amount;}}
 
 }
 

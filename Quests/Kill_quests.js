@@ -9,7 +9,7 @@
 class Kill_Quests{
 
 //stage początkowy, quest giver, cel ( konkretny), grupa mobow, ilosc
-constructor(store,stage_,npc,target,g_target,g_amount){
+constructor(store,stage_,npc,target,g_amount){
   this.odp_1 = new Button();   this.odp_1.kolor(51, 0, 26,50);
   this.odp_2 = new Button();   this.odp_2.kolor(51, 0, 26,50);
   this.odp_3 = new Button();   this.odp_3.kolor(51, 0, 26,50);
@@ -18,7 +18,6 @@ constructor(store,stage_,npc,target,g_target,g_amount){
   if (store != "done"){
   this.stage = stage_;}
     this.target = target;
-this.group_target = g_target
 this.group_amount = g_amount
 this.group_current = 0;
   this.quest_giver = npc; //nazwa NPC
@@ -30,7 +29,7 @@ this.group_current = 0;
 //dwuwymiarowa lista z tekstem
 this.line = [];
 this.prize = floor(random(100,400));
-
+this.quest_mobs = []
 }
 start(){
   if (this.stage != -1){
@@ -53,7 +52,7 @@ story(lines){
   this.t = []
   if(lines){
   this.line = lines}
-  for (let i = 0; i < this.line.length; i++){
+  for (let i = 0; i < this.line.length-1; i++){
     this.t[i]=0;
 if (this.line[i][2] == undefined){this.t[i] += 20;}
 if (this.line[i][3] == undefined){this.t[i] += 20;}
@@ -71,11 +70,11 @@ zadanie(){
     this.quest_giver.quest_state = "complited";}
 }
 //zabij odpowiednia ilosc konkretnego rodzaju
-if (this.group_target != undefined && this.target == null){
-  for (let i = 0; i < this.group_target.length; i++){
-if (this.group_target[i].alive == false){
+if (this.quest_mobs != undefined && this.target == null){
+  for (let i = 0; i < this.quest_mobs.length; i++){
+if (this.quest_mobs[i].alive == false){
 this.group_current ++;
-this.group_target.splice(i,1);}
+this.quest_mobs.splice(i,1);}
 
 if (this.group_current == this.group_amount){
   this.stage = "wykonany";

@@ -6,11 +6,11 @@ constructor(){
         this.test = new Seller("test");
     this.valdemar = new Npc("Valdemar");
         this.burmistrz = new Npc("Burmistrz");
-     this.start_quest = new Fedex_Quests(qs.start_quest,"aktywny",0,0,this.burmistrz,this.valdemar,this.burmistrz);
+
 
     this.tomil = new Npc("Tomil");
     this.vah_mobs = [];
-       this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
+//       this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
                this.vahel = new Enemy();
               this.beny = new Enemy();
 this.spawner = new Spawner(Enemy,2);
@@ -88,27 +88,30 @@ this.test.create(1228,1420,15,15);
 }
 //==============================================================================================
 quests(){
-  this.start_quest.story(
-    [
-    ["Dzielni śmiałkowie gotowi pomóc temu miastu poszukiwani! Więcej informacji u Burmistrza!",
-                  '*Przeczytane*',],
-    ['Oh, Witaj! Ty od ogłoszenia? Wspaniale! Popytaj ludzi w miasteczku, na pewno znajdą ci jakieś zadanie',
-                  "Tak zrobię"], // [1]
-                  [null],
-                  [null]
-              ])
+  // this.start_quest.story(
+  //   [
+  //   ["Dzielni śmiałkowie gotowi pomóc temu miastu poszukiwani! Więcej informacji u Burmistrza!",
+  //                 '*Przeczytane*',],
+  //   ['Oh, Witaj! Ty od ogłoszenia? Wspaniale! Popytaj ludzi w miasteczku, na pewno znajdą ci jakieś zadanie',
+  //                 "Tak zrobię"], // [1]
+  //                 [null],
+  //                 [null],
+  //                 ["odnalazłeś po drodzę znak który skierował cię prosto do burmistrza",
+  //                 "- udaj się do burmistrza"]
+  //             ])
+//quest_log.quest_list.push(this.start_quest);
 //---------------------------------------
-this.vah.story(
-  [
-  ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
-                'Rozprawię się z nimi',
-                  "nie teraz, muszę uzupelnic zapasy"],
-  ['Dziękuję, mam nadzieje ze nie przyjdzie ich więcej!',
-                "Oby, żegnaj"], // [1]
-                [null],
-                [null]
-            ])
-this.vah_mobs.push(this.vahel,this.beny);
+// this.vah.story(
+//   [
+//   ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
+//                 'Rozprawię się z nimi',
+//                   "nie teraz, muszę uzupelnic zapasy"],
+//   ['Dziękuję, mam nadzieje ze nie przyjdzie ich więcej!',
+//                 "Oby, żegnaj"], // [1]
+//                 [null],
+//                 [null]
+//             ])
+//this.vah_mobs.push(this.vahel,this.beny);
 }
 //===============================================================================================
 update_lvl(){
@@ -118,8 +121,8 @@ this.test.allF();
 this.tomil.allF();
 this.vahel.allFunctions();
 this.beny.allFunctions();
-this.start_quest.start();
-this.vah.start();
+//this.start_quest.start();
+//this.vah.start();
 this.spawner.allF();
 //this.qtest.start();
 for (let i = 0; i < this.items_array.length; i++){
@@ -130,8 +133,8 @@ for (let i = 0; i < this.items_array.length; i++){
 }
 //================================================================================================
 leyer_3(){
-  this.start_quest.rozmowa();
-   this.vah.rozmowa();
+  //this.start_quest.rozmowa();
+  // this.vah.rozmowa();
    this.test.okno();
 }
 }

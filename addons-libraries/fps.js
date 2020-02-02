@@ -681,7 +681,7 @@
 		// Meter position
 		position: 'absolute', // Meter position.
 		zIndex:   5,         // Meter Z index.
-		left:     '837px',      // Meter left offset.
+		left:     "0px",      // Meter left offset.
 		top:      '-17px',      // Meter top offset.
 		right:    'auto',     // Meter right offset.
 		bottom:   'auto',     // Meter bottom offset.

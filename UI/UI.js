@@ -1,6 +1,9 @@
 class Ui{
 constructor(){
 this.x = 100,this.y = 100,this.w = 500,this.h = 400
+this.gumpX = 400,this.gumpY = 250, this.gumpW = 700, this.gumpH = 200;
+this.startX = -200, this.startY = 250, this.startW = 300, this.startH = 300
+this.anim_speed = 24
 }
 ui(){
 this.stats();
@@ -30,10 +33,10 @@ hud(){
   push();
   stroke(2)
   noFill();
-  rect(width/2,580,70,10)
+  rect(width/2,height-50,70,10)
   fill("red")
   let m = map(gracz.hp,0,10,0,70)
-  rect(width/2,580,m,10)
+  rect(width/2,height-50,m,10)
   pop();
 camera.on();
 }
@@ -139,11 +142,10 @@ camera.on();
 }
 
 dialog(){
-this.gumpX = 250,this.gumpY = 150, this.gumpW = 400, this.gumpH = 300;
 push();
 //  rectMode(CENTER);
-  fill(60);
-  rect(this.gumpX,this.gumpY,this.gumpW,this.gumpH);
+  fill(60,100);
+  rect(this.startX,this.startY,this.gumpW,this.gumpH,20,20,0,0);
   fill(255);
  pop();
 

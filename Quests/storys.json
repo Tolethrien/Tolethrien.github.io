@@ -1,0 +1,33 @@
+{
+"quest_start": [
+  ["Dzielni śmiałkowie gotowi pomóc temu miastu poszukiwani! Więcej informacji u Burmistrza!",
+        "*Przeczytane*"],
+
+  ["Oh, Witaj! Ty od ogłoszenia? Wspaniale! Popytaj ludzi w miasteczku, na pewno znajdą ci jakieś zadanie",
+        "Tak zrobię"],
+
+  [null],
+
+  [null],
+
+  ["odnalazłeś po drodzę znak który skierował cię prosto do burmistrza",
+    "- udaj się do burmistrza"]
+  ],
+
+"Vahel": [
+  ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
+            "Rozprawię się z nimi",
+            "nie teraz, muszę uzupelnic zapasy"],
+
+  ["Dziękuję, mam nadzieje ze nie przyjdzie ich więcej!",
+            "Oby, żegnaj"],
+
+  [null],
+
+  [null]
+              ]
+
+
+
+
+}

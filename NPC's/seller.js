@@ -34,6 +34,12 @@ allF(){
     break;
   }
 }
+
+create(xx,yy,ww,hh){
+super.create(xx,yy,ww,hh);
+this.npc.addImage(sprzedawca);
+
+}
 okno(){
   if (this.talk()){
   camera.off();
@@ -68,10 +74,12 @@ for (let i = 0; i < inventory.inv.length; i++){
   y+= 30;}
 }}
   camera.on();
+  return true;
 }
 }
 
 buy_sell_switch(){
+  if (this.okno()){
   if (this.buy.Pressed_true(LEFT)){
 this.side = "buy"
   }
@@ -79,20 +87,23 @@ this.side = "buy"
 this.side = "sell"
   }
 }
+}
 
 add_to_inv(){
+  if (this.okno()){
 for (let h = 0;  h < this.slot.length; h++){
       if (this.slot[h].Pressed_true()){
             if (h < this.buy_items.length){
         if (this.buy_items[h].length != 0){
 
 if (inventory.inv.length <= inventory.slots){
-        console.log(this.buy_items[h][0].type);
+        //console.log(this.buy_items[h][0].type);
         for (let i = 0; i < inventory.inv.length; i++){
           if(inventory.inv[i].length != 0){
              if (inventory.inv[i][0].type == this.buy_items[h][0].type){
-            console.log(this.buy_items[h][0].type);
+        //    console.log(this.buy_items[h][0].value_sell);
               inventory.inv[i].push(this.buy_items[h][0])
+              gracz.money -= this.buy_items[h][0].value_sell;
                  this.buy_items[h].splice(0,1);
                  if (this.buy_items[h].length == 0){
                    this.buy_items.splice(h,1);}
@@ -100,6 +111,7 @@ if (inventory.inv.length <= inventory.slots){
             }
             else if (inventory.inv[i].length == 0 ){
                   inventory.inv[i].push(this.buy_items[h][0]);
+                    gracz.money -= this.buy_items[h][0].value_sell;
                      this.buy_items[h].splice(0,1);
                      if (this.buy_items[h].length == 0){
                        this.buy_items.splice(h,1);}
@@ -111,14 +123,17 @@ if (inventory.inv.length <= inventory.slots){
   }
  }
 }
+}
 
 sell_to_store(){
+    if (this.okno()){
   for (let h = 0;  h < this.slot.length; h++){
         if (this.slot[h].Pressed_true()){
               if (h < inventory.inv.length){
           if (inventory.inv[h].length != 0){
             console.log("pyk")
-            inventory.inv[h].splice(-1,1);
+            gracz.money += inventory.inv[h][0].value_buy;
+            inventory.inv[h].splice(h,1);
             if (inventory.inv[h].length == 0){
              inventory.inv.splice(h,1);
           inventory.text.splice(-1,1);
@@ -126,7 +141,7 @@ sell_to_store(){
          }
 }
 }
-}}
+}}}
 
 
 

@@ -20,6 +20,7 @@ constructor(){
     this.hitin = false;
   //  this.currover = false;
     this.hitbox_vis = true
+    this.maxHP = 10;
     this.money = 0;
     this.hp = 10;
     this.menu = false;
@@ -99,6 +100,7 @@ if (this.player.animation.getFrame() <= 3 && this.hitin == false){
 hit(){
 if (this.hp < 0){
   this.player.remove();
+  game_stage = "menu"
 }
 }
 //=============================================================================

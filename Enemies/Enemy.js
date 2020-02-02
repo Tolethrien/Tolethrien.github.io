@@ -5,6 +5,7 @@ constructor(){
   this.debugMode = false;
   this.state = "idle"
   this.hitin = false;
+  this.hit_player = false;
   this.hitbox_vis = true;
   this.attack_deley = new Timer();
     this.attack_time = 2;
@@ -56,11 +57,11 @@ allFunctions(){
   this.control();
   // |idle| - nic, |guard| - strzeż, |notice| - idz w strone gracza, |attack| - atakuj gracza
 switch(this.state){
-  case "idle": this.guard(),this.attraction_set(),this.anim();
+  case "idle": this.guard(),this.attraction_set(),this.anim(),this.targeting();
   break;
-case "follow":  this.attraction(),this.attraction_set(),this.anim(),this.attack_del();
+case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.anim(),this.attack_del();
 break;
-case "fight": this.anim(),this.attack(),this.dead(),this.kill(),this.hit();
+case "fight": this.anim(),this.targeting(),this.attack(),this.dead(),this.kill(),this.hit();
   }
 
 }
@@ -105,7 +106,7 @@ guard(){
 }
 //===============================================================================
 targeting(){
- if (this.state == "follow"){
+ if (this.state == "follow" || this.state == "fight"){
   if( gracz.player.position.x < this.circle.position.x){
   this.left = floor(this.circle.position.x - gracz.player.position.x);}
   else{this.left = 0;}
@@ -164,7 +165,6 @@ if (this.state == "idle"){
 //==================================================================================================
 attack(){
 if (this.circle2.overlap(gracz.player)){
-//this.targeting();
 switch(this.target){
 case "left":
 if(!this.hitin && this.attack_deley.timer == false){
@@ -172,8 +172,7 @@ if(!this.hitin && this.attack_deley.timer == false){
   this.hitbox = createSprite(this.enemy.position.x-10,this.enemy.position.y,15,15);
   atention.add(this.hitbox);
   this.hitbox.visible = this.hitbox_vis;
-  this.hitin = true;
-}
+  this.hitin = true;}
   break;
 case "right":
 if(!this.hitin && this.attack_deley.timer == false){
@@ -206,7 +205,11 @@ if (this.enemy.animation.getFrame() == 5){
      this.enemy.animation.changeFrame(0);
     this.hitin = false;
    this.hitbox.remove();
-   this.enemy.animation.stop();
+   if (this.enemy.animation.getFrame() == 0){
+     this.hitin = false;
+    this.hitbox.remove();
+   }
+  this.enemy.animation.stop();
        this.attack_deley.set_time(true,this.attack_time)
 
 }
@@ -226,11 +229,11 @@ attack_del(){
 hit(){
   if(this.hitbox){
   if (!this.hitbox.overlap(gracz.player)){
-    gracz.currover = false;
+    this.hit_player = false;
   }
-  if(this.hitbox.overlap(gracz.player) && gracz.currover == false){
+  if(this.hitbox.overlap(gracz.player) && this.hit_player == false){
     gracz.hp -= 1;
-    gracz.currover = true;
+    this.hit_player = true;
   }
 }
 }
@@ -270,7 +273,6 @@ anim(){
 
 
 if (this.circle.overlap(gracz.player) || this.state == 'idle'){
-    this.targeting();
   switch(this.target){
     case "left": this.enemy.changeAnimation("left");
           break;
@@ -283,19 +285,26 @@ if (this.circle.overlap(gracz.player) || this.state == 'idle'){
                 }
             }
 if (this.circle2.overlap(gracz.player)){
-      this.targeting();
     switch(this.target){
-      case "left":    this.enemy.changeAnimation("attack_left");
-                      this.enemy.animation.offX = -10;
+      case "left":      this.enemy.animation.stop();
+                        this.enemy.changeAnimation("attack_left");
+                        this.enemy.animation.offX = -10;
+
               break;
-        case "right":this.enemy.changeAnimation("attack_right");
-                    this.enemy.animation.offX = +10;
+        case "right":   this.enemy.animation.stop();
+                        this.enemy.changeAnimation("attack_right");
+                        this.enemy.animation.offX = +10;
+
               break;
-        case "top": this.enemy.changeAnimation("attack_up");
-                    this.enemy.animation.offY = -10;
+        case "top":     this.enemy.animation.stop();
+                        this.enemy.changeAnimation("attack_up");
+                        this.enemy.animation.offY = -10;
+
               break;
-        case "bottom": this.enemy.changeAnimation("attack_down");
-                      this.enemy.animation.offY = +10;
+        case "bottom":  this.enemy.animation.stop();
+                        this.enemy.changeAnimation("attack_down");
+                        this.enemy.animation.offY = +10;
+
               break;
               }
         }

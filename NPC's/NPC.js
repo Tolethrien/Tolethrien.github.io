@@ -4,9 +4,9 @@ constructor(name){
   this.name = name;
   this.attraction_distance = 20
   //to_take, taken, complited, done
-  this.quest_state = null;
-    if(this.quest_state != null || "done"){
-      this.have_quest = true}
+
+  this.quest_state = null
+      this.have_quest = false;
   this.pop_up = true;
     this.znakY;
     this.licznik = 0;
@@ -17,7 +17,9 @@ constructor(name){
 create(xx,yy,ww,hh){
   this.x = xx,this.y=yy,this.w=ww,this.h=hh;
 this.npc = createSprite(this.x,this.y,this.w,this.h);
+//this.npc.addImage(sprzedawca);
 this.npc.setDefaultCollider();
+this.npc.addImage(burmistrz);
 this.npc.visible = true;
 this.npc.debug = false;
 npcss.add(this.npc);
@@ -33,7 +35,7 @@ this.znakY = this.y - 20;
   //stage quest [-1: nieaktywny, 0:aktywny, 1:zebrany, 2:wykonany]
 //funkcje updatu
 allF(){
-  if (this.have_quest == true){
+  if (this.quest_state == "aktywny" || "wykonany"){
 this.anim_signs();
 this.quests();}
 this.spotOn();
@@ -43,16 +45,14 @@ this.reset()
 
 //dodaje oraz steruje questami NPC
 quests(){
-if (this.quest_state == 'to_take'){
+if (this.quest_state == 'aktywny'){
   this.znakWykrzyknik();
 }
 
-else if (this.quest_state == 'complited'){
+else if (this.quest_state == 'wykonany'){
 this.znak_Zapytania();
 }
-else if (this._quest_state == 'done'){
-null
-}
+
 
 }
 
