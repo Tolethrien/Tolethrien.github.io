@@ -14,6 +14,7 @@ function groups(){
   npcss = new Group();
   items = new Group();
   spawners = new Group();
+  bullets = new Group();
 }
 //=============================================================================================
 function groups_clear(){

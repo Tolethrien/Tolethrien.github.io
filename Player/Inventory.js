@@ -18,7 +18,7 @@ for (let i = 0; i < this.slots; i++){
 
 show(){
   if (gracz.menu == true){
-  this.x = 320, this.y = 190, this.w = 70
+  this.x = ui.x+220, this.y = ui.y+100, this.w = 70
   camera.off();
     push();
 //  ui.inventory_menu();

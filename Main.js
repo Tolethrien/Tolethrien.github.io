@@ -5,13 +5,15 @@ let debugMode = false, pause = false, fps = true;
 let current_lvl = "lvl2";
 let created = false;
 let game_stage = "game"
+let sceen;
 //=============================================================================================
 function preload(){
   loadFiles(); //preload.js
 }
 //=============================================================================================
 function setup(){
-  createCanvas(windowWidth-5,windowHeight-5);
+  sceen = createCanvas(windowWidth,windowHeight,P2D);
+sceen.style('display', 'block');
 //createCanvas(950,632);                           //Tworzy Okno
 //frameRate(60);                                 // FPS LOCK
 groups();                                        // grupy spritow   -      preload.js
@@ -30,6 +32,8 @@ resize_images();
 meter = new FPSMeter();
 meter.hide();
 camera.zoom = zoom;
+// let myp = JSON.stringify(quests);
+// console.log(myp)
 }
 //=============================================================================================
 function draw(){
@@ -55,13 +59,16 @@ meter.tick();}
 }
 //=============================================================================================
 function keyPressed(){
+  
   imputs();
 }
 
 //=============================================================================================
 function mousePressed(){
 }
-
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 //=============================================================================================
  function static(){
    background(0)
@@ -81,6 +88,9 @@ quests.quests_start();
    inventory.set_slots();
 
        inventory.cut();
+
+       ui_poz();
+gracz.dist_attack();
  }
 
 //=============================================================================================
@@ -113,6 +123,7 @@ function leyer_2(){
   drawSprites(items);
   drawSprites(enemy);
     drawSprites(npcs);
+      drawSprites(bullets);
   drawSprites(p1);
   drawSprites(par_top);
   drawSprites(ramacam);

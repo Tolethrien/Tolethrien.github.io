@@ -8,15 +8,15 @@
 
 class Kill_Quests{
 
-//stage początkowy, quest giver, cel ( konkretny), grupa mobow, ilosc
-constructor(store,stage_,npc,target,g_amount){
+//nazwa, stage początkowy, quest giver, cel ( konkretny), grupa mobow, ilosc
+constructor(name,stage_,npc,target,g_amount){
   this.odp_1 = new Button();   this.odp_1.kolor(51, 0, 26,50);
   this.odp_2 = new Button();   this.odp_2.kolor(51, 0, 26,50);
   this.odp_3 = new Button();   this.odp_3.kolor(51, 0, 26,50);
   this.odp_4 = new Button();   this.odp_4.kolor(51, 0, 26,50);
   //stage quest [-1: nieaktywny, 0:aktywny, 1:zebrany, 2:wykonany]
-  if (store != "done"){
-  this.stage = stage_;}
+//  if (store != "done"){
+  this.stage = stage_;
     this.target = target;
 this.group_amount = g_amount
 this.group_current = 0;

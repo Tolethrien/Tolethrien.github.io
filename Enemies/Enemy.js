@@ -57,9 +57,9 @@ allFunctions(){
   this.control();
   // |idle| - nic, |guard| - strzeż, |notice| - idz w strone gracza, |attack| - atakuj gracza
 switch(this.state){
-  case "idle": this.guard(),this.attraction_set(),this.anim(),this.targeting();
+  case "idle": this.guard(),this.attraction_set(),this.anim(),this.targeting(),this.dead(),this.kill();
   break;
-case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.anim(),this.attack_del();
+case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.anim(),this.attack_del(),this.dead(),this.kill();
 break;
 case "fight": this.anim(),this.targeting(),this.attack(),this.dead(),this.kill(),this.hit();
   }
@@ -247,6 +247,12 @@ if (!gracz.hitbox.overlap(this.enemy)){
 if (gracz.hitbox.overlap(this.enemy) && this.currover == false ){
 this.health -= 1;
 this.currover = true;}}
+
+for ( let i = 0; i < bullets.length; i++){
+  if (bullets[i].overlap(this.enemy)){
+      this.health -= 2;
+      bullets[i].remove();
+}}
 }
 //==============================================================================
 kill(){

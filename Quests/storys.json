@@ -10,11 +10,11 @@
 
   [null],
 
-  ["odnalazłeś po drodzę znak który skierował cię prosto do burmistrza",
+  ["odnalazłeś po drodzę znak który skierował cię prosto do domu burmistrza",
     "- udaj się do burmistrza"]
   ],
 
-"Vahel": [
+"q_start": [
   ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
             "Rozprawię się z nimi",
             "nie teraz, muszę uzupelnic zapasy"],
@@ -24,8 +24,12 @@
 
   [null],
 
-  [null]
-              ]
+  [null],
+
+  ["odnalazłeś po dsssssssssssssssssssmistrza",
+    "- udo burmistrza"]
+  ]
+
 
 
 

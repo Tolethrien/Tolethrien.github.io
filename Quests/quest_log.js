@@ -2,52 +2,43 @@ class Quest_log{
 
 constructor(){
   this.menu = false;
-this.track = false;
-this.tick = new Button();
-this.quest_list = [];
-
+  this.track = false;
+  this.quest_list = [];
+  this.slot = [];
+  this.slot_track = [];
+    for (let i = 0; i < 12; i++){
+      this.slot[i] = new Button();
+      this.slot_track[i] = new Button();
+    }
+//dodatki
+this.text_log; // zapisuje numer array wyswietlanego tekstu w quest logu
+this.text_track; //zapisuje numer array wyswietlanego tekstu w tracku
 }
 
 allF(){
 this.show();
-this.ad();
-
+this.splice();
+this.pres();
 }
+
+
+
+
 
 show(){
-  if (this.menu){
-camera.off();
-push();
-rect(200,200,300,300)
-this.tick.create("rect",205,210,15,15,"x",10);
-this.tick.kolor(0,0,0,255,true)
-this.tick.Pressed(LEFT,this.switch)
-if (this.quest_list.length != 0){
-text(this.quest_list[0][1].lines[4][0],230,205,280,40)}
-pop();
-camera.on();
+this.quest_log();
+this.quest_track();
+
+
 }
 
-
-
-if (this.track == true){
-  camera.off();
-push();
-fill(100,100)
-rect(750,100,150,45,20)
-fill("red");
-textSize(14)
-stroke(4)
-strokeWeight(8)
-text("miłe początki",780,105,135,20)
-fill(255);
-textSize(10)
-noStroke()
-strokeWeight(2)
-if (this.quest_list.length != 0){
-text(this.quest_list[0][1].lines[4][1],760,125,135,20)}
-pop();
-camera.on();
+pres(){
+for( let i = 0; i < this.quest_list.length; i++){
+if (this.slot[i].Pressed_true(LEFT)){
+  this.text_log = i;}
+if (this.slot_track[i].Pressed_true(LEFT)){
+  //  this.switch();
+  this.text_track = i;}
 }
 }
 
@@ -57,17 +48,79 @@ if (quest_log.track == false){quest_log.track = true}
 else if (quest_log.track == true){quest_log.track = false}
 }
 
-ad(){
-for (let i = 0; i < quests.allQ.length; i++){
-
-if(quests.allQ[i][1].stage == "zakonczony"){
-  this.quest_list.splice(i,1);
-  break;
-}
-}
-
+splice(){
+for (let i = 0; i < this.quest_list.length; i++){
+  if(this.quest_list[i][1].stage == "zakonczony"){
+    this.quest_list.splice(i,1);
+    this.c -= 1;
+    this.t = 0;
+    break;}
 }
 
+}
+
+quest_log(){
+
+if (this.menu){
+    camera.off();
+  let u = ui.ql_Y;
+
+ui.quest_log();
+
+  if (this.quest_list.length != 0){
+    if (this.text_log == undefined){
+      this.text_log = 0;}
+
+  push();
+    fill(255);
+    textSize(15);
+    text(this.quest_list[this.text_log][1].lines[4][0],430,325,270,300);
+  pop();}
+
+for( let i = 0; i < this.quest_list.length; i++){
+  if (this.quest_list[i].length != 0){
+    this.slot[i].create("rect",200,u-30,178,30,this.quest_list[i][0],10)
+    this.slot_track[i].create("rect",382,u-30,40,30,"TRACK",10);
+  }
+u += 30;
+}
+this.track = true;
+camera.on();
+}
+
+}
+
+quest_track(){
+
+  if (this.track == true){
+      camera.off();
+      ui.quest_track();
+
+      if (this.quest_list.length != 0){
+        if (this.text_track == undefined){
+          this.text_track = this.text_log;
+        }
+
+        push();
+          fill("red");
+          textSize(14)
+          stroke(4)
+          strokeWeight(8)
+          text(this.quest_list[this.text_track][0],width-100,105,280,200);
+        pop();
+
+    push();
+      fill(255);
+      textSize(12);
+      text(this.quest_list[this.text_track][1].lines[4][1],width-130,125,280,200);
+    pop();}
+
+
+
+  camera.on();
+  }
+
+}
 
 
 

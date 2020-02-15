@@ -1,5 +1,6 @@
 class Plejer{
 constructor(){
+  //=================SPRITE I ANIMACJE=========================
     this.player = createSprite(1526,980,14,24);
     this.player.addAnimation('left',left_anim);
       this.player.addAnimation('down',down_anim);
@@ -9,6 +10,7 @@ constructor(){
     this.player.addAnimation('attack_left',attack_left);
     this.player.addAnimation('attack_right',attack_right);
     this.player.addAnimation('attack_down',attack_down);
+    //=====================FIZYKA==================================
   //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
     p1.add(this.player);
@@ -19,12 +21,18 @@ constructor(){
     this.state = 'move'
     this.hitin = false;
   //  this.currover = false;
-    this.hitbox_vis = true
+    this.hitbox_vis = false;
     this.maxHP = 10;
     this.money = 0;
     this.hp = 10;
     this.menu = false;
     this.currover = false
+    this.attack_style = "placeholder"
+
+    //======================================ATAK DYSTANSOWY=======================
+    this.dot = createVector(this.player.position.x,this.player.position.y)
+    this.no = false;
+    this.created = false;
 
 }
 //=============================================================================
@@ -97,6 +105,68 @@ if (this.player.animation.getFrame() <= 3 && this.hitin == false){
         this.state = 'move';}
 }
 //=============================================================================
+dist_attack(){
+if (this.attack_style == 'dist'){
+cursor(CROSS)
+camera.off();
+push();
+//  translate(width/2,height/2);
+  translate(this.player.position.x,this.player.position.y)
+  this.v1 = createVector(0,-height/2+100)
+  this.v2 = createVector(mouseX-width/2,mouseY-height/2)
+      if (mouseX > width/2){
+          this.angle = this.v1.angleBetween(this.v2) - PI/2}
+      if (mouseX < width/2){
+          this.angle = (this.v1.angleBetween(this.v2) + PI/2) * -1}
+pop();
+camera.on();
+
+if (this.no == true){
+this.dot = createVector(this.player.position.x,this.player.position.y)
+this.bullet = createSprite(this.dot.x,this.dot.y,5,5)
+this.bullet.draw = function() { ellipse(0,0,2,2) }
+this.bullet.visible = true;
+bullets.add(this.bullet);
+
+this.ang = p5.Vector.fromAngle(this.angle);
+  this.ang.mult(10)
+  this.no = false
+  this.bullet.setVelocity(this.ang.x,this.ang.y)
+}
+
+for (let i = 0; i < bullets.length; i++){
+  let d = dist(this.player.position.x,this.player.position.y,bullets[i].position.x,bullets[i].position.y)
+  if(d > 150){
+    bullets[i].remove();
+  }
+}
+
+//  if (!this.bullet){
+//   // push();
+//   this.dot = createVector(this.player.position.x,this.player.position.y)
+//   this.bullet = createSprite(this.dot.x,this.dot.y,20,20)
+//   this.bullet.draw = function() { ellipse(0,0,5,5) }
+//   this.bullet.visible = true;
+//   p1.add(this.bullet);
+// }
+//       if (this.no == true){
+//           this.ang = p5.Vector.fromAngle(this.angle);
+//         //  this.ang.mult(10)
+//           this.no = false
+//           this.bullet.setVelocity(this.ang.x,this.ang.y)}
+
+
+}else {cursor("sprites/mouse.png")}
+//console.log(this.mx)
+
+
+
+
+
+}
+
+
+//============================================================================
 hit(){
 if (this.hp < 0){
   this.player.remove();

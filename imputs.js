@@ -1,10 +1,14 @@
 let xaxis,yaxis;
 let leftKey = 0, rightKey = 0, upKey = 0, downKey = 0, dashKey = 0;
+let tempX;
+let tempY;
+let tempSet = false;
+let on = false;
   //===========================KLAWISZE=====================================
 function imputs(){
 dashKey = 86 // nie dziala
 attackKey = (key == ' ');
-//debugKey = (key == 'd');
+shootKey = (key == 'c');
 pauseKey = (key == 'p');
 statsKey = (key == 'l');
 actionKey = (key == 'e');
@@ -23,7 +27,9 @@ questKey = (key == "j");
 
 
 //===============================DEBUG MODE=================================
-//debug
+if (shootKey){
+  gracz.no = true;
+}
 
 
 //================================PAUZA====================================
@@ -56,6 +62,40 @@ if (questKey){
 // }
 
 //==============================RUCH POSTACI==============================
+}
+function ui_poz(){
+
+if ( mouseDown(LEFT)){
+if (mouseX > ui.x+151 && mouseX < ui.x+151+350 && mouseY > ui.y && mouseY < ui.y + 15){
+  //rect(this.x+151,this.y,350,15)
+  if (tempSet == false){
+   console.log("pres");
+on = true;
+tempX = (ui.x - mouseX) * -1;
+tempY = (ui.y - mouseY) * -1;
+tempSet = true;}}
+if (on == true){
+ui.x = mouseX - tempX;
+ui.y = mouseY - tempY;}
+}
+ else if (mouseUp(LEFT)){
+ tempSet = false;
+on = false;}
+
+// if (this.set == false){
+//   this.x = (this.basicX - mouseX) * -1;
+//     this.y = (this.basicY - mouseY) * -1;}
+//   this.set = true;
+//   console.log("pres");
+//   this.basicX = mouseX-this.x;
+//   this.basicY = mouseY-this.y;
+// }
+// else if (mouseUp(LEFT)){
+// this.set = false;;
+// }
+// }
+
+
 }
 function ruch_imputs(){
 //ruch postaci

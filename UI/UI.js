@@ -1,10 +1,20 @@
 class Ui{
 constructor(){
-this.x = 100,this.y = 100,this.w = 500,this.h = 400
+  //okno STATS
+this.x = 100,this.y = 200,this.w = 500,this.h = 400
+
+//OKNO ROZMOW
 this.gumpX = 400,this.gumpY = 250, this.gumpW = 700, this.gumpH = 200;
 this.startX = -200, this.startY = 250, this.startW = 300, this.startH = 300
-this.anim_speed = 24
+this.anim_speed = 24;
+
+//okno Quest_log
+this.ql_Y = 230;
+
+
+
 }
+
 ui(){
 this.stats();
 this.hud();
@@ -12,7 +22,7 @@ this.hud();
 
 
 inventory_menu(){
-rect(150,150,300,300)
+rect(this.x+50,this.y+50,300,300)
 
 
 
@@ -43,8 +53,7 @@ camera.on();
 
 stats(){
    if (gracz.menu == true){
-  //   fill(100,100);
-    // rect(100,100,500,500)
+
   //================================//glowny kwadrat//=====================================
 camera.off()
 fill(100,100);
@@ -54,23 +63,24 @@ push();
 rect(this.x,this.y,this.w,this.h,20,0,80,20)
 stroke(0)
 strokeWeight(3)
-line(this.x+151,this.y+1,this.x+151,500-1)
+line(this.x+151,this.y+1,this.x+151,this.y+400-1)
 pop();
 
 //===========================//kwadrat za postacią//=========================================
+push();
 fill(70);
 noStroke();
-rect(this.x,this.y,this.x+50,this.y+150,20,0,0,0);
+rect(this.x,this.y,150,250,20,0,0,0);
+pop();
 
 //============================//kwadrat za statami//=======================
 fill(50);
-rect(this.x,this.y+250,this.x+50,this.w/4+25,0,0,0,20)
+rect(this.x,this.y+250,150,150,0,0,0,20)
 
 //====================//kwadrat czarny ( tlo postaci) + postac//======================
 fill(0)
 rect(this.x+27,this.y+50,100,150,60);
-player_image.resize(80,80)
-image(player_image,140,200);
+image(player_image,this.x+40,this.y+100);
 
 //===========================//waga oraz gold//==========================
 push();
@@ -80,63 +90,62 @@ rect(this.x+10,this.y+10,65,20,5)
 fill(255);
 noStroke();
 textSize(10)
-text("Pyrki: " + gracz.money,195,115,80,20)
-text("Weight: 0/115",110,115,80,20)
+text("Pyrki: " + gracz.money,this.x+95,this.y+15,80,20)
+text("Weight: 0/115",this.x+10,this.y+15,80,20)
 pop();
 //===========================staty postaci + wizualizacja ich//===========================
 push();
 fill(200);
 noStroke();
-  text("Health:   "   + gracz.hp,110,360,80,20)
+  text("Health:   "   + gracz.hp,this.x+10,this.y+260,80,20)
   stroke(2)
   noFill();
-  rect(175,360,70,10)
+  rect(this.x+75,this.y+260,70,10)
   fill("red")
   let m = map(gracz.hp,0,10,0,70)
-  rect(175,360,m,10)
+  rect(this.x+75,this.y+260,m,10)
 pop();
 
 push();
 fill(200);
 noStroke();
-  text("o2:         " + 10,110,375,80,20)
+  text("o2:         " + 10,this.x+10,this.y+275,80,20)
   stroke(2)
   noFill();
-  rect(175,375,70,10)
+  rect(this.x+75,this.y+275,70,10)
   fill(204, 89, 51)
-  rect(175,375,70,10)
+  rect(this.x+75,this.y+275,70,10)
 pop();
 
 push();
 fill(200);
 noStroke();
-  text("Hunger: "     + 100,110,390,80,20)
+  text("Hunger: "     + 100,this.x+10,this.y+290,80,20)
   stroke(2)
   noFill();
-  rect(175,390,70,10)
+  rect(this.x+75,this.y+290,70,10)
   fill(128, 204, 51)
-  rect(175,390,60,10)
+  rect(this.x+75,this.y+290,60,10)
 pop();
 
 push();
 fill(200);
 noStroke();
-  text("Thirst:    "  + 100,110,405,80,20)
+  text("Thirst:    "  + 100,this.x+10,this.y+305,80,20)
   stroke(2)
   noFill();
-  rect(175,405,70,10)
+  rect(this.x+75,this.y+305,70,10)
   fill(51, 89, 204)
-  rect(175,405,40,10)
+  rect(this.x+75,this.y+305,40,10)
 pop();
 //==============================//pasek powiadomien na ekranie//===========================
 push();
 fill(0,0,50,150)
 rect(this.x+151,this.y,350,15)
 fill(255,150);
-text("Date: 02/07/3024",270,103,120,20)
-text("Time: 20:24",535,103,80,20)
+text("Date: 02/07/3024",this.x+170,this.y+3,120,20)
+text("Time: 20:24",this.x+435,this.y+3,80,20)
 pop();
-inventory.show()
 camera.on();
  }
 }
@@ -146,7 +155,6 @@ push();
 //  rectMode(CENTER);
   fill(60,100);
   rect(this.startX,this.startY,this.gumpW,this.gumpH,20,20,0,0);
-  fill(255);
  pop();
 
 }
@@ -163,6 +171,26 @@ akcja(){
 
 }
 
+quest_log(){
+  let y = this.ql_Y;
+  push();
+  fill(100,100)
+  rect(200,200,500,360)
+  strokeWeight(3)
+  line(380,200,380,560)
+  line(420,200,420,560)
+  for( let i = 0; i < 12; i++){
+    line(200,y,420,y);
+    y += 30;}
+  pop();
+}
 
+quest_track(){
+  push();
+  fill(100,100)
+  rect(width-140,100,150,45,20) //=======
+  pop();
+
+}
 
 }

@@ -43,7 +43,7 @@ this.npc.addImage(sprzedawca);
 okno(){
   if (this.talk()){
   camera.off();
-  ui.dialog();
+//  ui.dialog();
   line(ui.gumpX+ui.gumpW/2,ui.gumpY,ui.gumpX+ui.gumpW/2,ui.gumpY+ui.gumpH)
     this.buy.create('rect',ui.gumpX,ui.gumpY,ui.gumpW/2,30,"Kup",16);
     this.sell.create('rect',ui.gumpX+ui.gumpW/2,ui.gumpY,ui.gumpW/2,30,"Sprzedaj",16);

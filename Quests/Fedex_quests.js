@@ -52,7 +52,7 @@ rozmowa(){
   else if (this.quest_taker.talk() == true){
   this.okno_rozmowy();}
 
-  else{this.anim_reset();}
+  // else{this.anim_reset();}
 
 }
 
@@ -81,7 +81,7 @@ talk_aktywny(){
   ui.dialog();
   if (ui.startX <= ui.gumpX){
   //console.log(ui.startX,ui.gumpX)
-  ui.startX += ui.anim_speed;}
+  ui.startX += 10;}
 
   push();
     fill(255);
