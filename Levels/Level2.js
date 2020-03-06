@@ -13,7 +13,7 @@ constructor(){
 //       this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
                this.vahel = new Enemy();
               this.beny = new Enemy();
-this.spawner = new Spawner(Enemy,2);
+this.spawner = new Spawner(Enemy,2,10);
 
    this.walls();
     this.objects();
@@ -30,6 +30,7 @@ this.spawner = new Spawner(Enemy,2);
 background(){
 this.image = image(poziom2,900,900);
 //background("green")
+
 }
 //=============================================================================================
 walls(){
@@ -39,6 +40,8 @@ walls(){
  //this.wall.visible = true
   sciany.add(this.wall)
    }
+   // this.wall2 = createSprite(-50,-50,25,25);
+   // sciany.add(this.wall2);
 //sciany
 
 

@@ -60,10 +60,11 @@ switch(this.state){
   case "idle": this.guard(),this.attraction_set(),this.anim(),this.targeting(),this.dead(),this.kill();
   break;
 case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.anim(),this.attack_del(),this.dead(),this.kill();
-break;
+  break;
 case "fight": this.anim(),this.targeting(),this.attack(),this.dead(),this.kill(),this.hit();
-  }
-
+case "dead":
+  break
+}
 }
 //===========================================================================
 control(){
@@ -79,7 +80,7 @@ else if (this.circle2.overlap(gracz.player)){
     this.enemy.velocity.x =0;
     this.enemy.velocity.y =0; }
 //in fight
-else if (!this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
+else if (!this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player) && this.state != "dead"){
 this.state = 'idle'}
 }
 //==============================================================================
@@ -256,7 +257,7 @@ for ( let i = 0; i < bullets.length; i++){
 }
 //==============================================================================
 kill(){
-  if (this.health <= 0){
+  if (this.health <= 0 && this.state != "dead"){
     this.dead.x = this.enemy.position.x;
         this.dead.y = this.enemy.position.y;
     this.drop();
@@ -267,6 +268,7 @@ kill(){
     if (this.hitbox){
       this.hitbox.remove();
     }
+    this.state = "dead"
 
   }
 }

@@ -6,6 +6,10 @@ let current_lvl = "lvl2";
 let created = false;
 let game_stage = "game"
 let sceen;
+
+
+
+
 //=============================================================================================
 function preload(){
   loadFiles(); //preload.js
@@ -32,8 +36,9 @@ resize_images();
 meter = new FPSMeter();
 meter.hide();
 camera.zoom = zoom;
-// let myp = JSON.stringify(quests);
-// console.log(myp)
+
+ // soundtrack.setVolume(1)
+ // soundtrack.play();
 }
 //=============================================================================================
 function draw(){
@@ -45,7 +50,7 @@ if (game_stage == "game"){
 //change_lvl();     // funkcja płynnej zmiany poziomów
 
 
-camera.on();    // Kamera On - start gry
+
  static();        // statyczne części gry
  Update();        // Update funkcji
  fixUpdate();     // wsporwadzanie poprawek do Update'u jesli wymagane
@@ -55,11 +60,12 @@ camera.on();    // Kamera On - start gry
 if (fps){         // Licznik FPS
   meter.show();
 meter.tick();}
-}
+
+ }
 }
 //=============================================================================================
 function keyPressed(){
-  
+
   imputs();
 }
 
@@ -101,6 +107,13 @@ gracz.dist_attack();
 function render(){
 
 leyer_2();
+// camera.off();
+// push();
+// fill(0,200)
+// noStroke();
+// rect(0,0,windowWidth,height);
+// pop();
+// camera.on();
 
 leyer_3();
 

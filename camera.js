@@ -17,7 +17,6 @@ follow(){
 this.kamera.velocity.x =(this.kamera.position.x - gracz.player.position.x) * -0.06;
 this.kamera.velocity.y =(this.kamera.position.y - gracz.player.position.y) * -0.06;
 //cam.collide(ramacam);
- camera.on();
  camera.Zoom = 4;
 }
 //==============================================================================

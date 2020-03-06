@@ -11,6 +11,7 @@ this.buy_items = [
 this.sell_items = [];
 this.slot = [];
 this.side = "buy"
+this.money = 150;
 this.buy = new Button();   this.buy.kolor(51, 0, 26,50);
 this.sell = new Button();   this.sell.kolor(51, 0, 26,50);
 this.buy_items[0].push(this.item = new Item("health_potion",1,0,0,5,5))
@@ -101,21 +102,25 @@ if (inventory.inv.length <= inventory.slots){
         for (let i = 0; i < inventory.inv.length; i++){
           if(inventory.inv[i].length != 0){
              if (inventory.inv[i][0].type == this.buy_items[h][0].type){
+               if (gracz.money > this.buy_items[h][0].value_sell){
         //    console.log(this.buy_items[h][0].value_sell);
               inventory.inv[i].push(this.buy_items[h][0])
               gracz.money -= this.buy_items[h][0].value_sell;
+              this.money += this.buy_items[h][0].value_sell;
                  this.buy_items[h].splice(0,1);
                  if (this.buy_items[h].length == 0){
                    this.buy_items.splice(h,1);}
-            break;}
+            break;}}
             }
             else if (inventory.inv[i].length == 0 ){
+                   if (gracz.money > this.buy_items[h][0].value_sell){
                   inventory.inv[i].push(this.buy_items[h][0]);
                     gracz.money -= this.buy_items[h][0].value_sell;
+                    this.money += this.buy_items[h][0].value_sell;
                      this.buy_items[h].splice(0,1);
                      if (this.buy_items[h].length == 0){
                        this.buy_items.splice(h,1);}
-            break;}
+            break;}}
           }
       }
     }
@@ -131,14 +136,15 @@ sell_to_store(){
         if (this.slot[h].Pressed_true()){
               if (h < inventory.inv.length){
           if (inventory.inv[h].length != 0){
-            console.log("pyk")
+            if(this.money >= inventory.inv[h][0].value_buy){
             gracz.money += inventory.inv[h][0].value_buy;
+            this.money -= inventory.inv[h][0].value_buy;
             inventory.inv[h].splice(h,1);
             if (inventory.inv[h].length == 0){
              inventory.inv.splice(h,1);
           inventory.text.splice(-1,1);
           break;
-         }
+        }}
 }
 }
 }}}

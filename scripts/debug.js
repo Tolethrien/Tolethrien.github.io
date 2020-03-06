@@ -119,7 +119,6 @@ debug_butt(){
   this.debug_button.create('rect',80,height - 50,60,20," Debug")
   this.debug_button.kolor(255,100,100,100,true);
   this.debug_button.Pressed(LEFT,debug.debug_OnOff)
-
   camera.on();
 
 }

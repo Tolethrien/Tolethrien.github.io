@@ -27,7 +27,7 @@ constructor(){
     this.hp = 10;
     this.menu = false;
     this.currover = false
-    this.attack_style = "placeholder"
+    this.attack_style = "dist"
 
     //======================================ATAK DYSTANSOWY=======================
     this.dot = createVector(this.player.position.x,this.player.position.y)
@@ -136,9 +136,13 @@ this.ang = p5.Vector.fromAngle(this.angle);
 
 for (let i = 0; i < bullets.length; i++){
   let d = dist(this.player.position.x,this.player.position.y,bullets[i].position.x,bullets[i].position.y)
-  if(d > 150){
+  if (bullets[i].overlap(sciany)){
     bullets[i].remove();
   }
+  else if(d > 150){
+    bullets[i].remove();
+  }
+
 }
 
 //  if (!this.bullet){

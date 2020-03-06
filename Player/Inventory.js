@@ -66,7 +66,10 @@ cut(){
         this.slot_use[i] = undefined
       if (this.inv[i] == 0){
         this.text[i] = undefined;
-        this.text2[i] = undefined;}}
+        this.text2[i] = undefined;
+      this.inv.splice(i,1)
+    this.text.splice(i,1)
+      this.text2.splice(i,1);}}
     else{null}}
 }
 set_slots(){

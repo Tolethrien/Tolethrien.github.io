@@ -1,14 +1,15 @@
 class Spawner{
 
-constructor(mob11,amount){
+constructor(mob11,amount,st){
 this.amount = amount;
-this.list = [];
+this.list = [[],[]];
 this.type = mob11;
+this.respawns = []
+this.spawn_time = st;
 for (let i = 0; i < this.amount; i++){
 this.mob =  new this.type;
-this.list.push(this.mob)}
-
-this.respawn = new Timer();
+this.list[1].push(this.mob)
+this.list[0][i] = new Timer();}
 
 }
 
@@ -35,44 +36,49 @@ createEnemies(){
 for (let i = 0; i < this.amount; i++){
   this.mobX = floor(random(this.x-this.range+10, this.x+this.range-10))
     this.mobY = floor(random(this.y-this.range+10, this.y+this.range-10))
-  this.list[i].create(this.mobX,this.mobY,this.r,this.r)
+  this.list[1][i].create(this.mobX,this.mobY,this.r,this.r)
 }
 }
-createNew(){
+createNew(ii){
+  let index = ii;
   this.mobX = floor(random(this.x-this.range+10, this.x+this.range-10))
     this.mobY = floor(random(this.y-this.range+10, this.y+this.range-10))
-  this.list[this.list.length-1].create(this.mobX,this.mobY,this.r,this.r)
+  this.list[1][index].create(this.mobX,this.mobY,this.r,this.r)
 }
 
 update(){
-  for (let i = 0; i < this.list.length; i++){
-   this.list[i].allFunctions();
-}
+  for (let i = 0; i < this.list[1].length; i++){
+    if ( this.list[1][i] != null){
+   this.list[1][i].allFunctions();
+}}
 
 
 }
 
 del(){
-  for (let i = 0; i < this.list.length; i++){
-  if (this.list[i].alive == false){
-     this.list.splice(i,1)
-     this.respawn.set_time(true,10)}
+  for (let i = 0; i < this.list[1].length; i++){
+  if (this.list[1][i] != null && this.list[1][i].alive == false){
+     this.list[0][i].set_time(true,this.spawn_time)
+     this.list[1][i] = null}
 }
 
 }
 resp(){
-if (this.list.length < this.amount){
-if (this.respawn.timer == false){
-  this.mob = new Enemy();
-this.list.push(this.mob)
-this.createNew();
-     this.respawn.set_time(true,10)
-}}
+//
+  for (let i = 0; i < this.list[0].length; i++){
+    if (this.list[1][i] == null){
+if (this.list[0][i].timer == false){
+this.list[1][i] = this.mob = new Enemy();
+this.createNew(i);
+}}}
 
 }
 timer(){
-  this.respawn.time_out();
+  for (let i = 0; i < this.list[0].length; i++){
+  this.list[0][i].time_out();
 }
+}
+
 
 
 }
