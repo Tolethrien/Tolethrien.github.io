@@ -31,12 +31,12 @@ loot = new Loot_lvl();
 lvl = new Lvl2();
 quest_log = new Quest_log();
 quests = new Quests();
+kont = new Contener();
 quests.questy();
 resize_images();
 meter = new FPSMeter();
 meter.hide();
 camera.zoom = zoom;
-
  // soundtrack.setVolume(1)
  // soundtrack.play();
 }
@@ -79,6 +79,7 @@ function windowResized() {
  function static(){
    background(0)
    lvl.background();
+
  }
 
  //=============================================================================================
@@ -91,9 +92,10 @@ quests.quests_start();
 
    kam.follow();
 
-   inventory.set_slots();
+kont.allF();
+//   inventory.set_slots();
 
-       inventory.cut();
+//       inventory.cut();
 
        ui_poz();
 gracz.dist_attack();

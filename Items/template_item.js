@@ -27,6 +27,8 @@ this.pickup();
 
 pickup(){
   if(this.item.overlap(gracz.player)){
+   // inventory.add_to();
+
 
     if (inventory.inv.length <= inventory.slots){
 

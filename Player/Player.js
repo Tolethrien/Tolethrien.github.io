@@ -261,4 +261,10 @@ colider(){
         this.hitbox.overlap(enemy);}
 }
 //=============================================================================
+reset_pos(){
+gracz.player.position.x = 1526;
+gracz.player.position.y = 980;
+console.log("pozycja gracza zrestartowana")
+}
+//=========================================================================
 }

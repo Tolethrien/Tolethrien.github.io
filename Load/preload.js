@@ -39,6 +39,7 @@ poziom2 = loadImage('sprites/world/13.jpg')
 //poziom3 = loadImage('sprites/world/castle.png')
 //poziom4 = loadImage('sprites/world/trawa.png')
 kamera = loadImage('sprites/world/camera.png')
+chest = loadImage('sprites/world/chest.png')
 
 //ANIMACJE
 left_anim = loadAnimation(left_sheet);

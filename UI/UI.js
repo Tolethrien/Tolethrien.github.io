@@ -21,13 +21,10 @@ this.hud();
 }
 
 
-inventory_menu(){
-rect(this.x+50,this.y+50,300,300)
 
 
 
 
-}
 
 pauza(){
   push();
@@ -56,10 +53,10 @@ stats(){
 
   //================================//glowny kwadrat//=====================================
 camera.off()
+push();
 fill(100,100);
 rectMode(CORNER);
 
-push();
 rect(this.x,this.y,this.w,this.h,20,0,80,20)
 stroke(0)
 strokeWeight(3)
@@ -74,13 +71,16 @@ rect(this.x,this.y,150,250,20,0,0,0);
 pop();
 
 //============================//kwadrat za statami//=======================
+push();
 fill(50);
 rect(this.x,this.y+250,150,150,0,0,0,20)
-
+pop();
 //====================//kwadrat czarny ( tlo postaci) + postac//======================
+push();
 fill(0)
 rect(this.x+27,this.y+50,100,150,60);
 image(player_image,this.x+40,this.y+100);
+pop();
 
 //===========================//waga oraz gold//==========================
 push();
