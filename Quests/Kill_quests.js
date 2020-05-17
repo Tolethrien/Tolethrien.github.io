@@ -115,7 +115,7 @@ odp1(){
             this.quest_giver.quest_state = 'done';
             this.stage = "zakonczone"
                 this.quest_giver.have_quest = false;
-                gracz.money += this.prize;
+                inventory.money += this.prize;
               this.quest_giver.pop_up = false;}}
 
 }
@@ -130,7 +130,7 @@ odp2(){
             this.quest_giver.quest_state = 'done';
             this.quest_giver.have_quest = false;
                 this.stage = "zakonczone"
-              gracz.money += this.prize;
+              inventory.money += this.prize;
             this.quest_giver.pop_up = false;}}
 }
 odp3(){

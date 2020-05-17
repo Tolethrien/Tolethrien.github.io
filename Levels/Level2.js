@@ -1,13 +1,13 @@
 // pozycja gracza startowa: x = 1000 y = 1000 !!!!!!!
 class Lvl2{
 constructor(){
-  this.items_array = [];
+  this.loot_bags_array = [];
   this.wall = []
-        this.test = new Seller("test");
+        this.test = new Alt_seller("test");
     this.valdemar = new Npc("Valdemar");
         this.burmistrz = new Npc("Burmistrz");
 
-
+this.kont = new Contener(3,3,1580,1080);
     this.tomil = new Npc("Tomil");
     this.vah_mobs = [];
 //       this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
@@ -127,11 +127,22 @@ this.beny.allFunctions();
 //this.start_quest.start();
 //this.vah.start();
 this.spawner.allF();
+this.kont.allF();
 //this.qtest.start();
-for (let i = 0; i < this.items_array.length; i++){
-  this.items_array[i].allF();
-  if (this.items_array[i].picked == true){
-  this.items_array.splice(i,1);}
+
+
+// loopa odpowiedzialna za funkcjonalnosc loot bagow, za usuwanie pustych oraz za blokowanie
+//    otwarcia kilku naraz jesli są na sobie
+for (let i = 0; i < this.loot_bags_array.length; i++){
+  this.loot_bags_array[i].allF();
+  if (this.loot_bags_array[i].cont.removed == true){
+    console.log("no dostalem true")
+    this.loot_bags_array.splice(i,1);
+}
+
+
+  // if (this.loot_bags_array[i].picked == true){
+  // this.items_array.splice(i,1);}
 }
 }
 //================================================================================================

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project SteamPunk</title>
     <style> body {padding: 0; margin: 0;} </style>
+    <body oncontextmenu="return false;">
 
 <!-- addons -->
     <script src="/addons-libraries/p5.js"></script>
@@ -19,24 +20,24 @@
     <script src="/Enemies/spawner.js"></script>
 
 <!-- Items -->
-    <script src="/Items/template_item.js"></script>
     <script src="/Items/loot_lvl.js"></script>
       <script src="/Items/contener.js"></script>
+          <script src="/Items/loot_bag.js"></script>
+        <script src="/Items/Health_Potion.js"></script>
+          <script src="/Items/drags.js"></script>
 
 <!-- Levels -->
-    <script src="/Levels/Level1.js"></script>
     <script src="/Levels/Level2.js"></script>
-    <script src="/Levels/obstacle.js"></script>
 
 <!-- Load -->
     <script src="/Load/preload.js"></script>
     <script src="/Load/groups.js"></script>
-    <script src="/Load/lvl_change.js"></script>
     <script src="/Load/resize.js"></script>
 
 <!-- Npc -->
     <script src="/NPC's/NPC.js"></script>
     <script src="/NPC's/seller.js"></script>
+      <script src="/NPC's/alternate_seller.js"></script>
 
 <!-- Player -->
     <script src="/Player/Player.js"></script>
@@ -53,6 +54,7 @@
       <script src="/scripts/timer.js"></script>
       <script src="/scripts/buttons.js"></script>
       <script src="/scripts/Slots.js"></script>
+        <script src="/scripts/item_to.js"></script>
 <!-- UI -->
      <script src="/UI/UI.js"></script>
 

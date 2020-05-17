@@ -69,7 +69,6 @@ if ( mouseDown(LEFT)){
 if (mouseX > ui.x+151 && mouseX < ui.x+151+350 && mouseY > ui.y && mouseY < ui.y + 15){
   //rect(this.x+151,this.y,350,15)
   if (tempSet == false){
-   console.log("pres");
 on = true;
 tempX = (ui.x - mouseX) * -1;
 tempY = (ui.y - mouseY) * -1;

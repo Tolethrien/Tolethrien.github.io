@@ -2,10 +2,12 @@
 let player, lvl
 let zoom = 4 //zoom kamery
 let debugMode = false, pause = false, fps = true;
-let current_lvl = "lvl2";
+let current_lvl = "lvl1";
 let created = false;
 let game_stage = "game"
 let sceen;
+let wheelUP = false;
+let wheelDOWN = false;
 
 
 
@@ -22,7 +24,6 @@ sceen.style('display', 'block');
 //frameRate(60);                                 // FPS LOCK
 groups();                                        // grupy spritow   -      preload.js
 gracz        =  new Plejer();                    // gracz           -       player.js
-sprts        =  new Sprts();                     //obiekty mapy     -     opsticle.js
 kam          =  new Kam();                       //kamera           -       camera.js
 debug        =  new Debug();                     //skrypt Debugu    -      debug.js
 ui           =  new Ui();
@@ -31,7 +32,6 @@ loot = new Loot_lvl();
 lvl = new Lvl2();
 quest_log = new Quest_log();
 quests = new Quests();
-kont = new Contener();
 quests.questy();
 resize_images();
 meter = new FPSMeter();
@@ -72,6 +72,12 @@ function keyPressed(){
 //=============================================================================================
 function mousePressed(){
 }
+function mouseWheel(event){
+  if (event.delta == 100){
+  wheelDOWN = true;}
+  else if (event.delta == -100){
+  wheelUP = true;}
+}
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
@@ -92,10 +98,7 @@ quests.quests_start();
 
    kam.follow();
 
-kont.allF();
-//   inventory.set_slots();
 
-//       inventory.cut();
 
        ui_poz();
 gracz.dist_attack();
@@ -109,13 +112,6 @@ gracz.dist_attack();
 function render(){
 
 leyer_2();
-// camera.off();
-// push();
-// fill(0,200)
-// noStroke();
-// rect(0,0,windowWidth,height);
-// pop();
-// camera.on();
 
 leyer_3();
 
@@ -135,7 +131,7 @@ function leyer_2(){
   drawSprites(sciany);
   drawSprites(par_bottom);
   drawSprites(atention);
-  drawSprites(items);
+  //drawSprites(items);
   drawSprites(enemy);
     drawSprites(npcs);
       drawSprites(bullets);
@@ -149,8 +145,8 @@ function leyer_2(){
 
 function leyer_3(){
   ui.ui();
-  inventory.show();
   lvl.leyer_3();
+    inventory.show();
   quests.leyer_3();
 debug.debug_butt();
 

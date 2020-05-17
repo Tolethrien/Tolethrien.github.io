@@ -205,10 +205,12 @@ if(!this.hitin && this.attack_deley.timer == false){
 if (this.enemy.animation.getFrame() == 5){
      this.enemy.animation.changeFrame(0);
     this.hitin = false;
-   this.hitbox.remove();
+    if (this.hitbox){
+   this.hitbox.remove();}
    if (this.enemy.animation.getFrame() == 0){
      this.hitin = false;
-    this.hitbox.remove();
+       if (this.hitbox){
+    this.hitbox.remove();}
    }
   this.enemy.animation.stop();
        this.attack_deley.set_time(true,this.attack_time)
@@ -338,7 +340,8 @@ this.circle2.position.y = this.enemy.position.y;
 //==============================================================================
 
 drop(){
-  loot.lvl_1(this.dead);
+  //loot.drop_lvl("common",this.dead)
+  loot.drop_lvl("rare", this.dead);
 
 }
 

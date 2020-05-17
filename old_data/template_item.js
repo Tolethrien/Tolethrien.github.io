@@ -5,14 +5,17 @@ constructor(gold,amount,xx,yy,ww,hh){
   if ( this.type == "health_potion"){
   this.value_buy = 100;
   this.value_sell = 200;
+  this.graphic = rect(this.x+this.w/2-10,this.y+5,20,20);
 }
 if ( this.type == "sakiewka"){
 this.value_buy = 25;
 this.value_sell = 50;
+this.graphic = rect(this.x+this.w/2-10,this.y+5,20,20);
 }
 if ( this.type == "blah"){
 this.value_buy = 50;
 this.value_sell = 75;
+//rect(this.x+this.w/2-10,this.y+5,20,20);
 }
   this.x = xx + random(-10,10), this.y = yy + random(-10,10), this.w = ww, this.h = hh
 this.picked = false;
@@ -65,17 +68,20 @@ if(inventory.inv[i].length == 0){
 use(){
   if (this.type == "sakiewka"){
       console.log("+ " + this.amount + " money")
-    gracz.money += this.amount;}
+    inventory.money += this.amount;}
 
 if (this.type == "health_potion"){
+      console.log(" HP")
     if (gracz.hp < gracz.maxHP){
         console.log("+ " + this.amount + " HP")
   gracz.hp += this.amount;}}
-
+return true;
 }
 
 
-
+test(){
+  console.log("niuch")
+}
 
 
 

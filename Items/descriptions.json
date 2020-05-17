@@ -1,0 +1,27 @@
+{
+"potions":[
+  ["health_potion_01","mała mikstura lecząca","niskiej jakości mikstura lecznicza jakich wiele"],
+    ["health_potion_02","średnia mikstura lecząca","Średnia mikstura lecznicza pozwalająca jakoś przeżyć"],
+      ["health_potion_03","duża mikstura lecząca","Wyjątkowo uważona wedle najlepszych receptur "]
+  ],
+
+
+"drags":[
+  ["drags_klefedrone","Dawka Klefedronu","Najlepiej podawać do śniadania"],
+  ["drags_amphetamine","Dawka Amfetaminy","W dawnych czasach nazywana królową"]
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

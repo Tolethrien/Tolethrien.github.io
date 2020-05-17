@@ -1,3 +1,11 @@
+// DO przebudowania UI
+// 1) potrzebuje by w tym pliku dalo sie ustawic wszystkie zmienne zwiazane z wygladem
+  //     wszystkich funkcji UI
+  // 2) dobrze je opisać
+  // 3) niech wszystkie clasy jesli posiadajac cokowliek z UI (wielkością pozycją itp odnoszą się do
+  //   tego pliku
+
+
 class Ui{
 constructor(){
   //okno STATS
@@ -7,6 +15,8 @@ this.x = 100,this.y = 200,this.w = 500,this.h = 400
 this.gumpX = 400,this.gumpY = 250, this.gumpW = 700, this.gumpH = 200;
 this.startX = -200, this.startY = 250, this.startW = 300, this.startH = 300
 this.anim_speed = 24;
+this.slots_w = 75, this.slots_h = 75
+//menu kontekstowe
 
 //okno Quest_log
 this.ql_Y = 230;
@@ -25,7 +35,6 @@ this.hud();
 
 
 
-
 pauza(){
   push();
   fill(255);
@@ -34,6 +43,7 @@ pauza(){
 pop();
 return true
 }
+
 
 hud(){
   camera.off();
@@ -90,7 +100,7 @@ rect(this.x+10,this.y+10,65,20,5)
 fill(255);
 noStroke();
 textSize(10)
-text("Pyrki: " + gracz.money,this.x+95,this.y+15,80,20)
+text("Pyrki: " + inventory.money,this.x+95,this.y+15,80,20)
 text("Weight: 0/115",this.x+10,this.y+15,80,20)
 pop();
 //===========================staty postaci + wizualizacja ich//===========================

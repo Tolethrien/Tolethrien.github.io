@@ -130,7 +130,7 @@ talk_wykonany(){
               this.quest_giver.quest_state = "zakonczony";
               this.quest_taker.quest_state =  null;
               this.quest_giver.have_quest = false;;
-              gracz.money += this.prize
+              inventory.money += this.prize
               this.quest_taker.pop_up = false;
             this.anim_reset();}
 
@@ -142,7 +142,7 @@ talk_wykonany(){
               this.quest_giver.quest_state = "zakonczony";
               this.quest_taker.quest_state =  null;
               this.quest_giver.have_quest = false;
-              gracz.money += this.prize;
+              inventory.money += this.prize;
               this.quest_taker.pop_up = false;
             this.anim_reset();}}
 

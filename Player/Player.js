@@ -13,8 +13,9 @@ constructor(){
     //=====================FIZYKA==================================
   //  this.player.immovable = true;
     this.player.setCollider("rectangle",0,5,14,10);
+    //this.player.depth = 1
     p1.add(this.player);
-    this.base_spd = 1;
+    this.base_spd = 3;
     this.spd = this.base_spd;
     this.dash = new Timer();
     this.dash_cd = new Timer();
@@ -23,7 +24,7 @@ constructor(){
   //  this.currover = false;
     this.hitbox_vis = false;
     this.maxHP = 10;
-    this.money = 0;
+  //  this.money = 0;
     this.hp = 10;
     this.menu = false;
     this.currover = false

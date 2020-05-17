@@ -20,6 +20,7 @@ attack_left_sheet = loadSpriteSheet('sprites/player/attack_left.png',35,20,7);
 
 //MOBS
 //34 pozycje
+dead_bones = loadImage('sprites/Mobs/bones.png')
 
 //NPC
 quest_1 = loadImage('sprites/Npc/questMark.png')
@@ -39,7 +40,20 @@ poziom2 = loadImage('sprites/world/13.jpg')
 //poziom3 = loadImage('sprites/world/castle.png')
 //poziom4 = loadImage('sprites/world/trawa.png')
 kamera = loadImage('sprites/world/camera.png')
-chest = loadImage('sprites/world/chest.png')
+
+//PRZEDMIOTY
+chest = loadImage('sprites/Items/chest.png')
+scroll_info = loadImage('sprites/Items/scroll.png')
+inside_chest = loadImage('sprites/Items/inside.png')
+potion = loadImage('sprites/items/Health-potion.png')
+drags_jar_gray = loadImage('sprites/items/jar.png')
+drags_jar_red = loadImage('sprites/items/jar_red.png')
+placeholder = loadImage('sprites/items/placeholder.jpg')
+
+
+
+
+
 
 //ANIMACJE
 left_anim = loadAnimation(left_sheet);
@@ -55,5 +69,6 @@ attack_right = loadAnimation(attack_right_sheet);
 //JSON
 json_walls = loadJSON("Levels/walls.json");
 json_story = loadJSON("Quests/storys.json");
+json_descr = loadJSON("items/descriptions.json");
 }
 //=============================================================================================
