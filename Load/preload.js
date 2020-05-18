@@ -20,7 +20,7 @@ attack_left_sheet = loadSpriteSheet('sprites/player/attack_left.png',35,20,7);
 
 //MOBS
 //34 pozycje
-dead_bones = loadImage('sprites/Mobs/bones.png')
+dead_bones = loadImage('sprites/mobs/bones.png')
 
 //NPC
 quest_1 = loadImage('sprites/Npc/questMark.png')
@@ -42,13 +42,14 @@ poziom2 = loadImage('sprites/world/13.jpg')
 kamera = loadImage('sprites/world/camera.png')
 
 //PRZEDMIOTY
-chest = loadImage('sprites/Items/chest.png')
-scroll_info = loadImage('sprites/Items/scroll.png')
-inside_chest = loadImage('sprites/Items/inside.png')
-potion = loadImage('sprites/Items/Health-potion.png')
-drags_jar_gray = loadImage('sprites/Items/jar.png')
-drags_jar_red = loadImage('sprites/Items/jar_red.png')
-placeholder = loadImage('sprites/Items/placeholder.jpg')
+
+chest = loadImage('sprites/items/chest.png')
+scroll_info = loadImage('sprites/items/scroll.png')
+inside_chest = loadImage('sprites/items/inside.png')
+potion = loadImage('sprites/items/Health-potion.png')
+drags_jar_gray = loadImage('sprites/items/jar.png')
+drags_jar_red = loadImage('sprites/items/jar_red.png')
+placeholder = loadImage('sprites/items/placeholder.jpg')
 
 
 
