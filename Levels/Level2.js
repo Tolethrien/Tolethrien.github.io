@@ -14,8 +14,11 @@ this.kont = new Contener(3,3,1580,1080);
                this.vahel = new Enemy();
               this.beny = new Enemy();
 this.spawner = new Spawner(Enemy,2,10);
+this.mutant = new Mutant();
+//this.slot_machine = new Slot_machine();
 
-   this.walls();
+
+     this.walls();
     this.objects();
     this.teleports();
     this.trees();
@@ -34,12 +37,15 @@ this.image = image(poziom2,900,900);
 }
 //=============================================================================================
 walls(){
-  for (let i = 0; i < json_walls.walls.length; i++){
-  this.wall = createSprite(900 + json_walls.walls[i][0],900 + json_walls.walls[i][1],json_walls.walls[i][2],json_walls.walls[i][3])
- this.wall.visible = json_walls.walls[i][4]
- //this.wall.visible = true
-  sciany.add(this.wall)
-   }
+//   for (let i = 0; i < json_walls.walls.length; i++){
+//       // let d = dist (gracz.player.position.x,gracz.player.position.y,json_walls.walls[i][0]+900,json_walls.walls[i][1]+900)
+//       // if(d < 500){
+//   this.wall = createSprite(900 + json_walls.walls[i][0],900 + json_walls.walls[i][1],json_walls.walls[i][2],json_walls.walls[i][3])
+//  this.wall.visible = json_walls.walls[i][4]
+//  //this.wall.visible = true
+//   sciany.add(this.wall)
+// //}
+//    }
    // this.wall2 = createSprite(-50,-50,25,25);
    // sciany.add(this.wall2);
 //sciany
@@ -79,6 +85,7 @@ kamera_borders(){
 enemies(){
 this.vahel.create(1495,1777,10,14)
 this.beny.create(1320,1760,10,14)
+this.mutant.create(1320,1360,10,14)
 this.spawner.create(1050,1320,20,40)
 }
 //==============================================================================================
@@ -88,6 +95,7 @@ this.burmistrz.create(1320,1124,15,15);
 this.valdemar.npc.visible = false;
 this.tomil.create(1417,1294,15,15);
 this.test.create(1228,1420,15,15);
+
 }
 //==============================================================================================
 quests(){
@@ -128,27 +136,36 @@ this.beny.allFunctions();
 //this.vah.start();
 this.spawner.allF();
 this.kont.allF();
+this.mutant.allFunctions();
+//this.slot_machine.create();
 //this.qtest.start();
 
-
-// loopa odpowiedzialna za funkcjonalnosc loot bagow, za usuwanie pustych oraz za blokowanie
-//    otwarcia kilku naraz jesli są na sobie
-for (let i = 0; i < this.loot_bags_array.length; i++){
-  this.loot_bags_array[i].allF();
-  if (this.loot_bags_array[i].cont.removed == true){
-    console.log("no dostalem true")
-    this.loot_bags_array.splice(i,1);
-}
-
-
-  // if (this.loot_bags_array[i].picked == true){
-  // this.items_array.splice(i,1);}
-}
 }
 //================================================================================================
 leyer_3(){
   //this.start_quest.rozmowa();
   // this.vah.rozmowa();
    this.test.okno();
+   // loopa odpowiedzialna za funkcjonalnosc loot bagow, za usuwanie pustych oraz za blokowanie
+   //    otwarcia kilku naraz jesli są na sobie
+   for (let i = 0; i < this.loot_bags_array.length; i++){
+     this.loot_bags_array[i].allF();
+     if (this.loot_bags_array[i].cont.removed == true){
+       this.loot_bags_array.splice(i,1);
+   }
+
+   for (let i = 0; i < this.loot_bags_array.length; i++){
+       if (this.loot_bags_array[i].opened  == true){
+         break;}
+       else if (i == this.loot_bags_array.length -1){
+         for (let j = 0; j < this.loot_bags_array.length; j++){
+             if (this.loot_bags_array[j].integration()){
+               this.loot_bags_array[j].opened  = true;
+               break;}
+             }
+           }
+         }
+
+   }
 }
 }

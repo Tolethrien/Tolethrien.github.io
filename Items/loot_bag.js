@@ -1,43 +1,31 @@
 class Loot_bag extends Contener{
 
-constructor(lvle, rows,colms,xx,yy){
+constructor(rows,colms,xx,yy){
 super(rows,colms,xx,yy);
 this.cont.addImage(dead_bones)
 this.opened = false;
-this.lvl = lvle;
 this.item_power;
-
-switch(this.lvl){
-case "common":
-    this.item_drop_roll = random(0,2);
-    this.item_power_roll = random(1)
-      if(this.item_power_roll > 0.7){this.item_power = "medium"}else{this.item_power = "small"}
-      if (this.item_drop_roll <= 1.5){this.slot[0].hold = new Health_potion(this.item_power)}
-      if (this.item_drop_roll > 1.5) {this.slot[1].hold = new Drags("klefedrone")}
-break;
-
-case "rare":
-this.item_drop_roll = random(0,3);
-this.item_power_roll = random(1)
-  if(this.item_power_roll > 0.7){this.item_power = "big"}else{this.item_power = "medium"}
-  if (this.item_drop_roll >= 1){this.slot[0].hold = new Health_potion(this.item_power)}
-  if (this.item_drop_roll > 2.5) {this.slot[1].hold = new Drags("klefedrone")}
-  if (this.item_drop_roll > 2.8) {this.slot[2].hold = new Drags("amphetamine")}
-break;
-
+this.pos_set = false;
 
 }
 
 
-
-}
 
 allF(){
-super.allF();
+//super.allF();
   if (this.cont.removed == false){
-this.remove_after_loot();}
+this.remove_after_loot();
+if (this.integration()){
+  if (this.opened == true){
+this.show_kont();
+this.add_to_inv();
+ui.item_info_layer(this);
+ui.contex_layer(this);
+ui.move_loot_bag();
+}}
+this.bag_open();
 //this.bag_open();
-
+}
 }
 
 
@@ -50,21 +38,31 @@ for (let i = 0; i < this.slot.length; i++){
     break;}
     else if (i == this.slot.length -1 && this.slot[i].hold == undefined){
       this.cont.remove();
-          console.log("usuwam")
+        //  console.log("usuwam")
           return true;
     }     }
       }
 }
 
 bag_open(){
-if(this.integration()){
-  this.opened = true;
-} else {this.opened = false;}
+  //console.log(this.opened)
+if(!this.integration()){
+ this.opened = false;}
 
 
 }
 
+show_kont(){
 
+  this.ui_x = ui.loot_bag_ui_poz_x,
+  this.ui_y=ui.loot_bag_ui_poz_y,
+  this.ui_w= 50 * this.row + 50,
+  this.ui_h= 50 * this.col + 50;
+  camera.off();
+ui.conteiner_look("corpse",this.ui_x+15,this.ui_y);
+ui.slots_layer("rect_cut",this.ui_x+25,this.ui_y+25,ui.slots_w,ui.slots_h,this.slot,this.row,this.col)
+camera.on();
+}
 
 
 

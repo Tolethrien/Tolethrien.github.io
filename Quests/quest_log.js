@@ -4,21 +4,28 @@ constructor(){
   this.menu = false;
   this.track = false;
   this.quest_list = [];
-  this.slot = [];
+  //     for (let i = 0; i < 20; i++){
+  // this.quest_list.push(i)}
+  //this.buttons = [];
   this.slot_track = [];
-    for (let i = 0; i < 12; i++){
-      this.slot[i] = new Button();
-      this.slot_track[i] = new Button();
+    for (let i = 0; i < 20; i++){
+      this.quest_list[i] = new Quest_slot();
     }
 //dodatki
 this.text_log; // zapisuje numer array wyswietlanego tekstu w quest logu
 this.text_track; //zapisuje numer array wyswietlanego tekstu w tracku
+this.show_min = 0;
+this.show_max = 9;
+
 }
 
 allF(){
-this.show();
-this.splice();
-this.pres();
+// this.show();
+// this.splice();
+// this.pres();
+if (this.menu){
+this.design();
+  this.logo();}
 }
 
 
@@ -31,6 +38,77 @@ this.quest_track();
 
 
 }
+
+design(){
+  camera.off();
+  push();
+ui.quest_log();
+    textFont(caveat_bold)
+textSize(24);
+text("Notatki: ",ui.ql_X+150,ui.ql_Y+80)
+textSize(20);
+text("Strona: ",ui.ql_X+280,ui.ql_Y+100)
+let y = 40;
+for (let i = this.show_min; i < this.show_max; i++){
+    this.quest_list[i].create(ui.ql_X+80,ui.ql_Y+80+y,270,40);
+    if (this.quest_list[i].hold != undefined){
+        text(i+1,ui.ql_X+300,ui.ql_Y+100+y)
+    }
+    y += 40;
+  }
+pop();
+camera.on();
+
+}
+
+
+
+logo(){
+  for (let i = 0; i < this.quest_list.length; i++){
+    if(this.quest_list[i].click()){
+      turn_page.play();
+      this.line1 = this.quest_list[i].hold.lines[4][0];
+        this.line2 = this.quest_list[i].hold.lines[4][1];
+          this.line3 = this.quest_list[i].hold.lines[4][2];
+            this.line4 = this.quest_list[i].hold.lines[4][3];
+      this.q_stat = this.quest_list[i].hold.stage
+    }
+  }
+  if (this.line1 != null){
+    push();
+        textSize(20);
+          textFont(caveat_font)
+text("<Get_day>",ui.ql_X+420,ui.ql_Y+60,300,20)
+text("<get_date&&clock>",ui.ql_X+550,ui.ql_Y+90,300,20)
+
+text(this.line1,ui.ql_X+420,ui.ql_Y+120,300,400)
+if (this.line2 != null){
+text(this.line2,ui.ql_X+420,ui.ql_Y+300,300,100)
+line(ui.ql_X+420,ui.ql_Y+330,ui.ql_X+500,ui.ql_Y+330)}
+
+if (this.line3 != null){
+text(this.line3,ui.ql_X+420,ui.ql_Y+340,300,100)
+line(ui.ql_X+420,ui.ql_Y+370,ui.ql_X+560,ui.ql_Y+370)}
+
+if (this.line4 != null){
+text(this.line4,ui.ql_X+420,ui.ql_Y+380,300,100)
+line(ui.ql_X+420,ui.ql_Y+410,ui.ql_X+560,ui.ql_Y+410)}
+
+text("status: " + this.q_stat,ui.ql_X+420,ui.ql_Y+440,300,100)
+pop();}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 pres(){
 for( let i = 0; i < this.quest_list.length; i++){
@@ -122,8 +200,14 @@ quest_track(){
 
 }
 
-
-
+add_to(quest){
+  for (let i = 0; i < this.quest_list.length; i++){
+    if (this.quest_list[i].hold == undefined){
+      this.quest_list[i].hold = quest;
+      break;
+    }
+}
+}
 
 
 

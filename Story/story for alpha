@@ -1,0 +1,90 @@
+Story for apha 1.0
+
+początek:
+
+gracz znajduje sie po środku niczego z malym zapasem wody i żywności, polowa HP, 10 nabojami do pistoletu oraz nożem
+
+butla tlenowa starczy mu mniej więcej na 5 minut
+
+EVENT: Gracz mówi "przeklęci łupieżcy... muszę się dostać do osady, mam niewiele czasu nim
+ta butla sie wyczerpie"
+
+zaczyna się gra: w gorze ekranu pojawia się licznik z 5 minutami(lub procentami) oznajmiającymi ile zostalo tlenu
+
+gracz udaje sie przed siebię bo tylko tam bedzie mozna isc, po drodze zbiera kilka przedmiotow z ziemi/kufrów
+
+dociera do wyjścia z górzystych terenów gdzie zaczyna sie otwarty świat, jednak na koncu przesmyku ku wolnosci
+widzi grupkę banitów przy ognisku
+
+EVENT: gracz mówi "moge spróbwoać ich zabić lub przeslizgnac sie jakoś niezauważony"
+
+którąkolwiek wybierze opcje gracz, bohater wydostaje sie na otwartą przestrzeń i widzi znak namalowany na pobliskim szyldzie
+"w stronę <nazwa osady> ---->"
+
+EVENT: odpala sie 1 quest "znajdź osade" wraz z nim quest track pokazuje graczowi pozycje w którą powinien się udać
+
+po krótkim spacerku przez świat (z potrzeb alfy obudowany niewidzialnymi ścianami tutaj) gracz dociera do osady
+
+EVENT: wchodząc do niej Tlen przestaje spadać w butli (świeze filtrowane powietrze)
+
+gracz napotyka szyld mowiacy "każdy nowoprzybyły powinien zameldować się u burmistrza miasta"
+
+EVENT: kończy się quest "znajdz osade". Odpala sie 2 quest "czego chce burmistrz" oraz 3 quest "Po zapasy"
+
+w tym momencie gracz może zaczac troche eksplorować miasto oraz rozmawiac z npcami jednak handel itp jest zakazany dla obcych
+do czasu az gracz nie porozmawia z burmistrzem.
+
+Gracz udaje sie do burmistrza a ten go prosi o jakieś info o sobie (kreator postaci) oraz zezwala na przebywanie swobodne w miescie
+
+gracz dostaje tez info iż by nie zostaly ci odebrane uprawnienia musisz wykonać w mieście kilka misji.
+
+EVENT: rozpoczyna się quest "co w mieścię piszczy" / odblokowywuje się możliwość handlu z npcami
+
+gracz udaje się by wykonać 5 misji które są składową tej misji.
+
+misje: 1) "zabij kogoś gdzieś tam" 2) "udaj się gdzieś w formie zwiadu i zdaj raport z tego miejca"
+       3) "dostarcz komuś coś"     4) "Przekonaj kogoś do zrobienia czegoś" 5)" rozwiąż jakąś zagadkę/znajdź coś"
+
+po skończeniu misji gracz wraca do burmistrza który dziękuje mu, wypłaca wieksza nagrode oraz kończy 1 częśc alfy 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4

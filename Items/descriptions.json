@@ -1,18 +1,27 @@
 {
 "potions":[
   ["health_potion_01","mała mikstura lecząca","niskiej jakości mikstura lecznicza jakich wiele"],
-    ["health_potion_02","średnia mikstura lecząca","Średnia mikstura lecznicza pozwalająca jakoś przeżyć"],
+    ["health_potion_02","śr. mikstura lecząca","Średnia mikstura lecznicza pozwalająca jakoś przeżyć"],
       ["health_potion_03","duża mikstura lecząca","Wyjątkowo uważona wedle najlepszych receptur "]
   ],
 
 
 "drags":[
-  ["drags_klefedrone","Dawka Klefedronu","Najlepiej podawać do śniadania"],
-  ["drags_amphetamine","Dawka Amfetaminy","W dawnych czasach nazywana królową"]
+  ["drags_klefedrone","Dawka Klefedronu","Najlepiej podawać do śniadania","43"],
+  ["drags_amphetamine","Dawka Amfetaminy","W dawnych czasach nazywana królową","drags_jar_gray"]
+],
+
+
+"Food":[
+  ["meat","Surowe mięso","mmmm, żylaste, dokladnie tak jak lubie"],
+  ["cooked_meat","Upieczone mięso","smakuje jak kurczak, albo świnia?"]
+],
+
+"Drink":[
+  ["water","woda","troche zanieczyszczona ale zdatna do picia","12"],
+  ["botteled_water","Butelkowana Woda","krystaliczny relikt dawnych czasów", "22"],
+    ["crystalized_water","Woda mineralizowana","Nie jeden zabije za tą pęłną minerałów wodę","17"]
 ]
-
-
-
 
 
 

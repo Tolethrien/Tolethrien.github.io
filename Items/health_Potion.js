@@ -4,24 +4,27 @@ class Health_potion{
 this.what_type_of = type
 switch(this.what_type_of){
   case "small":
-                this.name = "Mała mikstrura lecząca"
-                this.type = "health_potion_01"
+    this.id = 3;
+                this.name = json_descr["potions"][0][1];
+                this.type = json_descr["potions"][0][0];
                 this.description = json_descr["potions"][0][2];
                 this.sell_prize = 50;
                 this.buy_prize = 100;
                 this.hp_add = 2;
     break;
     case "medium":
-                  this.name = "śr. mikstrura lecząca"
-                  this.type = "health_potion_02"
+    this.id = 1;
+                  this.name = json_descr["potions"][1][1];
+                  this.type = json_descr["potions"][1][0];
                   this.description = json_descr["potions"][1][2];
                   this.sell_prize = 50;
                   this.buy_prize = 100;
                   this.hp_add = 5;
       break;
       case "big":
-                    this.name = "duża mikstrura lecząca"
-                    this.type = "health_potion_03"
+        this.id = 2;
+                    this.name = json_descr["potions"][2][1];
+                    this.type = json_descr["potions"][2][0];
                     this.description = json_descr["potions"][2][2];
                     this.sell_prize = 50;
                     this.buy_prize = 100;

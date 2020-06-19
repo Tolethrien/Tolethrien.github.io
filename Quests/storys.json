@@ -1,5 +1,5 @@
 {
-"quest_start": [
+"Na potrzeby chwili": [
   ["Dzielni śmiałkowie gotowi pomóc temu miastu poszukiwani! Więcej informacji u Burmistrza!",
         "*Przeczytane*"],
 
@@ -10,12 +10,13 @@
 
   [null],
 
-  ["odnalazłeś po drodzę znak który skierował cię prosto do domu burmistrza",
-    "- udaj się do burmistrza"]
+  ["Na potrzeby chwili <npc_name> skierował mnie do miasteczka bym pomógł mieszkańcom w ich problemach, jak zapracuje na to, powie mi co stalo sie z nią...",
+    "cel:  pomóż ludziom w mieście",
+  "informacje: <npc_job> potrzebuje pomocy", "infomacje: <npc_job> potrzebuje pomocy"]
   ],
 
-"q_start": [
-  ["Dwa twoje klony zalęgły się na pobliskim cmentarzu i zakłucają spokój zmarłych, zajmiesz się nimi?",
+"Wygodna cena niewygody": [
+  ["No więc widziaęm pewną burde na rynku latając za swoimi sprawami, okazało się że ten człowiek.... oprawca bardzo nie chciał bym go widział, zaproponował mi nie małą sumkę jeśli będę trzyma jęzor za zębami i mnie taki ukłąd bardzo pasuje, musze tylko uważać na to co bede paplać je",
             "Rozprawię się z nimi",
             "nie teraz, muszę uzupelnic zapasy"],
 
@@ -26,8 +27,9 @@
 
   [null],
 
-  ["odnalazłeś po dsssssssssssssssssssmistrza",
-    "- udo burmistrza"]
+  ["zrobiłem chyba wszystko co ten stary pryk ode mnie chciał, moze warto teraz udac sie do neigo po nagrode obiecana... spedzilem tu i tak stanowczo za dużo czasu zamiast szukac tych ludzi." ,
+    "cel:  wróć do <NPC_Name>", null,null]
+
   ]
 
 

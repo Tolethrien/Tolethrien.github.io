@@ -1,33 +1,24 @@
-class Enemy {
+class Mutant {
 constructor(){
   this.alive = true;
   this.attraction_distance = 70;
-  this.debugMode = false;
+  this.debugMode = true;
   this.state = "idle"
   this.hitin = false;
   this.hit_player = false;
   this.hitbox_vis = true;
   this.attack_deley = new Timer();
-    this.attack_time = 2;
-  this.stats();
+  this.profile();
 }
 //================================================================================================
 create(xx,yy,ww,hh){
 this.x = xx, this.y = yy, this.w = ww, this.h = hh;
 //-----------------------------------------------------
 this.enemy = createSprite(this.x,this.y,this.w,this.h);
-this.enemy.setCollider("rectangle",0,5,14,10);
+this.enemy.setCollider("rectangle",0,0,14,14);
 //---------------animacje-----------------------//
-this.enemy.addAnimation('left',left_anim);
-this.enemy.addAnimation('right',right_anim);
-this.enemy.addAnimation('up',up_anim);
-this.enemy.addAnimation('down',down_anim);
-this.enemy.addAnimation('attack_up',attack_up);
-this.enemy.addAnimation('attack_left',attack_left);
-this.enemy.addAnimation('attack_right',attack_right);
-this.enemy.addAnimation('attack_down',attack_down);
 //---------------------------------------------------
-this.enemy.maxSpeed = 0.5
+this.enemy.maxSpeed = this.move_speed
 this.enemy.debug = false;
 enemy.add(this.enemy);
 //-----------------------attraction circle---------------//
@@ -36,7 +27,7 @@ this.circle.setCollider("circle",0,0,this.attraction_distance);
 atention.add(this.circle);
 //----------------------attack circle----------------------//
 this.circle2 = createSprite(this.enemy.position.x,this.enemy.position.y,25,25);
-this.circle2.setCollider("rectangle",0,5,31,31)
+this.circle2.setCollider("rectangle",0,0,31,31)
 this.circle2.visible = true;
 this.circle2.debug = false;
 atention.add(this.circle2);
@@ -52,27 +43,27 @@ else{
   this.circle2.visible = false;
   this.circle.debug = false;}
 }
+
+
 //==============================================================================
 allFunctions(){
   this.control();
+  this.timers_control();
   // |idle| - nic, |guard| - strzeż, |notice| - idz w strone gracza, |attack| - atakuj gracza
 switch(this.state){
-  case "idle": this.guard(),this.attraction_set(),this.anim(),this.targeting(),this.dead(),this.kill();
+  case "idle": this.back_to_position(),this.attraction_set(),this.targeting(),this.attack_del(),this.got_hitted(),this.kill();
   break;
-case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.anim(),this.attack_del(),this.dead(),this.kill();
+case "follow":  this.attraction(),this.attraction_set(),this.targeting(),this.got_hitted(),this.kill();
   break;
-case "fight": this.anim(),this.targeting(),this.attack(),this.dead(),this.kill(),this.hit();
+case "fight": this.targeting(),this.hitting_target(),this.got_hitted(),this.kill(),this.attacking();
 case "dead":
   break
 }
 }
 //===========================================================================
 control(){
-    this.at();
-  //  console.log(this.attack_deley.timer);
 //in idle
 if (this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
-    this.enemy.animation.play();
     this.state = "follow";}
 // in follow
 else if (this.circle2.overlap(gracz.player)){
@@ -84,25 +75,34 @@ else if (!this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.playe
 this.state = 'idle'}
 }
 //==============================================================================
-stats(){
+profile(){
+// tutaj zapisujemy wszystkie info o worgach ktore nie sa generyczne
 this.health = 5;
 this.mana;
-this.attack;
+this.attack = 0.5;
 this.deff;
-this.atcSpeed;
-this.moveSpeed;
+this.move_speed = 0.7
+this.attack_Speed = 0.5;
+this.hbl = 10;
+this.charge_attack = 1;
+this.charge_curr = this.charge_attack;
+
+
+
 }
 
+
 //==============================================================================
-guard(){
+back_to_position(){
   if (!this.circle.overlap(gracz.player) && !this.circle2.overlap(gracz.player)){
 
     this.enemy.velocity.x = floor((this.enemy.position.x - this.x) * -0.05);
     this.enemy.velocity.y = floor((this.enemy.position.y - this.y) * -0.05);}
 
   if (this.enemy.velocity.x == 0 && this.enemy.velocity.y == 0){
-        this.enemy.animation.stop();
-        this.enemy.animation.rewind();}
+      //  this.enemy.animation.stop();
+        //this.enemy.animation.rewind();
+      }
 
 }
 //===============================================================================
@@ -164,102 +164,58 @@ if (this.state == "idle"){
 }
 
 //==================================================================================================
-attack(){
-if (this.circle2.overlap(gracz.player)){
-switch(this.target){
-case "left":
-if(!this.hitin && this.attack_deley.timer == false){
-  this.enemy.animation.play();
-  this.hitbox = createSprite(this.enemy.position.x-10,this.enemy.position.y,15,15);
-  atention.add(this.hitbox);
-  this.hitbox.visible = this.hitbox_vis;
-  this.hitin = true;}
-  break;
-case "right":
-if(!this.hitin && this.attack_deley.timer == false){
-  this.enemy.animation.play();
-  this.hitbox = createSprite(this.enemy.position.x+10,this.enemy.position.y,15,15);
-  atention.add(this.hitbox);
-    this.hitbox.visible = this.hitbox_vis;
-  this.hitin = true;}
-  break;
-case "top":
-if(!this.hitin && this.attack_deley.timer == false){
-  this.enemy.animation.play();
-  this.hitbox = createSprite(this.enemy.position.x,this.enemy.position.y-10,15,15);
-  atention.add(this.hitbox);
-    this.hitbox.visible = this.hitbox_vis;
-  this.hitin = true;}
-  break;
-case "bottom":
-if(!this.hitin && this.attack_deley.timer == false){
-  this.enemy.animation.play();
-  this.hitbox = createSprite(this.enemy.position.x,this.enemy.position.y+15,15,15);
-  atention.add(this.hitbox);
-    this.hitbox.visible = this.hitbox_vis;
-  this.hitin = true;}
-  break;
-}
 
-}
-if (this.enemy.animation.getFrame() == 5){
-     this.enemy.animation.changeFrame(0);
-    this.hitin = false;
-    if (this.hitbox){
-   this.hitbox.remove();}
-   if (this.enemy.animation.getFrame() == 0){
-     this.hitin = false;
-       if (this.hitbox){
-    this.hitbox.remove();}
-   }
-  this.enemy.animation.stop();
-       this.attack_deley.set_time(true,this.attack_time)
-
-}
-}
 //================================================================================
-at(){
-  this.attack_deley.time_out();
-}
+timers_control(){
+
+  this.attack_deley.time_out();  // kontroler licznika opoznienia ataku
+
+  if (!this.circle2.overlap(gracz.player)){
+    this.charge_curr = this.charge_attack}
+
+ }
+
 attack_del(){
   if (!this.circle2.overlap(gracz.player)){
     if (this.hitbox){
       this.hitbox.remove();
+      this.hitin = false;
     }
   }
 }
 //===============================================================================
-hit(){
+hitting_target(){
   if(this.hitbox){
   if (!this.hitbox.overlap(gracz.player)){
     this.hit_player = false;
   }
   if(this.hitbox.overlap(gracz.player) && this.hit_player == false){
-    gracz.hp -= 1;
+    gracz.hp -= this.attack;
     this.hit_player = true;
   }
 }
 }
 //==============================================================================
-dead(){
+got_hitted(){
   // currover - sprawdza czy cel jest obecnie uderzany i blokuje ponowne zabranie hp
 if (gracz.hitbox){
 if (!gracz.hitbox.overlap(this.enemy)){
   this.currover = false;
 }
 if (gracz.hitbox.overlap(this.enemy) && this.currover == false ){
-this.health -= 1;
+this.health -= 1; // zmien na ilosc dmg postaci
 this.currover = true;}}
 
 for ( let i = 0; i < bullets.length; i++){
   if (bullets[i].overlap(this.enemy)){
-      this.health -= 2;
+      this.health -= 2; // zmien na ilosc dmg postaci
       bullets[i].remove();
 }}
 }
 //==============================================================================
 kill(){
   if (this.health <= 0 && this.state != "dead"){
+    this.dead = createVector();
     this.dead.x = this.enemy.position.x;
         this.dead.y = this.enemy.position.y;
     this.drop();
@@ -275,54 +231,53 @@ kill(){
   }
 }
 //==============================================================================
-walk(){
-  if (this.follow == false){}
-}
+
 //==============================================================================
-anim(){
-
-
-if (this.circle.overlap(gracz.player) || this.state == 'idle'){
-  switch(this.target){
-    case "left": this.enemy.changeAnimation("left");
-          break;
-    case "right":this.enemy.changeAnimation("right");
-            break;
-          case "top": this.enemy.changeAnimation("up");
-            break;
-          case "bottom": this.enemy.changeAnimation("down");
-            break;
-                }
-            }
-if (this.circle2.overlap(gracz.player)){
-    switch(this.target){
-      case "left":      this.enemy.animation.stop();
-                        this.enemy.changeAnimation("attack_left");
-                        this.enemy.animation.offX = -10;
-
-              break;
-        case "right":   this.enemy.animation.stop();
-                        this.enemy.changeAnimation("attack_right");
-                        this.enemy.animation.offX = +10;
-
-              break;
-        case "top":     this.enemy.animation.stop();
-                        this.enemy.changeAnimation("attack_up");
-                        this.enemy.animation.offY = -10;
-
-              break;
-        case "bottom":  this.enemy.animation.stop();
-                        this.enemy.changeAnimation("attack_down");
-                        this.enemy.animation.offY = +10;
-
-              break;
-              }
-        }
-
-}
+// anim(){
+//
+//
+// if (this.circle.overlap(gracz.player) || this.state == 'idle'){
+//   switch(this.target){
+//     case "left": this.enemy.changeAnimation("left");
+//           break;
+//     case "right":this.enemy.changeAnimation("right");
+//             break;
+//           case "top": this.enemy.changeAnimation("up");
+//             break;
+//           case "bottom": this.enemy.changeAnimation("down");
+//             break;
+//                 }
+//             }
+// if (this.circle2.overlap(gracz.player)){
+//     switch(this.target){
+//       case "left":      this.enemy.animation.stop();
+//                         this.enemy.changeAnimation("attack_left");
+//                         this.enemy.animation.offX = -10;
+//
+//               break;
+//         case "right":   this.enemy.animation.stop();
+//                         this.enemy.changeAnimation("attack_right");
+//                         this.enemy.animation.offX = +10;
+//
+//               break;
+//         case "top":     this.enemy.animation.stop();
+//                         this.enemy.changeAnimation("attack_up");
+//                         this.enemy.animation.offY = -10;
+//
+//               break;
+//         case "bottom":  this.enemy.animation.stop();
+//                         this.enemy.changeAnimation("attack_down");
+//                         this.enemy.animation.offY = +10;
+//
+//               break;
+//               }
+//         }
+//
+// }
 //=============================================================================
 attraction(){
   if (this.circle.overlap(gracz.player)){
+    //  this.enemy.animation.play();
     this.enemy.velocity.x = floor((this.enemy.position.x - gracz.player.position.x) * -0.05);
     this.enemy.velocity.y = floor((this.enemy.position.y - gracz.player.position.y) * -0.05);
   } else {
@@ -341,17 +296,82 @@ this.circle2.position.y = this.enemy.position.y;
 
 drop(){
   //loot.drop_lvl("common",this.dead)
-  loot.drop_lvl("rare", this.dead);
+//  loot.drop_lvl("rare", this.dead);
+
+this.drop_items_list = [];
+
+loot.set_random_loot("rare",this.drop_items_list);
+//loot.cos("rare")
+loot.set_loot_bag(this.drop_items_list,this.dead)
+this.drop_items_list = [];
+
+
+  // lvl.loot_bags_array.push(new Loot_bag(, 3,2,target.x,target.y));
+}
+
+attacking(){
+  if (this.circle2.overlap(gracz.player)){
+  switch(this.target){
+  case "left":
+  if((!this.hitbox || this.hitbox.life ==0) && this.attack_deley.timer == false){
+  //  this.enemy.animation.play();
+  this.charge_curr --;
+  console.log(this.charge_curr)
+  if (this.charge_curr == 0){
+    this.hitbox = createSprite(this.enemy.position.x-15,this.enemy.position.y,15,35);
+    atention.add(this.hitbox);
+    this.hitbox.visible = this.hitbox_vis;
+    this.hitin = true;
+  this.hitbox.life = this.hbl;
+  this.charge_curr = this.charge_attack;
+    this.attack_deley.set_time(true,this.attack_Speed)}}
+    break;
+  case "right":
+  if((!this.hitbox || this.hitbox.life ==0) && this.attack_deley.timer == false){
+    //this.enemy.animation.play();
+    this.charge_curr --;
+    console.log(this.charge_curr)
+    if (this.charge_curr == 0){
+    this.hitbox = createSprite(this.enemy.position.x+15,this.enemy.position.y,15,35);
+    atention.add(this.hitbox);
+      this.hitbox.visible = this.hitbox_vis;
+    this.hitin = true;
+  this.hitbox.life = this.hbl;
+  this.charge_curr = this.charge_attack;
+    this.attack_deley.set_time(true,this.attack_Speed)}}
+    break;
+  case "top":
+  if((!this.hitbox || this.hitbox.life ==0) && this.attack_deley.timer == false){
+    //this.enemy.animation.play();
+    this.charge_curr --;
+    console.log(this.charge_curr)
+    if (this.charge_curr == 0){
+    this.hitbox = createSprite(this.enemy.position.x,this.enemy.position.y-15,35,15);
+    atention.add(this.hitbox);
+      this.hitbox.visible = this.hitbox_vis;
+    this.hitin = true;
+  this.hitbox.life = this.hbl;
+  this.charge_curr = this.charge_attack;
+    this.attack_deley.set_time(true,this.attack_Speed)}}
+    break;
+  case "bottom":
+  if((!this.hitbox || this.hitbox.life ==0) && this.attack_deley.timer == false){
+    //this.enemy.animation.play();
+    this.charge_curr --;
+    console.log(this.charge_curr)
+    if (this.charge_curr == 0){
+    this.hitbox = createSprite(this.enemy.position.x,this.enemy.position.y+15,35,15);
+    atention.add(this.hitbox);
+      this.hitbox.visible = this.hitbox_vis;
+    this.hitin = true;
+  this.hitbox.life = this.hbl;
+  this.charge_curr = this.charge_attack;
+    this.attack_deley.set_time(true,this.attack_Speed)}}
+    break;
+  }
 
 }
 
 }
-// - przeciwnik musi miec okręg zainteresowania
-// - kiedy gracz wejdzie w okreg przeciwnik idzie w jego kierunku
-// - kiedy gracz oddali sie dostatecznie od przeciwnika ten wraca na swoja pozycje startowa
-// - animacja przeciwnika zawsze jest skierowana w strone gracza
-// - atak nastepuje kiedy gracz znajdzie sie w obszarze ataku przeciwnika
-// - przeciwnik musi miec HP, ATTACK, SPEED
-// -----------------NA POZNIEJ--------------------------------
-// - ataki dystansowe oparte sa o dystans oraz kąt prosty 3kata miedzy przeciwnikiem a graczem??
-// - Attack,HP, speed w oparciu o staty + (jeśli) broń/item
+
+}

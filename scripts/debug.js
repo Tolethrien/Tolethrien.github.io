@@ -123,6 +123,11 @@ debug_butt(){
 
 }
 
+coords(){
+  console.table({"poz X: ": gracz.player.position.x,"poz Y: ": gracz.player.position.y} )
+}
+
+
 }
 // do dodania na potem
 

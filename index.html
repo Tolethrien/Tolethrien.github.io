@@ -4,66 +4,85 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project SteamPunk</title>
-    <style> body {padding: 0; margin: 0;} </style>
+    <style> body {padding: 0; margin: 0;}
+    /* div {
+        height: 400px;
+        background: linear-gradient(to bottom, #0033cc 0%, #ff99cc 100%)
+    } */
+     </style>
     <body oncontextmenu="return false;">
 
 <!-- addons -->
-    <script src="/addons-libraries/p5.js"></script>
-    <script src="/addons-libraries/p5.dom.js"></script>
-    <script src="/addons-libraries/p5.sound.js"></script>
-    <script src="/addons-libraries/p5.play.js"></script>
-    <script src="/addons-libraries/fps.js"></script>
-      <script src="/addons-libraries/illuminated.js"></script>
+    <script src="addons-libraries/p5.js"></script>
+    <script src="addons-libraries/p5.dom.js"></script>
+    <script src="addons-libraries/p5.sound.js"></script>
+    <script src="addons-libraries/p5.play.js"></script>
+    <script src="addons-libraries/fps.js"></script>
+      <script src="addons-libraries/illuminated.js"></script>
+
+      <!-- scripts -->
+            <script src="scripts/debug.js"></script>
+            <script src="scripts/timer.js"></script>
+            <script src="scripts/buttons.js"></script>
+            <script src="scripts/Slots.js"></script>
+              <script src="scripts/item_to.js"></script>
 
 <!-- Enemies -->
-    <script src="/Enemies/Enemy.js"></script>
-    <script src="/Enemies/spawner.js"></script>
+    <script src="Enemies/scavenger.js"></script>
+        <script src="Enemies/Mutant.js"></script>
+    <script src="Enemies/spawner.js"></script>
 
 <!-- Items -->
-    <script src="/Items/loot_lvl.js"></script>
-      <script src="/Items/contener.js"></script>
-          <script src="/Items/loot_bag.js"></script>
-        <script src="/Items/health_Potion.js"></script>
-          <script src="/Items/drags.js"></script>
+    <script src="Items/loot_lvl.js"></script>
+      <script src="Items/contener.js"></script>
+          <script src="Items/loot_bag.js"></script>
+        <script src="Items/health_Potion.js"></script>
+          <script src="Items/drags.js"></script>
+              <script src="Items/food.js"></script>
+                <script src="Items/drink.js"></script>
+                    <script src="Items/item_list.js"></script>
 
 <!-- Levels -->
-    <script src="/Levels/Level2.js"></script>
+    <script src="Levels/Level2.js"></script>
+    <script src="Levels/template.js"></script>
 
 <!-- Load -->
-    <script src="/Load/preload.js"></script>
-    <script src="/Load/groups.js"></script>
-    <script src="/Load/resize.js"></script>
+    <script src="Load/preload.js"></script>
+    <script src="Load/groups.js"></script>
+    <script src="Load/resize.js"></script>
 
 <!-- Npc -->
-    <script src="/NPC's/NPC.js"></script>
-    <script src="/NPC's/seller.js"></script>
-      <script src="/NPC's/alternate_seller.js"></script>
+    <script src="NPC's/NPC.js"></script>
+    <script src="NPC's/seller.js"></script>
+      <script src="NPC's/alternate_seller.js"></script>
+
+<!-- Objects-->
+    <script src="Objects/slot_machine.js"></script>
 
 <!-- Player -->
-    <script src="/Player/Player.js"></script>
-    <script src="/Player/Inventory.js"></script>
+    <script src="Player/Player.js"></script>
+    <script src="Player/Inventory.js"></script>
 
 <!-- Quests -->
-    <script src="/Quests/quests.js"></script>
-    <script src="/Quests/Fedex_quests.js"></script>
-    <script src="/Quests/Kill_quests.js"></script>
-    <script src="/Quests/quest_log.js"></script>
+    <script src="Quests/quests.js"></script>
+    <script src="Quests/Fedex_quests.js"></script>
+    <script src="Quests/Kill_quests.js"></script>
+    <script src="Quests/quest_log.js"></script>
+      <script src="Quests/quest_slot.js"></script>
 
-<!-- scripts -->
-      <script src="/scripts/debug.js"></script>
-      <script src="/scripts/timer.js"></script>
-      <script src="/scripts/buttons.js"></script>
-      <script src="/scripts/Slots.js"></script>
-        <script src="/scripts/item_to.js"></script>
+
 <!-- UI -->
-     <script src="/UI/UI.js"></script>
+     <script src="UI/UI.js"></script>
 
 
 <!-- main files -->
       <script src="imputs.js"></script>
       <script src="camera.js"></script>
-    <script src="Main.js"></script>
+          <script src="light.js"></script>
+    <script src="main.js"></script>
+
   </head>
   <body>
   </body>
+
 </html>

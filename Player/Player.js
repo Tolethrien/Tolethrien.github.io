@@ -12,7 +12,7 @@ constructor(){
     this.player.addAnimation('attack_down',attack_down);
     //=====================FIZYKA==================================
   //  this.player.immovable = true;
-    this.player.setCollider("rectangle",0,5,14,10);
+    this.player.setCollider("rectangle",0,0,14,10);
     //this.player.depth = 1
     p1.add(this.player);
     this.base_spd = 3;
@@ -26,6 +26,20 @@ constructor(){
     this.maxHP = 10;
   //  this.money = 0;
     this.hp = 10;
+    this.hunger = 100
+    this.hunger_max = 100;
+    this.hunger_tick = 5 // w sekundach
+    this.hunger_timer = new Timer();
+this.hunger_timer.set_time(true,this.hunger_tick)
+
+    this.thirst = 100;
+    this.thirst_max = 100;
+    this.thirst_tick = 3 // w sekundach
+    this.thirst_timer = new Timer();
+this.thirst_timer.set_time(true,this.thirst_tick)
+
+this.god_mode = false;
+
     this.menu = false;
     this.currover = false
     this.attack_style = "dist"
@@ -39,6 +53,8 @@ constructor(){
 //=============================================================================
 allFunctions(){
   this.colider();
+  this.player_hunger();
+    this.player_thirst();
 if (this.state == 'move'){
     this.ruch_state();
     this.dash_state();
@@ -115,10 +131,8 @@ push();
   translate(this.player.position.x,this.player.position.y)
   this.v1 = createVector(0,-height/2+100)
   this.v2 = createVector(mouseX-width/2,mouseY-height/2)
-      if (mouseX > width/2){
-          this.angle = this.v1.angleBetween(this.v2) - PI/2}
-      if (mouseX < width/2){
-          this.angle = (this.v1.angleBetween(this.v2) + PI/2) * -1}
+          this.angle = this.v1.angleBetween(this.v2) - PI/2
+
 pop();
 camera.on();
 
@@ -173,10 +187,11 @@ for (let i = 0; i < bullets.length; i++){
 
 //============================================================================
 hit(){
+  if (!this.god_mode){
 if (this.hp < 0){
   this.player.remove();
-  game_stage = "menu"
-}
+  game_stage = "menu"}
+}else {this.hp = 10;}
 }
 //=============================================================================
 ruch_state(){
@@ -225,6 +240,8 @@ if (w){
 
         this.player.animation.changeFrame(3);
         this.player.animation.stop();}
+
+
 }
 //=============================================================================
 dash_state(){
@@ -268,4 +285,40 @@ gracz.player.position.y = 980;
 console.log("pozycja gracza zrestartowana")
 }
 //=========================================================================
+player_hunger(){
+    if (!this.god_mode){
+if(this.hunger_timer.time_out()){
+this.hunger -= 1;
+if (this.hunger > 0){
+this.hunger_timer.set_time(true,this.hunger_tick)}
+}
+
+if(this.hunger == 5){
+  console.log("zjedz cos")
+}
+else if (this.hunger == 0){
+  gracz.hp -= 0.005;
+}
+}
+}
+
+player_thirst(){
+    if (!this.god_mode){
+if(this.thirst_timer.time_out()){
+this.thirst -= 1;
+if (this.thirst > 0){
+this.thirst_timer.set_time(true,this.thirst_tick)}
+}
+
+if(this.thirst == 5){
+  console.log("Wypij cos")
+}
+else if (this.thirst == 0){
+  gracz.hp -= 0.005;
+}
+}
+}
+
+
+
 }

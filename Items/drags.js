@@ -4,17 +4,21 @@ class Drags{
 this.what_type_of = type
 switch(this.what_type_of){
 case "amphetamine":
-          this.name = "Dawka Amfetaminy"
-          this.type = "drags_Amphetamine"
+          this.id = 0;
+          this.name = json_descr["drags"][1][1];
+          this.type = json_descr["drags"][1][0];
           this.description = json_descr["drags"][1][2];
           this.sell_prize = 250;
           this.buy_prize = 500;
           this.graphic = drags_jar_gray;
 
+
+
 break;
 case "klefedrone":
-          this.name = "Dawka Klefedronu"
-          this.type = "drags_klefedrone"
+  this.id = 4;
+          this.name = json_descr["drags"][0][1];
+          this.type = json_descr["drags"][0][0];
           this.description = json_descr["drags"][0][2];
           this.sell_prize = 250;
           this.buy_prize = 500;
@@ -23,7 +27,6 @@ break;
 
 }
 this.sort_type = "drags"
-
 
 // this.amphetamine, - done
 // this.klefedrone,  - done
@@ -45,11 +48,10 @@ console.log("ŁO JAK CI DOBRZEEE I MILUUTKOOOO")
   break;
 
   }
-
-
-
-
 }
+
+
+
 
 
 

@@ -10,7 +10,9 @@ let wheelUP = false;
 let wheelDOWN = false;
 
 
-
+// createLinearGradient(0, 0, 200, 0);
+// grd.addColorStop(0, "red");
+// grd.addColorStop(1, "white");
 
 //=============================================================================================
 function preload(){
@@ -32,13 +34,16 @@ loot = new Loot_lvl();
 lvl = new Lvl2();
 quest_log = new Quest_log();
 quests = new Quests();
+item_list = new Item_list();
+//lamp = new Light();
 quests.questy();
 resize_images();
 meter = new FPSMeter();
 meter.hide();
 camera.zoom = zoom;
- // soundtrack.setVolume(1)
- // soundtrack.play();
+
+  // soundtrack.setVolume(1)
+  // soundtrack.play();
 }
 //=============================================================================================
 function draw(){
@@ -49,12 +54,12 @@ if (game_stage == "menu"){
 if (game_stage == "game"){
 //change_lvl();     // funkcja płynnej zmiany poziomów
 
-
-
  static();        // statyczne części gry
  Update();        // Update funkcji
  fixUpdate();     // wsporwadzanie poprawek do Update'u jesli wymagane
  render();        // Render na ekranie
+ //lamp.poz(); // swiatlo z gracza
+
 
 
 if (fps){         // Licznik FPS
@@ -65,7 +70,7 @@ meter.tick();}
 }
 //=============================================================================================
 function keyPressed(){
-
+if (keyCode === SHIFT){return false;}
   imputs();
 }
 
@@ -83,7 +88,7 @@ function windowResized() {
 }
 //=============================================================================================
  function static(){
-   background(0)
+   background("black")
    lvl.background();
 
  }
@@ -93,14 +98,12 @@ function windowResized() {
    gracz.allFunctions();
 
    lvl.update_lvl();
-
 quests.quests_start();
 
    kam.follow();
+ui.move_char_info();
 
 
-
-       ui_poz();
 gracz.dist_attack();
  }
 
@@ -136,7 +139,9 @@ function leyer_2(){
     drawSprites(npcs);
       drawSprites(bullets);
   drawSprites(p1);
-  drawSprites(par_top);
+  // fill(0,200); // udawana noc
+  //  rect(-10,-10,2000,2000)
+      drawSprites(par_top);
   drawSprites(ramacam);
   drawSprites(cam);
   drawSprites(spawners);
@@ -144,7 +149,7 @@ function leyer_2(){
 }
 
 function leyer_3(){
-  ui.ui();
+ui.ui();
   lvl.leyer_3();
     inventory.show();
   quests.leyer_3();

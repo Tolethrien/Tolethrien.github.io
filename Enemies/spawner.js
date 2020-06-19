@@ -68,7 +68,7 @@ resp(){
   for (let i = 0; i < this.list[0].length; i++){
     if (this.list[1][i] == null){
 if (this.list[0][i].timer == false){
-this.list[1][i] = this.mob = new Enemy();
+this.list[1][i] = this.mob = new this.type;
 this.createNew(i);
 }}}
 

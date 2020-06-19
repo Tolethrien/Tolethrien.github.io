@@ -17,6 +17,7 @@ leftKey = 65
 rightKey = 68
 upKey = 87
 downKey = 83
+//shiftKey = eventcode
 startKey = (key == "x");
 questKey = (key == "j");
 
@@ -52,8 +53,10 @@ if (statsKey){
 }
 
 if (questKey){
-  if(quest_log.menu == false){quest_log.menu = true}
-  else{quest_log.menu = false}
+  if(quest_log.menu == false){quest_log.menu = true
+                              open_book.play();}
+  else{quest_log.menu = false
+        open_book.play();}
 }
 //=========================================================================
 // if (inventoryKey){
@@ -63,39 +66,7 @@ if (questKey){
 
 //==============================RUCH POSTACI==============================
 }
-function ui_poz(){
 
-if ( mouseDown(LEFT)){
-if (mouseX > ui.x+151 && mouseX < ui.x+151+350 && mouseY > ui.y && mouseY < ui.y + 15){
-  //rect(this.x+151,this.y,350,15)
-  if (tempSet == false){
-on = true;
-tempX = (ui.x - mouseX) * -1;
-tempY = (ui.y - mouseY) * -1;
-tempSet = true;}}
-if (on == true){
-ui.x = mouseX - tempX;
-ui.y = mouseY - tempY;}
-}
- else if (mouseUp(LEFT)){
- tempSet = false;
-on = false;}
-
-// if (this.set == false){
-//   this.x = (this.basicX - mouseX) * -1;
-//     this.y = (this.basicY - mouseY) * -1;}
-//   this.set = true;
-//   console.log("pres");
-//   this.basicX = mouseX-this.x;
-//   this.basicY = mouseY-this.y;
-// }
-// else if (mouseUp(LEFT)){
-// this.set = false;;
-// }
-// }
-
-
-}
 function ruch_imputs(){
 //ruch postaci
 if (keyIsDown(leftKey)){

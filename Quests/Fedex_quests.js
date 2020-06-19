@@ -94,7 +94,7 @@ talk_aktywny(){
             this.quest_giver.quest_state = "zebrany"
             this.quest_giver.pop_up = false;
             this.anim_reset();
-            this.add_quest_log();}
+            quest_log.add_to(this);}
 
 
   if ( this.lines[0][2] != null){

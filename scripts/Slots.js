@@ -7,6 +7,7 @@ this.style; // ustawiac bedzie wizualny kształt slotu
 this.hold = value // zmienna okreslajaca czy slot "trzyma" jakis przedmiot obecnie
 this.amount = 1; // ilosc danego przedmiotu w slocie (a.k.a ilosc tego itemka :) )
 this.rPressed = false; // zmienna sprawdzajaca czy prawy myszy zostal klikniety (blokada 2 kliku na przedmiot)
+//this.test = 1;
 }
 
 //========================================================================================
@@ -24,10 +25,25 @@ this.r = angle;
   }
 
 // kwadrat
-else if ( this.style == "rect"){
+else if ( this.style == "inventory"){
+push();
+noStroke();
+fill(this.kolor,100)
+rect(this.x,this.y,this.w,this.h)
+pop();
+}
+
+else if (this.style == "rect" ){
 push();
 fill(this.kolor,100)
 rect(this.x,this.y,this.w,this.h)
+pop();
+}
+
+else if (this.style == "rect_cut" ){
+push();
+fill(this.kolor,0)
+rect(this.x,this.y,this.w,this.h,20)
 pop();
 }
 
@@ -49,24 +65,71 @@ this.rClick();
 
 //=======================================================================================
 show(){
-  push();
     if (this.hold != undefined){
-    image(this.hold.graphic,this.x+this.w/2-15,this.y+5) // grafika przedmiotu (lub placeholder)
-    textSize(10)
-    textAlign(CENTER);
-    text(this.hold.name,this.x,this.y+35,this.w,this.h) // nazwa przedmiotu
-    line (this.x,this.y+58,this.x+this.w,this.y+58)
-    text(this.amount,this.x,this.y+62,this.w,this.h)} // ilosc w slocie
-  pop();
+switch(this.style){
+case "rect":
+push();
+//console.log("dzialam")
+imageMode(CENTER);
+  image(this.hold.graphic,this.x+this.w/2,this.y+20) // grafika przedmiotu (lub placeholder)
+  textSize(10)
+  textAlign(CENTER);
+  fill(0);
+  text(this.hold.name,this.x,this.y+35,this.w,this.h)// nazwa przedmiotu
+  stroke(0);
+  line (this.x,this.y+58,this.x+this.w,this.y+58)
+  strokeWeight(0)
+  text(this.amount,this.x,this.y+62,this.w,this.h) // ilosc w slocie
+pop();
+break;
+case "inventory":
+push();
+imageMode(CENTER);
+  image(this.hold.graphic,this.x+this.w/2,this.y+20) // grafika przedmiotu (lub placeholder)
+  textSize(10)
+  textAlign(CENTER);
+  fill(255);
+  text(this.hold.name,this.x,this.y+35,this.w,this.h)// nazwa przedmiotu
+  stroke(255);
+  strokeWeight(1)
+  line (this.x,this.y+58,this.x+this.w,this.y+58)
+  strokeWeight(0)
+  text(this.amount,this.x,this.y+62,this.w,this.h) // ilosc w slocie
+pop();
+break;
+case "rect_cut":
+push();
+imageMode(CENTER);
+  image(this.hold.graphic,this.x+this.w/2,this.y+17) // grafika przedmiotu (lub placeholder)
+  textSize(10)
+  textAlign(CENTER);
+  fill(255);
+  text(this.hold.name,this.x,this.y+30,this.w,this.h)// nazwa przedmiotu
+  stroke(255);
+  strokeWeight(1)
+  line (this.x+10,this.y+53,this.x+this.w-10,this.y+53)
+  text(this.amount,this.x,this.y+57,this.w,this.h) // ilosc w slocie
+pop();
+break;
+}
+}
+
 }
 //=======================================================================================
 mouseON(){
   // sprawdza czy myszka znajduje sie na slocie
 if ( this.hold != undefined){
 if ( mouseX > this.x && mouseX < this.x+this.w &&
-     mouseY > this.y && mouseY < this.y+this.w){
+     mouseY > this.y && mouseY < this.y+this.h){
 return true;}
       }
+}
+
+mouseON_empty_slot(){
+  // sprawdza czy myszka znajduje sie na slocie
+if ( mouseX > this.x && mouseX < this.x+this.w &&
+     mouseY > this.y && mouseY < this.y+this.h){
+return true;}
 }
 //=========================================================================================
 click(){
@@ -83,12 +146,14 @@ if (this.mouseON()){
 item_info(){
   // wyswietla ekran z informacjami o przedmiocie
 if (this.mouseON()){
+  push();
   //rect(325, 100, 100,150);
   image(scroll_info,this.x+this.w+70,this.y - 50)
   textSize(12);
   textAlign(CENTER);
   text(this.hold.name,this.x+this.w+77,this.y-10,100,150)
   text(this.hold.description,this.x+this.w+77,this.y+40,100,150)
+  pop();
 }
 
 

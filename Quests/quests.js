@@ -8,9 +8,11 @@ constructor(){
 }
 
 questy(){
-  this.start_quest = new Fedex_Quests("quest_start","aktywny",0,0,0,0,lvl.burmistrz,lvl.valdemar,lvl.burmistrz);
+  this.start_quest = new Fedex_Quests("Na potrzeby chwili","aktywny",0,0,0,0,lvl.burmistrz,lvl.valdemar,lvl.burmistrz);
   //this.vah = new Kill_Quests("aktywny",lvl.tomil,null,2);
-    this.s_quest = new Fedex_Quests("q_start","aktywny",0,0,0,0,lvl.burmistrz,lvl.tomil,lvl.tomil);
+    this.s_quest = new Fedex_Quests("Wygodna cena niewygody","aktywny",0,0,0,0,lvl.burmistrz,lvl.tomil,lvl.tomil);
+
+
 //  this.allQ.push(this.vah)
 }
 

@@ -8,39 +8,56 @@
 
 class Ui{
 constructor(){
-  //okno STATS
-this.x = 100,this.y = 200,this.w = 500,this.h = 400
+  //=====================================rozmiar slotow====================================
+  this.slots_w = 75, this.slots_h = 75
+
+  //============================okno postaci======================================
+this.char_info_x = 150,this.char_info_y = 150,this.char_info_w = 810,this.char_info_h = 525
+this.char_info_tempX,this.char_info_tempY,this.char_info_tempSet = false,this.char_info_on = false;
+this.cant_drag = false;
 
 //OKNO ROZMOW
 this.gumpX = 400,this.gumpY = 250, this.gumpW = 700, this.gumpH = 200;
 this.startX = -200, this.startY = 250, this.startW = 300, this.startH = 300
 this.anim_speed = 24;
-this.slots_w = 75, this.slots_h = 75
-//menu kontekstowe
+
+
+//==============================okno kontenera ====================================
+
+this.contener_ui_poz_x = 125, this.contener_ui_poz_y = 75, this.contener_ui_poz_w, this.contener_ui_poz_h;
+this.contener_ui_tempX,this.contener_ui_tempY,this.contener_ui_tempSet = false,this.contener_ui_on = false;
+this.contener_ui_cant_drag = false;
+
+this.loot_bag_ui_poz_x = 125, this.loot_bag_ui_poz_y = 75, this.loot_bag_ui_poz_w = 250, this.loot_bag_ui_poz_h = 200;
+this.loot_bag_ui_tempX,this.loot_bag_ui_tempY,this.loot_bag_ui_tempSet = false,this.loot_bag_ui_on = false;
+this.loot_bag_ui_cant_drag = false;
+
+
+
+
+
 
 //okno Quest_log
-this.ql_Y = 230;
+this.ql_X = 230, this.ql_Y = 200;
 
 
 
 }
 
 ui(){
-this.stats();
+this.character_info();
 this.hud();
 }
 
 
-
-
-
-
 pauza(){
+  camera.off();
   push();
   fill(255);
   textSize(50)
   text("Pauza",width/2,height/2,150,60)
 pop();
+camera.on();
 return true
 }
 
@@ -58,104 +75,87 @@ hud(){
 camera.on();
 }
 
-stats(){
-   if (gracz.menu == true){
+character_info(){
+  if (gracz.menu == true){
+     camera.off();
+      //   rect(this.char_info_x,this.char_info_y,this.char_info_w,this.char_info_h)
+      image(player_ui,this.char_info_x-175,this.char_info_y-230) // glowna plansza okna
 
-  //================================//glowny kwadrat//=====================================
-camera.off()
-push();
-fill(100,100);
-rectMode(CORNER);
+      image(player_image,this.char_info_x+100,this.char_info_y+70); // zdjecie gracza
 
-rect(this.x,this.y,this.w,this.h,20,0,80,20)
-stroke(0)
-strokeWeight(3)
-line(this.x+151,this.y+1,this.x+151,this.y+400-1)
-pop();
-
-//===========================//kwadrat za postacią//=========================================
+// //===========================//waga oraz gold//==========================
 push();
-fill(70);
-noStroke();
-rect(this.x,this.y,150,250,20,0,0,0);
-pop();
-
-//============================//kwadrat za statami//=======================
-push();
-fill(50);
-rect(this.x,this.y+250,150,150,0,0,0,20)
-pop();
-//====================//kwadrat czarny ( tlo postaci) + postac//======================
-push();
-fill(0)
-rect(this.x+27,this.y+50,100,150,60);
-image(player_image,this.x+40,this.y+100);
-pop();
-
-//===========================//waga oraz gold//==========================
-push();
-fill(85, 128, 0)
-rect(this.x+85,this.y+10,60,20,5)
-rect(this.x+10,this.y+10,65,20,5)
-fill(255);
+fill(153, 153, 102) // kolor tła
+rect(this.char_info_x+40,this.char_info_y+480,60,20,5) // kwadrat tła
+rect(this.char_info_x+180,this.char_info_y+480,75,20,5) //// kwadrat tła
+fill(255); // kolor napisów
 noStroke();
 textSize(10)
-text("Pyrki: " + inventory.money,this.x+95,this.y+15,80,20)
-text("Weight: 0/115",this.x+10,this.y+15,80,20)
+text("Pyrki: " + inventory.money,this.char_info_x+45,this.char_info_y+485,80,20)
+text("Weight: 0/115",this.char_info_x+185,this.char_info_y+485,80,20)
+//rect(this.char_info_x,this.char_info_y,100,100)
 pop();
-//===========================staty postaci + wizualizacja ich//===========================
+
+// //===========================staty postaci + wizualizacja ich//===========================
 push();
-fill(200);
-noStroke();
-  text("Health:   "   + gracz.hp,this.x+10,this.y+260,80,20)
+  stroke(0);
+  strokeWeight(4)
+  textSize(16)
+  fill(255, 204, 153)
+  text("Health:       "   + floor(gracz.hp),this.char_info_x+50,this.char_info_y+390,120,20)
   stroke(2)
+  strokeWeight(1)
   noFill();
-  rect(this.x+75,this.y+260,70,10)
+  rect(this.char_info_x+180,this.char_info_y+390,70,10)
   fill("red")
-  let m = map(gracz.hp,0,10,0,70)
-  rect(this.x+75,this.y+260,m,10)
+  let hp = map(gracz.hp,0,10,0,70)
+  rect(this.char_info_x+180,this.char_info_y+390,hp,10)
 pop();
 
 push();
-fill(200);
-noStroke();
-  text("o2:         " + 10,this.x+10,this.y+275,80,20)
+  stroke(0);
+  strokeWeight(4)
+  textSize(16)
+  fill(255, 204, 153)
+  text("o2:             " + 10,this.char_info_x+50,this.char_info_y+410,120,20)
   stroke(2)
+  strokeWeight(1)
   noFill();
-  rect(this.x+75,this.y+275,70,10)
+  rect(this.char_info_x+180,this.char_info_y+410,70,10)
   fill(204, 89, 51)
-  rect(this.x+75,this.y+275,70,10)
+  rect(this.char_info_x+180,this.char_info_y+410,70,10)
 pop();
 
 push();
-fill(200);
-noStroke();
-  text("Hunger: "     + 100,this.x+10,this.y+290,80,20)
+  stroke(0);
+  strokeWeight(4)
+  textSize(16)
+  fill(255, 204, 153)
+  text("Hunger:     "     + floor(gracz.hunger),this.char_info_x+50,this.char_info_y+430,120,20)
   stroke(2)
+  strokeWeight(1)
   noFill();
-  rect(this.x+75,this.y+290,70,10)
+  rect(this.char_info_x+180,this.char_info_y+430,70,10)
   fill(128, 204, 51)
-  rect(this.x+75,this.y+290,60,10)
+    let hu = map(gracz.hunger,0,100,0,70)
+  rect(this.char_info_x+180,this.char_info_y+430,hu,10)
 pop();
 
 push();
-fill(200);
-noStroke();
-  text("Thirst:    "  + 100,this.x+10,this.y+305,80,20)
+  stroke(0);
+  strokeWeight(4)
+  textSize(16)
+  fill(255, 204, 153)
+  text("Thirst:        "  + gracz.thirst,this.char_info_x+50,this.char_info_y+450,120,20)
   stroke(2)
+  strokeWeight(1)
   noFill();
-  rect(this.x+75,this.y+305,70,10)
+  rect(this.char_info_x+180,this.char_info_y+450,70,10)
   fill(51, 89, 204)
-  rect(this.x+75,this.y+305,40,10)
+    let th = map(gracz.thirst,0,100,0,70)
+  rect(this.char_info_x+180,this.char_info_y+450,th,10)
 pop();
-//==============================//pasek powiadomien na ekranie//===========================
-push();
-fill(0,0,50,150)
-rect(this.x+151,this.y,350,15)
-fill(255,150);
-text("Date: 02/07/3024",this.x+170,this.y+3,120,20)
-text("Time: 20:24",this.x+435,this.y+3,80,20)
-pop();
+
 camera.on();
  }
 }
@@ -182,16 +182,10 @@ akcja(){
 }
 
 quest_log(){
-  let y = this.ql_Y;
   push();
-  fill(100,100)
-  rect(200,200,500,360)
-  strokeWeight(3)
-  line(380,200,380,560)
-  line(420,200,420,560)
-  for( let i = 0; i < 12; i++){
-    line(200,y,420,y);
-    y += 30;}
+camera.off();
+image(qlog,this.ql_X,this.ql_Y)
+camera.on();
   pop();
 }
 
@@ -201,6 +195,145 @@ quest_track(){
   rect(width-140,100,150,45,20) //=======
   pop();
 
+}
+
+
+slots_layer(style,x,y,w,h,slot,row,col){
+   camera.off();
+   push();
+   let xx = 0;
+  let yy = 0;
+  let swap = 1;
+  for (let i = 0; i < slot.length; i++){
+    slot[i].create(style,x+xx,y+yy,w,h)
+  //  this.slot[i].kolor(100,100,100);
+    if (i == (row * swap) -1 ){
+  yy += h;
+  xx = -w;
+  swap ++;
+    }
+      xx += w;
+  }
+  camera.on();
+  pop();
+
+}
+
+contex_layer(cont){
+  camera.off();
+  let y = 0;
+  let name = "USE"
+  for (let i = 0; i < cont.slot.length; i++){
+  //  console.log("loop, add inv ", i)
+    if (cont.slot[i].hold != undefined){
+      cont.slot[i].rClick();}
+
+    if (cont.slot[i].rPressed == true){
+        cont.take_block = true;
+        for (let j = 0; j < 2; j++){
+cont.buttons[j].create("rect", cont.slot[i].x+cont.slot[i].w/2,cont.slot[i].y+cont.slot[i].h/2+y,70,30,name,10)
+y += 30;
+name = "TEST"
+      if (cont.buttons[0].Pressed_true(LEFT)){
+        console.log("use item: ", i, "guzik: ", j)
+            cont.take_block = false;
+          cont.slot[i].hold.use();
+                if (cont.slot[i].amount == 1){
+                  cont.slot[i].hold = undefined;}
+                  else{cont.slot[i].amount --}
+                  cont.slot[i].gu();
+                    break;}
+
+        else if (cont.buttons[1].Pressed_true(LEFT)){
+          console.log("test item: ", i, "guzik: ", j)
+            cont.slot[i].hold.test();
+           cont.take_block = false;
+            cont.slot[i].gu();
+          break;}
+
+        else if (mouseWentDown(LEFT) || mouseWentDown(RIGHT)){
+          if (cont.slot[i].mouseON() != true){
+               cont.take_block = false;
+            cont.slot[i].gu();
+            break;}
+
+        }
+        }
+}
+
+}
+camera.on();
+}
+
+item_info_layer(source){
+  camera.off();
+  for (let i = 0; i < source.slot.length; i++){
+    source.slot[i].item_info();}
+camera.on();
+}
+
+move_loot_bag(){
+  if(mouseDown(LEFT)){
+      if (mouseX > this.loot_bag_ui_poz_x+15 && mouseX < this.loot_bag_ui_poz_x+ 15 +this.loot_bag_ui_poz_w && mouseY > this.loot_bag_ui_poz_y-2 && mouseY < this.loot_bag_ui_poz_y -2 + this.loot_bag_ui_poz_h){
+for (let i = 0; i < lvl.loot_bags_array.length; i++){
+  if (lvl.loot_bags_array.length != 0){
+for (let j = 0; j < lvl.loot_bags_array[i].slot.length; j++){
+  if (lvl.loot_bags_array[i].slot[j].mouseON_empty_slot() == true){
+  //  console.log("myszka na itemku",i,j)
+    this.cant_drag = true;
+    break;}
+    else if(i == lvl.loot_bags_array.length-1 &&
+      j == lvl.loot_bags_array[i].slot.length-1 && lvl.loot_bags_array[i].slot[j].mouseON_empty_slot() != true && this.cant_drag == false){
+ if (this.loot_bag_ui_tempSet == false){
+   this.loot_bag_ui_on = true;
+     this.loot_bag_ui_tempX = (this.loot_bag_ui_poz_x - mouseX) * -1;
+     this.loot_bag_ui_tempY = (this.loot_bag_ui_poz_y - mouseY) * -1;
+     this.loot_bag_ui_tempSet = true;}}}}}}
+     if (this.loot_bag_ui_on == true){
+        //    console.log("jest")
+     this.loot_bag_ui_poz_x = mouseX - this.loot_bag_ui_tempX;
+     this.loot_bag_ui_poz_y = mouseY - this.loot_bag_ui_tempY;}}
+      else if (mouseUp(LEFT)){
+      this.loot_bag_ui_tempSet = false;
+      this.cant_drag = false;
+     this.loot_bag_ui_on = false;}
+
+   }
+
+move_char_info(){
+  if(mouseDown(LEFT)){
+      if (mouseX > this.char_info_x && mouseX < this.char_info_x+this.char_info_w && mouseY > this.char_info_y && mouseY < this.char_info_y + this.char_info_h){
+for (let i = 0; i < inventory.slot.length; i++){
+  if (inventory.slot[i].mouseON_empty_slot() == true){
+  //  console.log("myszka na itemku")
+    this.cant_drag = true;
+    break;}
+    else if(i == inventory.slot.length-1 && inventory.slot[i].mouseON_empty_slot() != true && this.cant_drag == false){
+    //  console.log("jest")
+ if (this.char_info_tempSet == false){
+   this.char_info_on = true;
+     this.char_info_tempX = (this.char_info_x - mouseX) * -1;
+     this.char_info_tempY = (this.char_info_y - mouseY) * -1;
+     this.char_info_tempSet = true;}}}}
+     if (this.char_info_on == true){
+     this.char_info_x = mouseX - this.char_info_tempX;
+     this.char_info_y = mouseY - this.char_info_tempY;}}
+      else if (mouseUp(LEFT)){
+      this.char_info_tempSet = false;
+      this.cant_drag = false;
+     this.char_info_on = false;}
+
+}
+
+conteiner_look(look_of,x,y){
+  switch(look_of){
+case "conteiner":
+ image(inside_chest,this.contener_ui_poz_x-35,this.contener_ui_poz_y+15);
+ break;
+ case "corpse":
+  image(corpse_bag,x,y);
+  break;
+  }
 }
 
 }

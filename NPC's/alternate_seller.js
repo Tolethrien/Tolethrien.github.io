@@ -15,15 +15,16 @@ class Alt_seller extends Npc{
     this.slot[i] = new Slot();}
 
 
-
-
+this.profit = new Timer();           // pozwala handlarzowi zarabiac na siebie
+this.profit_money = 50               // ustala utarg jaki handlarz zrobi w okreslonym czasie
+this.profit.set_time(true,60)        // ustala czas co ile handlarz dostaje zastrzyk gotowki
 
   }
 
 
   allF(){
     super.allF();
-
+this.seller_profit();
   }
 
   create(xx,yy,ww,hh){
@@ -35,10 +36,12 @@ class Alt_seller extends Npc{
   okno(){
 if (this.talk()){
   camera.off();
+  push();
   rect(this.xx,this.yy,this.ww,this.hh,40,40,40,40);
   textSize(20);
   text(this.money,200,130);
   text(inventory.money,650,130)
+  pop();
 this.seller_okno();
 this.gracz_okno();
 this.player_sell();
@@ -98,7 +101,12 @@ console.log(curr_item);
 
 
 
-
+seller_profit(){
+if (this.profit.time_out()){
+  this.money += this.profit_money;
+  this.profit.set_time(true,60)
+    }
+}
 
 
 
