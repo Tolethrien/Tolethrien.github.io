@@ -25,7 +25,7 @@ for (let i = 0; i < this.slots_max; i++){
 
 
 //  this.slot[i] = new Button();}
-// this.slot[0].hold = new Health_potion("small")
+ this.slot[0].hold = new Food("cooked_meat")
 // this.slot[1].hold = new Drags("amphetamine")
 // this.slot[2].hold = new Drags("klefedrone")
 // this.slot[3].hold = new Health_potion("medium")
@@ -78,16 +78,20 @@ let d = dist(gracz.player.position.x,gracz.player.position.y,this.x,this.y)
 }
 
 open_ui(){
-  this.show_kont();
-  ui.item_info_layer(this);
-  ui.contex_layer(this);
-
-  this.show_inv();
-  ui.item_info_layer(inventory);
-  ui.contex_layer(inventory);
 
   this.add_to_inv();
   this.add_to_cont();
+
+  this.show_kont();
+  ui.item_info_layer(this);
+ ui.contex_layer(this);
+
+  this.show_inv();
+  ui.item_info_layer(inventory);
+ ui.contex_layer(inventory);
+
+
+//  this.use_item();
 }
 //============================ okno kufra ======================================
 show_kont(){
@@ -110,11 +114,16 @@ camera.on();
 list_of(){
   this.table_array = [];
   for (let i = 0; i < this.slot.length; i++){
-this.table_array[i] = [this.slot[i].hold,this.slot[i].amount];
+    if (this.slot[i].hold != undefined){
+      this.name = this.slot[i].hold.name;
+    } else {this.name = undefined;}
+this.table_array[i] = [this.name,this.slot[i].amount];
 
   }
 console.table(this.table_array);
 this.table_array = [];
 }
+
+
 
 }

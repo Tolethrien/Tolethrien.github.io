@@ -7,7 +7,7 @@ constructor(){
     this.valdemar = new Npc("Valdemar");
         this.burmistrz = new Npc("Burmistrz");
 
-this.kont = new Contener(3,3,1580,1080);
+this.kont = new Contener(4,4,1580,1080);
     this.tomil = new Npc("Tomil");
     this.vah_mobs = [];
 //       this.vah = new Kill_Quests(qs.vah,"aktywny",this.tomil,null,this.vah_mobs,2);
@@ -85,7 +85,9 @@ kamera_borders(){
 enemies(){
 this.vahel.create(1495,1777,10,14)
 this.beny.create(1320,1760,10,14)
-this.mutant.create(1320,1360,10,14)
+this.mutant.create({position_x: 1320, position_y:1360,
+                    size_w: 10, size_h: 14})
+//this.mutant.create(1320,1360,10,14)
 this.spawner.create(1050,1320,20,40)
 }
 //==============================================================================================

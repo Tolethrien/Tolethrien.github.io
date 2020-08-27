@@ -41,6 +41,7 @@ resize_images();
 meter = new FPSMeter();
 meter.hide();
 camera.zoom = zoom;
+pg = createGraphics(100, 100);
 
   // soundtrack.setVolume(1)
   // soundtrack.play();
@@ -60,8 +61,12 @@ if (game_stage == "game"){
  render();        // Render na ekranie
  //lamp.poz(); // swiatlo z gracza
 
-
-
+// camera.off()
+// fill(100,50)
+// let blah = rect(-10,-10,1000,1000)
+// let guh = image(blah,10,100)
+// guh.filter(BLUR);
+// camera.on();
 if (fps){         // Licznik FPS
   meter.show();
 meter.tick();}

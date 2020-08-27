@@ -77,24 +77,24 @@ logo(){
   if (this.line1 != null){
     push();
         textSize(20);
-          textFont(caveat_font)
-text("<Get_day>",ui.ql_X+420,ui.ql_Y+60,300,20)
-text("<get_date&&clock>",ui.ql_X+550,ui.ql_Y+90,300,20)
+        // textFont(caveat_font)
+text("<Get_day>",ui.ql_X+420,ui.ql_Y+60)
+text("<get_date&&clock>",ui.ql_X+550,ui.ql_Y+90)
 
-text(this.line1,ui.ql_X+420,ui.ql_Y+120,300,400)
+text(this.line1,ui.ql_X+420,ui.ql_Y+120)
 if (this.line2 != null){
-text(this.line2,ui.ql_X+420,ui.ql_Y+300,300,100)
+text(this.line2,ui.ql_X+420,ui.ql_Y+300)
 line(ui.ql_X+420,ui.ql_Y+330,ui.ql_X+500,ui.ql_Y+330)}
 
 if (this.line3 != null){
-text(this.line3,ui.ql_X+420,ui.ql_Y+340,300,100)
+text(this.line3,ui.ql_X+420,ui.ql_Y+340)
 line(ui.ql_X+420,ui.ql_Y+370,ui.ql_X+560,ui.ql_Y+370)}
 
 if (this.line4 != null){
-text(this.line4,ui.ql_X+420,ui.ql_Y+380,300,100)
+text(this.line4,ui.ql_X+420,ui.ql_Y+380)
 line(ui.ql_X+420,ui.ql_Y+410,ui.ql_X+560,ui.ql_Y+410)}
 
-text("status: " + this.q_stat,ui.ql_X+420,ui.ql_Y+440,300,100)
+text("status: " + this.q_stat,ui.ql_X+420,ui.ql_Y+440)
 pop();}
 }
 

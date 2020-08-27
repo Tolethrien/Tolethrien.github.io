@@ -4,36 +4,44 @@ class Health_potion{
 this.what_type_of = type
 switch(this.what_type_of){
   case "small":
-    this.id = 3;
+                this.id = json_descr["potions"][0][0];
                 this.name = json_descr["potions"][0][1];
-                this.type = json_descr["potions"][0][0];
-                this.description = json_descr["potions"][0][2];
+                this.description = json_descr["potions"][0][3];
+                this.save_data = json_descr["potions"][0][4];
+                  this.quality = "common"
+                    this.use_info = "Natychmiast przywraca x % zdrowia"
+                    this.sort_type =  json_descr["potions"][0][2];
                 this.sell_prize = 50;
                 this.buy_prize = 100;
                 this.hp_add = 2;
     break;
     case "medium":
-    this.id = 1;
+                  this.id = json_descr["potions"][1][0];
                   this.name = json_descr["potions"][1][1];
-                  this.type = json_descr["potions"][1][0];
-                  this.description = json_descr["potions"][1][2];
+                  this.description = json_descr["potions"][1][3];
+                    this.save_data = json_descr["potions"][1][4];
+                    this.sort_type =  json_descr["potions"][1][2];
+                      this.quality = "legendary"
+                      this.use_info = "'Natychmiast przywraca x % zdrowia'"
                   this.sell_prize = 50;
                   this.buy_prize = 100;
                   this.hp_add = 5;
       break;
       case "big":
-        this.id = 2;
+                    this.id = json_descr["potions"][2][0];
                     this.name = json_descr["potions"][2][1];
-                    this.type = json_descr["potions"][2][0];
-                    this.description = json_descr["potions"][2][2];
+                    this.description = json_descr["potions"][2][3];
+                      this.save_data = json_descr["potions"][2][4];
+                      this.sort_type =  json_descr["potions"][2][2];
+                        this.quality = "legendary"
                     this.sell_prize = 50;
                     this.buy_prize = 100;
                     this.hp_add = 8;
         break;
 
 }
-this.sort_type = "potions"
 this.graphic = potion;
+this.stack_size = 10;
 }
 
 

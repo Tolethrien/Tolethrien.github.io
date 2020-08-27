@@ -9,7 +9,8 @@ function move_item(from,to){
         if (this.from[i].click()){
             for ( let j = 0; j < this.to.length; j++){
                 if (this.to[j].hold != undefined){
-                  if (this.to[j].hold.type == this.from[i].hold.type){
+                  if (this.to[j].hold.id == this.from[i].hold.id){
+                    if(this.to[j].amount < this.to[j].hold.stack_size){
                       this.to[j].amount ++;
                       if (this.from[i].amount == 1){
                           this.from[i].hold = undefined;}
@@ -18,6 +19,7 @@ function move_item(from,to){
                       break;
                     }
                   }
+                }
                   else if (this.to[j].hold == undefined ){
                       if(j == this.to.length-1){
                         for (let k = 0; k < this.to.length; k++){
@@ -52,7 +54,7 @@ this.curr_item;
             if (this.to.money >= this.from.slot[i].hold.sell_prize){
             for ( let j = 0; j < this.to.slot.length; j++){
                 if (this.to.slot[j].hold != undefined){
-                  if (this.to.slot[j].hold.type == this.from.slot[i].hold.type){
+                  if (this.to.slot[j].hold.id == this.from.slot[i].hold.id){
                       this.to.slot[j].amount ++;
                       curr_item = this.from.slot[i].hold
                       if (this.from.slot[i].amount == 1){
@@ -83,7 +85,7 @@ this.curr_item;
           if (this.to.money >= this.from.slot[i].hold.buy_prize){
           for ( let j = 0; j < this.to.slot.length; j++){
               if (this.to.slot[j].hold != undefined){
-                if (this.to.slot[j].hold.type == this.from.slot[i].hold.type){
+                if (this.to.slot[j].hold.id == this.from.slot[i].hold.id){
                     this.to.slot[j].amount ++;
                     curr_item = this.from.slot[i].hold
                     if (this.from.slot[i].amount == 1){

@@ -11,7 +11,7 @@ constructor(){
   this.profile();
 }
 //================================================================================================
-create(xx,yy,ww,hh){
+create({position_x: xx,position_y: yy, size_w: ww, size_h: hh}){
 this.x = xx, this.y = yy, this.w = ww, this.h = hh;
 //-----------------------------------------------------
 this.enemy = createSprite(this.x,this.y,this.w,this.h);

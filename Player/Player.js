@@ -15,7 +15,7 @@ constructor(){
     this.player.setCollider("rectangle",0,0,14,10);
     //this.player.depth = 1
     p1.add(this.player);
-    this.base_spd = 3;
+    this.base_spd = 1;
     this.spd = this.base_spd;
     this.dash = new Timer();
     this.dash_cd = new Timer();
@@ -40,8 +40,8 @@ this.thirst_timer.set_time(true,this.thirst_tick)
 
 this.god_mode = false;
 
-    this.menu = false;
-    this.currover = false
+    this.menu = true;
+        this.currover = false
     this.attack_style = "dist"
 
     //======================================ATAK DYSTANSOWY=======================

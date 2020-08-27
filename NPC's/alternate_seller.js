@@ -46,6 +46,11 @@ this.seller_okno();
 this.gracz_okno();
 this.player_sell();
 this.seller_buy();
+
+ui.item_info_layer(this);
+
+ui.item_info_layer(inventory);
+
 camera.on();
 }
 }

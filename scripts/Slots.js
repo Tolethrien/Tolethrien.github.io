@@ -56,11 +56,11 @@ pop();
 // }
 //---------------------------------------------------------------------------
 //funkcje dodatkowe wgrywane wraz z pojawieniem sie slotu na ekranie
-this.show();
-this.mouseON();
-this.click();
-this.rClick();
-//this.gu();
+ this.show();
+// this.mouseON();
+// this.click();
+// this.rClick();
+// this.gu();
 }
 
 //=======================================================================================
@@ -69,46 +69,48 @@ show(){
 switch(this.style){
 case "rect":
 push();
-//console.log("dzialam")
 imageMode(CENTER);
-  image(this.hold.graphic,this.x+this.w/2,this.y+20) // grafika przedmiotu (lub placeholder)
-  textSize(10)
-  textAlign(CENTER);
-  fill(0);
-  text(this.hold.name,this.x,this.y+35,this.w,this.h)// nazwa przedmiotu
-  stroke(0);
-  line (this.x,this.y+58,this.x+this.w,this.y+58)
-  strokeWeight(0)
-  text(this.amount,this.x,this.y+62,this.w,this.h) // ilosc w slocie
+  image(this.hold.graphic,this.x+this.w/2,this.y+this.h/2) // grafika przedmiotu (lub placeholder)
+  textSize(15)
+  strokeWeight(1)
+  fill(255, 255, 153,150)
+  text(this.amount,this.x+55,this.y+65) // ilosc w slocie
 pop();
 break;
-case "inventory":
+// case "inventory":               // stare inventory z nazwa itemka i iloscia
+// push();
+// imageMode(CENTER);
+//   image(this.hold.graphic,this.x+this.w/2,this.y+20) // grafika przedmiotu (lub placeholder)
+//   textSize(10)
+//   textAlign(CENTER);
+//   fill(255);
+//   text(this.hold.name,this.x,this.y+35)// nazwa przedmiotu
+//   stroke(255);
+//   strokeWeight(1)
+//   line (this.x,this.y+58,this.x+this.w,this.y+58)
+//   strokeWeight(0)
+//   rectMode(RADIUS)
+//   text(this.amount,this.x,this.y+62) // ilosc w slocie
+pop();
+break;
+case "inventory":       // nowe inventory
 push();
 imageMode(CENTER);
-  image(this.hold.graphic,this.x+this.w/2,this.y+20) // grafika przedmiotu (lub placeholder)
-  textSize(10)
-  textAlign(CENTER);
-  fill(255);
-  text(this.hold.name,this.x,this.y+35,this.w,this.h)// nazwa przedmiotu
-  stroke(255);
+  image(this.hold.graphic,this.x+this.w/2,this.y+this.h/2) // grafika przedmiotu (lub placeholder)
+  textSize(15)
   strokeWeight(1)
-  line (this.x,this.y+58,this.x+this.w,this.y+58)
-  strokeWeight(0)
-  text(this.amount,this.x,this.y+62,this.w,this.h) // ilosc w slocie
+  fill(255, 255, 153,150)
+  text(this.amount,this.x+55,this.y+65) // ilosc w slocie
 pop();
 break;
 case "rect_cut":
 push();
 imageMode(CENTER);
-  image(this.hold.graphic,this.x+this.w/2,this.y+17) // grafika przedmiotu (lub placeholder)
-  textSize(10)
-  textAlign(CENTER);
-  fill(255);
-  text(this.hold.name,this.x,this.y+30,this.w,this.h)// nazwa przedmiotu
-  stroke(255);
+  image(this.hold.graphic,this.x+this.w/2,this.y+this.h/2) // grafika przedmiotu (lub placeholder)
+  textSize(15)
   strokeWeight(1)
-  line (this.x+10,this.y+53,this.x+this.w-10,this.y+53)
-  text(this.amount,this.x,this.y+57,this.w,this.h) // ilosc w slocie
+  fill(255, 255, 153,150)
+  text(this.amount,this.x+55,this.y+65) // ilosc w slocie
 pop();
 break;
 }
@@ -148,19 +150,46 @@ item_info(){
 if (this.mouseON()){
   push();
   //rect(325, 100, 100,150);
-  image(scroll_info,this.x+this.w+70,this.y - 50)
+//  image(scroll_info,this.x+this.w+70,this.y - 50)
+fill(20, 20, 57,180)
+strokeWeight(2);
+switch(this.hold.quality){
+  case "common": stroke(100,100,100); break;
+    case "rare": stroke(0, 255, 0); break;
+    case "epic": stroke(204, 51, 153); break;
+    case "legendary": stroke(255, 153, 51); break;
+
+}
+rect(this.x+this.w+70,this.y-50,155,300,10,10,10,10)
+fill(255)
+stroke(0, 153, 51)
+strokeWeight(1)
   textSize(12);
   textAlign(CENTER);
-  text(this.hold.name,this.x+this.w+77,this.y-10,100,150)
-  text(this.hold.description,this.x+this.w+77,this.y+40,100,150)
+  text(this.hold.name,this.x+this.w+70+75,this.y-30)
+  text(this.hold.description,this.x+this.w+75,this.y+20,150,150)
+  fill(0, 163, 139)
+  text("Typ: " + this.hold.type,this.x+this.w+70+75,this.y-10)
+  fill(0, 153, 51)
+  stroke(0, 153, 51)
+  strokeWeight(1)
+    text("USE: " + this.hold.use_info,this.x+this.w+75,this.y+100,150,150)
+    fill(255)
+  text("Wartość: " + this.hold.buy_prize + " Pyrków",this.x+this.w+75,this.y+170,150,150)
+
+
+
+
   pop();
 }
 
 
 }
+
 //====================================================================================
 dClick(){
 // use item
+//setTimeout(this.test,1000)
 
 }
 //===================================================================================
@@ -168,6 +197,7 @@ rClick(){
 // menu kontekstowe
 if (this.mouseON()){
   if(mouseWentDown(RIGHT)){
+    this.dClick();
     this.rPressed = true;
     return true;
    }

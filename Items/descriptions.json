@@ -1,26 +1,32 @@
+
 {
+
+  "komentarze":[
+    ["sposob wpisywania opisow poniżej"],
+    ["numer ID, Nazwa przedmiotu, typ sortowania, opis fabularny, [save/load Data], quality itemku, use info, wielkosc stacku itemka"]
+  ],
 "potions":[
-  ["health_potion_01","mała mikstura lecząca","niskiej jakości mikstura lecznicza jakich wiele"],
-    ["health_potion_02","śr. mikstura lecząca","Średnia mikstura lecznicza pozwalająca jakoś przeżyć"],
-      ["health_potion_03","duża mikstura lecząca","Wyjątkowo uważona wedle najlepszych receptur "]
+  ["001","Mała mikstura lecząca","potions_a","standardowa mikstura jakich wiele",["Health_potion","small"]],
+  ["002","Śr. mikstura lecząca","potions_b","Średnia mikstura lecznicza pozwalająca jakoś przeżyć",["Health_potion","medium"]],
+  ["003","Duża mikstura lecząca","potions_c","Wyjątkowo uważona wedle najlepszych receptur",["Health_potion","big"]]
   ],
 
 
 "drags":[
-  ["drags_klefedrone","Dawka Klefedronu","Najlepiej podawać do śniadania","43"],
-  ["drags_amphetamine","Dawka Amfetaminy","W dawnych czasach nazywana królową","drags_jar_gray"]
+  ["004","Dawka Klefedronu","drags","Najlepiej podawać do śniadania",["Drags","klefedrone"]],
+  ["005","Dawka Amfetaminy","drags","W dawnych czasach nazywana królową",["Drags","amphetamine"]]
 ],
 
 
 "Food":[
-  ["meat","Surowe mięso","mmmm, żylaste, dokladnie tak jak lubie"],
-  ["cooked_meat","Upieczone mięso","smakuje jak kurczak, albo świnia?"]
+  ["006","Surowe mięso","food","mmmm, żylaste, dokladnie tak jak lubie",["Food","meat"]],
+  ["007","Upieczone mięso","food","smakuje jak kurczak, albo świnia?",["Food","cooked_meat"]]
 ],
 
 "Drink":[
-  ["water","woda","troche zanieczyszczona ale zdatna do picia","12"],
-  ["botteled_water","Butelkowana Woda","krystaliczny relikt dawnych czasów", "22"],
-    ["crystalized_water","Woda mineralizowana","Nie jeden zabije za tą pęłną minerałów wodę","17"]
+  ["008","woda","drink","troche zanieczyszczona ale zdatna do picia",["Drink","water"]],
+  ["009","Butelkowana Woda","drink","krystaliczny relikt dawnych czasów", ["Drink","botteled_water"]],
+    ["010","Woda mineralizowana","drink","Nie jeden zabije za tą pęłną minerałów wodę",["Drink","crystalized_water"]]
 ]
 
 
